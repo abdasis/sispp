@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SiswaController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -22,6 +23,13 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
+});
+
+Route::group(['prefix' => 'admin'], function (){
+    Route::group(['prefix' => 'siswa'], function(){
+        Route::get('/', [SiswaController::class, 'index'])->name('siswa.semua');
+        Route::get('tambah', [SiswaController::class, 'create'])->name('siswa.tambah');
+    });
 });
 
 Route::get('/dashboard', function () {

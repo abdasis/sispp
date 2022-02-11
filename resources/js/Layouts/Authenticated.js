@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import Navbar from "@/Organisms/Navbar";
 import Sidebar from "@/Organisms/Sidebar";
 import Footer from "@/Organisms/Footer";
+import {Link} from "@inertiajs/inertia-react";
 
-export default function Authenticated({ auth, header, children, breadcrumb }) {
+export default function Authenticated({ auth, header, children, breadcrumbs }) {
+    console.log(breadcrumbs)
     return (
         <div id="wrapper">
             {/* Topbar Start */}
@@ -25,16 +27,16 @@ export default function Authenticated({ auth, header, children, breadcrumb }) {
                                 <div className="page-title-box">
                                     <div className="page-title-right">
                                         <ol className="breadcrumb m-0">
-                                            <li className="breadcrumb-item">
-                                                <a href="javascript: void(0);">Dahboard</a>
-                                            </li>
-                                            <li className="breadcrumb-item">
-                                                <a href="javascript: void(0);">Siswa</a>
-                                            </li>
-                                            <li className="breadcrumb-item active">Semua Siswa</li>
+                                            {
+                                                breadcrumbs.map((breadcrumb) =>
+                                                    <li className={breadcrumb.url == null ? 'breadcrumb-item active' : 'breadcrumb-item'}>
+                                                        <Link href={breadcrumb.url}>{breadcrumb.label}</Link>
+                                                    </li>
+                                                )
+                                            }
                                         </ol>
                                     </div>
-                                    <h4 className="page-title">Dashboard</h4>
+                                    <h4 className="page-title">{header}</h4>
                                 </div>
                             </div>
                         </div>

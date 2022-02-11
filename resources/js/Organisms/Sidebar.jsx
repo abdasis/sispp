@@ -48,19 +48,19 @@ export default function Sidebar(){
 
                         <li className="menu-title mt-2">Apps</li>
                         <li>
-                            <a href="#sidebarDashboards" data-bs-toggle="collapse">
+                            <a href="#siswa" data-bs-toggle="collapse">
                                 <i className="mdi mdi-24px mdi-account" />
                                 <span> Data Siswa </span>
                                 <span className="menu-arrow"></span>
 
                             </a>
-                            <div className="collapse" id="sidebarDashboards">
+                            <div className="collapse" id="siswa">
                                 <ul className="nav-second-level">
                                     <li>
-                                        <a href="index.html">Tambah Siswa</a>
+                                        <Link href={route('siswa.tambah')}>Tambah Siswa</Link>
                                     </li>
                                     <li>
-                                        <a href="dashboard-2.html">Semua Siswa</a>
+                                        <Link href={route('siswa.semua')}>Semua Siswa</Link>
                                     </li>
                                 </ul>
                             </div>
