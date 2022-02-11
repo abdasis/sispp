@@ -2,14 +2,10 @@ import React, {useState} from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Semua = (props) => {
     const { errors } = usePage().props
-    const { flash } = usePage().props
-
-
 
     const [values, setValues] = useState({
         nama_siswa: "",

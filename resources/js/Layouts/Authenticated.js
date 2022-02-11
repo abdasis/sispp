@@ -8,10 +8,8 @@ import {toast, ToastContainer} from "react-toastify";
 export default function Authenticated({ auth, header, children, breadcrumbs }) {
     const { flash } = usePage().props
 
-
     if (flash.message){
         if (flash.message.type == 'berhasil') {
-            console.log(flash.message.text)
             toast.success(flash.message.text, {
                 position: toast.POSITION.TOP_RIGHT
             });
@@ -24,6 +22,8 @@ export default function Authenticated({ auth, header, children, breadcrumbs }) {
 
     return (
         <div id="wrapper">
+            <ToastContainer />
+
             {/* Topbar Start */}
             <Navbar auth={auth}/>
             {/* end Topbar */}
@@ -65,7 +65,6 @@ export default function Authenticated({ auth, header, children, breadcrumbs }) {
                 {/* Footer Start */}
                 <Footer />
                 {/* end Footer */}
-                <ToastContainer />
 
             </div>
             {/* ============================================================== */}
