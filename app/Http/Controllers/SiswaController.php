@@ -41,10 +41,9 @@ class SiswaController extends Controller
     {
         try {
             $siswa = Siswa::create($request->all());
-            return redirect()->route('siswa.semua')->with('success', 'Data siswa berhasil ditambahkan');
+            return redirect()->route('siswa.semua')->with('message', ['type' => 'berhasil', 'text' => 'Data siswa berhasil ditambahkan']);
         } catch (\Exception $e) {
-            dd($e);
-            return redirect()->back()->with('error', 'Data siswa gagal ditambahkan');
+            return redirect()->back()->with('error', ['type' => 'gagal', 'text' => 'Data siswa gagal ditambahkan']);
         }
     }
 

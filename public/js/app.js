@@ -4541,7 +4541,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Organisms_Sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Organisms/Sidebar */ "./resources/js/Organisms/Sidebar.jsx");
 /* harmony import */ var _Organisms_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Organisms/Footer */ "./resources/js/Organisms/Footer.jsx");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -4554,37 +4556,52 @@ function Authenticated(_ref) {
       header = _ref.header,
       children = _ref.children,
       breadcrumbs = _ref.breadcrumbs;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+  var flash = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__.usePage)().props.flash;
+
+  if (flash.message) {
+    if (flash.message.type == 'berhasil') {
+      console.log(flash.message.text);
+      react_toastify__WEBPACK_IMPORTED_MODULE_5__.toast.success(flash.message.text, {
+        position: react_toastify__WEBPACK_IMPORTED_MODULE_5__.toast.POSITION.TOP_RIGHT
+      });
+    } else if (flash.message.type == 'gagal') {
+      react_toastify__WEBPACK_IMPORTED_MODULE_5__.toast.error(flash.message.text, {
+        position: react_toastify__WEBPACK_IMPORTED_MODULE_5__.toast.POSITION.TOP_RIGHT
+      });
+    }
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     id: "wrapper",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Organisms_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Organisms_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
       auth: auth
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Organisms_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Organisms_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "content-page",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "content",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "container-fluid",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
             className: "row",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
               className: "col-12",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                 className: "page-title-box",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                   className: "page-title-right",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ol", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ol", {
                     className: "breadcrumb m-0",
                     children: breadcrumbs.map(function (breadcrumb) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
                         className: breadcrumb.url == null ? 'breadcrumb-item active' : 'breadcrumb-item',
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__.Link, {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__.Link, {
                           href: breadcrumb.url,
                           children: breadcrumb.label
                         })
                       });
                     })
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h4", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h4", {
                   className: "page-title",
                   children: header
                 })]
@@ -4592,7 +4609,7 @@ function Authenticated(_ref) {
             })
           }), children]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Organisms_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Organisms_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_toastify__WEBPACK_IMPORTED_MODULE_5__.ToastContainer, {})]
     })]
   });
 }
@@ -5888,10 +5905,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
-/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -5922,7 +5937,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var Semua = function Semua(props) {
   var errors = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.usePage)().props.errors;
-  var MySwal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_5___default()((sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()));
+  var flash = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.usePage)().props.flash;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     nama_siswa: "",
@@ -5949,21 +5964,7 @@ var Semua = function Semua(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post(route('siswa.simpan'), values).then(function () {
-      MySwal.fire({
-        title: 'Berhasil!',
-        text: 'Data berhasil ditambahkan',
-        icon: 'success',
-        confirmButtonText: 'OK'
-      });
-    })["catch"](function (error) {
-      MySwal.fire({
-        title: 'Gagal!',
-        text: 'Data gagal ditambahkan',
-        icon: 'error',
-        confirmButtonText: 'OK'
-      });
-    });
+    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post(route('siswa.simpan'), values);
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -6592,6 +6593,61 @@ var charenc = {
 };
 
 module.exports = charenc;
+
+
+/***/ }),
+
+/***/ "./node_modules/clsx/dist/clsx.m.js":
+/*!******************************************!*\
+  !*** ./node_modules/clsx/dist/clsx.m.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function toVal(mix) {
+	var k, y, str='';
+
+	if (typeof mix === 'string' || typeof mix === 'number') {
+		str += mix;
+	} else if (typeof mix === 'object') {
+		if (Array.isArray(mix)) {
+			for (k=0; k < mix.length; k++) {
+				if (mix[k]) {
+					if (y = toVal(mix[k])) {
+						str && (str += ' ');
+						str += y;
+					}
+				}
+			}
+		} else {
+			for (k in mix) {
+				if (mix[k]) {
+					str && (str += ' ');
+					str += k;
+				}
+			}
+		}
+	}
+
+	return str;
+}
+
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
+	var i=0, tmp, x, str='';
+	while (i < arguments.length) {
+		if (tmp = arguments[i++]) {
+			if (x = toVal(tmp)) {
+				str && (str += ' ');
+				str += x
+			}
+		}
+	}
+	return str;
+}
 
 
 /***/ }),
@@ -10137,6 +10193,106 @@ module.exports = parent;
   module.exports = crypt;
 })();
 
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./node_modules/react-toastify/dist/ReactToastify.css":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./node_modules/react-toastify/dist/ReactToastify.css ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\n  --toastify-color-light: #fff;\n  --toastify-color-dark: #121212;\n  --toastify-color-info: #3498db;\n  --toastify-color-success: #07bc0c;\n  --toastify-color-warning: #f1c40f;\n  --toastify-color-error: #e74c3c;\n  --toastify-color-transparent: rgba(255, 255, 255, 0.7);\n  --toastify-icon-color-info: var(--toastify-color-info);\n  --toastify-icon-color-success: var(--toastify-color-success);\n  --toastify-icon-color-warning: var(--toastify-color-warning);\n  --toastify-icon-color-error: var(--toastify-color-error);\n  --toastify-toast-width: 320px;\n  --toastify-toast-background: #fff;\n  --toastify-toast-min-height: 64px;\n  --toastify-toast-max-height: 800px;\n  --toastify-font-family: sans-serif;\n  --toastify-z-index: 9999;\n  --toastify-text-color-light: #757575;\n  --toastify-text-color-dark: #fff;\n  --toastify-text-color-info: #fff;\n  --toastify-text-color-success: #fff;\n  --toastify-text-color-warning: #fff;\n  --toastify-text-color-error: #fff;\n  --toastify-spinner-color: #616161;\n  --toastify-spinner-color-empty-area: #e0e0e0;\n  --toastify-color-progress-light: linear-gradient(\n    to right,\n    #4cd964,\n    #5ac8fa,\n    #007aff,\n    #34aadc,\n    #5856d6,\n    #ff2d55\n  );\n  --toastify-color-progress-dark: #bb86fc;\n  --toastify-color-progress-info: var(--toastify-color-info);\n  --toastify-color-progress-success: var(--toastify-color-success);\n  --toastify-color-progress-warning: var(--toastify-color-warning);\n  --toastify-color-progress-error: var(--toastify-color-error);\n}\n\n.Toastify__toast-container {\n  z-index: var(--toastify-z-index);\n  -webkit-transform: translate3d(0, 0, var(--toastify-z-index) px);\n  position: fixed;\n  padding: 4px;\n  width: var(--toastify-toast-width);\n  box-sizing: border-box;\n  color: #fff;\n}\n.Toastify__toast-container--top-left {\n  top: 1em;\n  left: 1em;\n}\n.Toastify__toast-container--top-center {\n  top: 1em;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Toastify__toast-container--top-right {\n  top: 1em;\n  right: 1em;\n}\n.Toastify__toast-container--bottom-left {\n  bottom: 1em;\n  left: 1em;\n}\n.Toastify__toast-container--bottom-center {\n  bottom: 1em;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Toastify__toast-container--bottom-right {\n  bottom: 1em;\n  right: 1em;\n}\n\n@media only screen and (max-width : 480px) {\n  .Toastify__toast-container {\n    width: 100vw;\n    padding: 0;\n    left: 0;\n    margin: 0;\n  }\n  .Toastify__toast-container--top-left, .Toastify__toast-container--top-center, .Toastify__toast-container--top-right {\n    top: 0;\n    transform: translateX(0);\n  }\n  .Toastify__toast-container--bottom-left, .Toastify__toast-container--bottom-center, .Toastify__toast-container--bottom-right {\n    bottom: 0;\n    transform: translateX(0);\n  }\n  .Toastify__toast-container--rtl {\n    right: 0;\n    left: initial;\n  }\n}\n.Toastify__toast {\n  position: relative;\n  min-height: var(--toastify-toast-min-height);\n  box-sizing: border-box;\n  margin-bottom: 1rem;\n  padding: 8px;\n  border-radius: 4px;\n  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 15px 0 rgba(0, 0, 0, 0.05);\n  display: flex;\n  justify-content: space-between;\n  max-height: var(--toastify-toast-max-height);\n  overflow: hidden;\n  font-family: var(--toastify-font-family);\n  cursor: pointer;\n  direction: ltr;\n}\n.Toastify__toast--rtl {\n  direction: rtl;\n}\n.Toastify__toast-body {\n  margin: auto 0;\n  flex: 1 1 auto;\n  padding: 6px;\n  display: flex;\n  align-items: center;\n}\n.Toastify__toast-body > div:last-child {\n  flex: 1;\n}\n.Toastify__toast-icon {\n  -webkit-margin-end: 10px;\n          margin-inline-end: 10px;\n  width: 20px;\n  flex-shrink: 0;\n  display: flex;\n}\n\n.Toastify--animate {\n  -webkit-animation-fill-mode: both;\n          animation-fill-mode: both;\n  -webkit-animation-duration: 0.7s;\n          animation-duration: 0.7s;\n}\n\n.Toastify--animate-icon {\n  -webkit-animation-fill-mode: both;\n          animation-fill-mode: both;\n  -webkit-animation-duration: 0.3s;\n          animation-duration: 0.3s;\n}\n\n@media only screen and (max-width : 480px) {\n  .Toastify__toast {\n    margin-bottom: 0;\n    border-radius: 0;\n  }\n}\n.Toastify__toast-theme--dark {\n  background: var(--toastify-color-dark);\n  color: var(--toastify-text-color-dark);\n}\n.Toastify__toast-theme--light {\n  background: var(--toastify-color-light);\n  color: var(--toastify-text-color-light);\n}\n.Toastify__toast-theme--colored.Toastify__toast--default {\n  background: var(--toastify-color-light);\n  color: var(--toastify-text-color-light);\n}\n.Toastify__toast-theme--colored.Toastify__toast--info {\n  color: var(--toastify-text-color-info);\n  background: var(--toastify-color-info);\n}\n.Toastify__toast-theme--colored.Toastify__toast--success {\n  color: var(--toastify-text-color-success);\n  background: var(--toastify-color-success);\n}\n.Toastify__toast-theme--colored.Toastify__toast--warning {\n  color: var(--toastify-text-color-warning);\n  background: var(--toastify-color-warning);\n}\n.Toastify__toast-theme--colored.Toastify__toast--error {\n  color: var(--toastify-text-color-error);\n  background: var(--toastify-color-error);\n}\n\n.Toastify__progress-bar-theme--light {\n  background: var(--toastify-color-progress-light);\n}\n.Toastify__progress-bar-theme--dark {\n  background: var(--toastify-color-progress-dark);\n}\n.Toastify__progress-bar--info {\n  background: var(--toastify-color-progress-info);\n}\n.Toastify__progress-bar--success {\n  background: var(--toastify-color-progress-success);\n}\n.Toastify__progress-bar--warning {\n  background: var(--toastify-color-progress-warning);\n}\n.Toastify__progress-bar--error {\n  background: var(--toastify-color-progress-error);\n}\n.Toastify__progress-bar-theme--colored.Toastify__progress-bar--info, .Toastify__progress-bar-theme--colored.Toastify__progress-bar--success, .Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning, .Toastify__progress-bar-theme--colored.Toastify__progress-bar--error {\n  background: var(--toastify-color-transparent);\n}\n\n.Toastify__close-button {\n  color: #fff;\n  background: transparent;\n  outline: none;\n  border: none;\n  padding: 0;\n  cursor: pointer;\n  opacity: 0.7;\n  transition: 0.3s ease;\n  align-self: flex-start;\n}\n.Toastify__close-button--light {\n  color: #000;\n  opacity: 0.3;\n}\n.Toastify__close-button > svg {\n  fill: currentColor;\n  height: 16px;\n  width: 14px;\n}\n.Toastify__close-button:hover, .Toastify__close-button:focus {\n  opacity: 1;\n}\n\n@-webkit-keyframes Toastify__trackProgress {\n  0% {\n    transform: scaleX(1);\n  }\n  100% {\n    transform: scaleX(0);\n  }\n}\n\n@keyframes Toastify__trackProgress {\n  0% {\n    transform: scaleX(1);\n  }\n  100% {\n    transform: scaleX(0);\n  }\n}\n.Toastify__progress-bar {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 5px;\n  z-index: var(--toastify-z-index);\n  opacity: 0.7;\n  transform-origin: left;\n}\n.Toastify__progress-bar--animated {\n  -webkit-animation: Toastify__trackProgress linear 1 forwards;\n          animation: Toastify__trackProgress linear 1 forwards;\n}\n.Toastify__progress-bar--controlled {\n  transition: transform 0.2s;\n}\n.Toastify__progress-bar--rtl {\n  right: 0;\n  left: initial;\n  transform-origin: right;\n}\n\n.Toastify__spinner {\n  width: 20px;\n  height: 20px;\n  box-sizing: border-box;\n  border: 2px solid;\n  border-radius: 100%;\n  border-color: var(--toastify-spinner-color-empty-area);\n  border-right-color: var(--toastify-spinner-color);\n  -webkit-animation: Toastify__spin 0.65s linear infinite;\n          animation: Toastify__spin 0.65s linear infinite;\n}\n\n@-webkit-keyframes Toastify__bounceInRight {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  from {\n    opacity: 0;\n    transform: translate3d(3000px, 0, 0);\n  }\n  60% {\n    opacity: 1;\n    transform: translate3d(-25px, 0, 0);\n  }\n  75% {\n    transform: translate3d(10px, 0, 0);\n  }\n  90% {\n    transform: translate3d(-5px, 0, 0);\n  }\n  to {\n    transform: none;\n  }\n}\n\n@keyframes Toastify__bounceInRight {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  from {\n    opacity: 0;\n    transform: translate3d(3000px, 0, 0);\n  }\n  60% {\n    opacity: 1;\n    transform: translate3d(-25px, 0, 0);\n  }\n  75% {\n    transform: translate3d(10px, 0, 0);\n  }\n  90% {\n    transform: translate3d(-5px, 0, 0);\n  }\n  to {\n    transform: none;\n  }\n}\n@-webkit-keyframes Toastify__bounceOutRight {\n  20% {\n    opacity: 1;\n    transform: translate3d(-20px, 0, 0);\n  }\n  to {\n    opacity: 0;\n    transform: translate3d(2000px, 0, 0);\n  }\n}\n@keyframes Toastify__bounceOutRight {\n  20% {\n    opacity: 1;\n    transform: translate3d(-20px, 0, 0);\n  }\n  to {\n    opacity: 0;\n    transform: translate3d(2000px, 0, 0);\n  }\n}\n@-webkit-keyframes Toastify__bounceInLeft {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  0% {\n    opacity: 0;\n    transform: translate3d(-3000px, 0, 0);\n  }\n  60% {\n    opacity: 1;\n    transform: translate3d(25px, 0, 0);\n  }\n  75% {\n    transform: translate3d(-10px, 0, 0);\n  }\n  90% {\n    transform: translate3d(5px, 0, 0);\n  }\n  to {\n    transform: none;\n  }\n}\n@keyframes Toastify__bounceInLeft {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  0% {\n    opacity: 0;\n    transform: translate3d(-3000px, 0, 0);\n  }\n  60% {\n    opacity: 1;\n    transform: translate3d(25px, 0, 0);\n  }\n  75% {\n    transform: translate3d(-10px, 0, 0);\n  }\n  90% {\n    transform: translate3d(5px, 0, 0);\n  }\n  to {\n    transform: none;\n  }\n}\n@-webkit-keyframes Toastify__bounceOutLeft {\n  20% {\n    opacity: 1;\n    transform: translate3d(20px, 0, 0);\n  }\n  to {\n    opacity: 0;\n    transform: translate3d(-2000px, 0, 0);\n  }\n}\n@keyframes Toastify__bounceOutLeft {\n  20% {\n    opacity: 1;\n    transform: translate3d(20px, 0, 0);\n  }\n  to {\n    opacity: 0;\n    transform: translate3d(-2000px, 0, 0);\n  }\n}\n@-webkit-keyframes Toastify__bounceInUp {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  from {\n    opacity: 0;\n    transform: translate3d(0, 3000px, 0);\n  }\n  60% {\n    opacity: 1;\n    transform: translate3d(0, -20px, 0);\n  }\n  75% {\n    transform: translate3d(0, 10px, 0);\n  }\n  90% {\n    transform: translate3d(0, -5px, 0);\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n@keyframes Toastify__bounceInUp {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  from {\n    opacity: 0;\n    transform: translate3d(0, 3000px, 0);\n  }\n  60% {\n    opacity: 1;\n    transform: translate3d(0, -20px, 0);\n  }\n  75% {\n    transform: translate3d(0, 10px, 0);\n  }\n  90% {\n    transform: translate3d(0, -5px, 0);\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n@-webkit-keyframes Toastify__bounceOutUp {\n  20% {\n    transform: translate3d(0, -10px, 0);\n  }\n  40%, 45% {\n    opacity: 1;\n    transform: translate3d(0, 20px, 0);\n  }\n  to {\n    opacity: 0;\n    transform: translate3d(0, -2000px, 0);\n  }\n}\n@keyframes Toastify__bounceOutUp {\n  20% {\n    transform: translate3d(0, -10px, 0);\n  }\n  40%, 45% {\n    opacity: 1;\n    transform: translate3d(0, 20px, 0);\n  }\n  to {\n    opacity: 0;\n    transform: translate3d(0, -2000px, 0);\n  }\n}\n@-webkit-keyframes Toastify__bounceInDown {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  0% {\n    opacity: 0;\n    transform: translate3d(0, -3000px, 0);\n  }\n  60% {\n    opacity: 1;\n    transform: translate3d(0, 25px, 0);\n  }\n  75% {\n    transform: translate3d(0, -10px, 0);\n  }\n  90% {\n    transform: translate3d(0, 5px, 0);\n  }\n  to {\n    transform: none;\n  }\n}\n@keyframes Toastify__bounceInDown {\n  from, 60%, 75%, 90%, to {\n    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  }\n  0% {\n    opacity: 0;\n    transform: translate3d(0, -3000px, 0);\n  }\n  60% {\n    opacity: 1;\n    transform: translate3d(0, 25px, 0);\n  }\n  75% {\n    transform: translate3d(0, -10px, 0);\n  }\n  90% {\n    transform: translate3d(0, 5px, 0);\n  }\n  to {\n    transform: none;\n  }\n}\n@-webkit-keyframes Toastify__bounceOutDown {\n  20% {\n    transform: translate3d(0, 10px, 0);\n  }\n  40%, 45% {\n    opacity: 1;\n    transform: translate3d(0, -20px, 0);\n  }\n  to {\n    opacity: 0;\n    transform: translate3d(0, 2000px, 0);\n  }\n}\n@keyframes Toastify__bounceOutDown {\n  20% {\n    transform: translate3d(0, 10px, 0);\n  }\n  40%, 45% {\n    opacity: 1;\n    transform: translate3d(0, -20px, 0);\n  }\n  to {\n    opacity: 0;\n    transform: translate3d(0, 2000px, 0);\n  }\n}\n.Toastify__bounce-enter--top-left, .Toastify__bounce-enter--bottom-left {\n  -webkit-animation-name: Toastify__bounceInLeft;\n          animation-name: Toastify__bounceInLeft;\n}\n.Toastify__bounce-enter--top-right, .Toastify__bounce-enter--bottom-right {\n  -webkit-animation-name: Toastify__bounceInRight;\n          animation-name: Toastify__bounceInRight;\n}\n.Toastify__bounce-enter--top-center {\n  -webkit-animation-name: Toastify__bounceInDown;\n          animation-name: Toastify__bounceInDown;\n}\n.Toastify__bounce-enter--bottom-center {\n  -webkit-animation-name: Toastify__bounceInUp;\n          animation-name: Toastify__bounceInUp;\n}\n\n.Toastify__bounce-exit--top-left, .Toastify__bounce-exit--bottom-left {\n  -webkit-animation-name: Toastify__bounceOutLeft;\n          animation-name: Toastify__bounceOutLeft;\n}\n.Toastify__bounce-exit--top-right, .Toastify__bounce-exit--bottom-right {\n  -webkit-animation-name: Toastify__bounceOutRight;\n          animation-name: Toastify__bounceOutRight;\n}\n.Toastify__bounce-exit--top-center {\n  -webkit-animation-name: Toastify__bounceOutUp;\n          animation-name: Toastify__bounceOutUp;\n}\n.Toastify__bounce-exit--bottom-center {\n  -webkit-animation-name: Toastify__bounceOutDown;\n          animation-name: Toastify__bounceOutDown;\n}\n\n@-webkit-keyframes Toastify__zoomIn {\n  from {\n    opacity: 0;\n    transform: scale3d(0.3, 0.3, 0.3);\n  }\n  50% {\n    opacity: 1;\n  }\n}\n\n@keyframes Toastify__zoomIn {\n  from {\n    opacity: 0;\n    transform: scale3d(0.3, 0.3, 0.3);\n  }\n  50% {\n    opacity: 1;\n  }\n}\n@-webkit-keyframes Toastify__zoomOut {\n  from {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0;\n    transform: scale3d(0.3, 0.3, 0.3);\n  }\n  to {\n    opacity: 0;\n  }\n}\n@keyframes Toastify__zoomOut {\n  from {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0;\n    transform: scale3d(0.3, 0.3, 0.3);\n  }\n  to {\n    opacity: 0;\n  }\n}\n.Toastify__zoom-enter {\n  -webkit-animation-name: Toastify__zoomIn;\n          animation-name: Toastify__zoomIn;\n}\n\n.Toastify__zoom-exit {\n  -webkit-animation-name: Toastify__zoomOut;\n          animation-name: Toastify__zoomOut;\n}\n\n@-webkit-keyframes Toastify__flipIn {\n  from {\n    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);\n    -webkit-animation-timing-function: ease-in;\n            animation-timing-function: ease-in;\n    opacity: 0;\n  }\n  40% {\n    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);\n    -webkit-animation-timing-function: ease-in;\n            animation-timing-function: ease-in;\n  }\n  60% {\n    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);\n    opacity: 1;\n  }\n  80% {\n    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);\n  }\n  to {\n    transform: perspective(400px);\n  }\n}\n\n@keyframes Toastify__flipIn {\n  from {\n    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);\n    -webkit-animation-timing-function: ease-in;\n            animation-timing-function: ease-in;\n    opacity: 0;\n  }\n  40% {\n    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);\n    -webkit-animation-timing-function: ease-in;\n            animation-timing-function: ease-in;\n  }\n  60% {\n    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);\n    opacity: 1;\n  }\n  80% {\n    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);\n  }\n  to {\n    transform: perspective(400px);\n  }\n}\n@-webkit-keyframes Toastify__flipOut {\n  from {\n    transform: perspective(400px);\n  }\n  30% {\n    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);\n    opacity: 1;\n  }\n  to {\n    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);\n    opacity: 0;\n  }\n}\n@keyframes Toastify__flipOut {\n  from {\n    transform: perspective(400px);\n  }\n  30% {\n    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);\n    opacity: 1;\n  }\n  to {\n    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);\n    opacity: 0;\n  }\n}\n.Toastify__flip-enter {\n  -webkit-animation-name: Toastify__flipIn;\n          animation-name: Toastify__flipIn;\n}\n\n.Toastify__flip-exit {\n  -webkit-animation-name: Toastify__flipOut;\n          animation-name: Toastify__flipOut;\n}\n\n@-webkit-keyframes Toastify__slideInRight {\n  from {\n    transform: translate3d(110%, 0, 0);\n    visibility: visible;\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n\n@keyframes Toastify__slideInRight {\n  from {\n    transform: translate3d(110%, 0, 0);\n    visibility: visible;\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n@-webkit-keyframes Toastify__slideInLeft {\n  from {\n    transform: translate3d(-110%, 0, 0);\n    visibility: visible;\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n@keyframes Toastify__slideInLeft {\n  from {\n    transform: translate3d(-110%, 0, 0);\n    visibility: visible;\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n@-webkit-keyframes Toastify__slideInUp {\n  from {\n    transform: translate3d(0, 110%, 0);\n    visibility: visible;\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n@keyframes Toastify__slideInUp {\n  from {\n    transform: translate3d(0, 110%, 0);\n    visibility: visible;\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n@-webkit-keyframes Toastify__slideInDown {\n  from {\n    transform: translate3d(0, -110%, 0);\n    visibility: visible;\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n@keyframes Toastify__slideInDown {\n  from {\n    transform: translate3d(0, -110%, 0);\n    visibility: visible;\n  }\n  to {\n    transform: translate3d(0, 0, 0);\n  }\n}\n@-webkit-keyframes Toastify__slideOutRight {\n  from {\n    transform: translate3d(0, 0, 0);\n  }\n  to {\n    visibility: hidden;\n    transform: translate3d(110%, 0, 0);\n  }\n}\n@keyframes Toastify__slideOutRight {\n  from {\n    transform: translate3d(0, 0, 0);\n  }\n  to {\n    visibility: hidden;\n    transform: translate3d(110%, 0, 0);\n  }\n}\n@-webkit-keyframes Toastify__slideOutLeft {\n  from {\n    transform: translate3d(0, 0, 0);\n  }\n  to {\n    visibility: hidden;\n    transform: translate3d(-110%, 0, 0);\n  }\n}\n@keyframes Toastify__slideOutLeft {\n  from {\n    transform: translate3d(0, 0, 0);\n  }\n  to {\n    visibility: hidden;\n    transform: translate3d(-110%, 0, 0);\n  }\n}\n@-webkit-keyframes Toastify__slideOutDown {\n  from {\n    transform: translate3d(0, 0, 0);\n  }\n  to {\n    visibility: hidden;\n    transform: translate3d(0, 500px, 0);\n  }\n}\n@keyframes Toastify__slideOutDown {\n  from {\n    transform: translate3d(0, 0, 0);\n  }\n  to {\n    visibility: hidden;\n    transform: translate3d(0, 500px, 0);\n  }\n}\n@-webkit-keyframes Toastify__slideOutUp {\n  from {\n    transform: translate3d(0, 0, 0);\n  }\n  to {\n    visibility: hidden;\n    transform: translate3d(0, -500px, 0);\n  }\n}\n@keyframes Toastify__slideOutUp {\n  from {\n    transform: translate3d(0, 0, 0);\n  }\n  to {\n    visibility: hidden;\n    transform: translate3d(0, -500px, 0);\n  }\n}\n.Toastify__slide-enter--top-left, .Toastify__slide-enter--bottom-left {\n  -webkit-animation-name: Toastify__slideInLeft;\n          animation-name: Toastify__slideInLeft;\n}\n.Toastify__slide-enter--top-right, .Toastify__slide-enter--bottom-right {\n  -webkit-animation-name: Toastify__slideInRight;\n          animation-name: Toastify__slideInRight;\n}\n.Toastify__slide-enter--top-center {\n  -webkit-animation-name: Toastify__slideInDown;\n          animation-name: Toastify__slideInDown;\n}\n.Toastify__slide-enter--bottom-center {\n  -webkit-animation-name: Toastify__slideInUp;\n          animation-name: Toastify__slideInUp;\n}\n\n.Toastify__slide-exit--top-left, .Toastify__slide-exit--bottom-left {\n  -webkit-animation-name: Toastify__slideOutLeft;\n          animation-name: Toastify__slideOutLeft;\n}\n.Toastify__slide-exit--top-right, .Toastify__slide-exit--bottom-right {\n  -webkit-animation-name: Toastify__slideOutRight;\n          animation-name: Toastify__slideOutRight;\n}\n.Toastify__slide-exit--top-center {\n  -webkit-animation-name: Toastify__slideOutUp;\n          animation-name: Toastify__slideOutUp;\n}\n.Toastify__slide-exit--bottom-center {\n  -webkit-animation-name: Toastify__slideOutDown;\n          animation-name: Toastify__slideOutDown;\n}\n\n@-webkit-keyframes Toastify__spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes Toastify__spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/api.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+// eslint-disable-next-line func-names
+module.exports = function (cssWithMappingToString) {
+  var list = []; // return the list of modules as css string
+
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = cssWithMappingToString(item);
+
+      if (item[2]) {
+        return "@media ".concat(item[2], " {").concat(content, "}");
+      }
+
+      return content;
+    }).join("");
+  }; // import a list of modules into the list
+  // eslint-disable-next-line func-names
+
+
+  list.i = function (modules, mediaQuery, dedupe) {
+    if (typeof modules === "string") {
+      // eslint-disable-next-line no-param-reassign
+      modules = [[null, modules, ""]];
+    }
+
+    var alreadyImportedModules = {};
+
+    if (dedupe) {
+      for (var i = 0; i < this.length; i++) {
+        // eslint-disable-next-line prefer-destructuring
+        var id = this[i][0];
+
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+
+    for (var _i = 0; _i < modules.length; _i++) {
+      var item = [].concat(modules[_i]);
+
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        // eslint-disable-next-line no-continue
+        continue;
+      }
+
+      if (mediaQuery) {
+        if (!item[2]) {
+          item[2] = mediaQuery;
+        } else {
+          item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
+        }
+      }
+
+      list.push(item);
+    }
+  };
+
+  return list;
+};
 
 /***/ }),
 
@@ -60109,6 +60265,1443 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-toastify/dist/react-toastify.esm.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/react-toastify/dist/react-toastify.esm.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Bounce": () => (/* binding */ Bounce),
+/* harmony export */   "Flip": () => (/* binding */ Flip),
+/* harmony export */   "Icons": () => (/* binding */ Icons),
+/* harmony export */   "Slide": () => (/* binding */ Slide),
+/* harmony export */   "ToastContainer": () => (/* binding */ ToastContainer),
+/* harmony export */   "Zoom": () => (/* binding */ Zoom),
+/* harmony export */   "collapseToast": () => (/* binding */ collapseToast),
+/* harmony export */   "cssTransition": () => (/* binding */ cssTransition),
+/* harmony export */   "toast": () => (/* binding */ toast),
+/* harmony export */   "useToast": () => (/* binding */ useToast),
+/* harmony export */   "useToastContainer": () => (/* binding */ useToastContainer)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+
+
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function isNum(v) {
+  return typeof v === 'number' && !isNaN(v);
+}
+function isBool(v) {
+  return typeof v === 'boolean';
+}
+function isStr(v) {
+  return typeof v === 'string';
+}
+function isFn(v) {
+  return typeof v === 'function';
+}
+function parseClassName(v) {
+  return isStr(v) || isFn(v) ? v : null;
+}
+function isToastIdValid(toastId) {
+  return toastId === 0 || toastId;
+}
+function getAutoCloseDelay(toastAutoClose, containerAutoClose) {
+  return toastAutoClose === false || isNum(toastAutoClose) && toastAutoClose > 0 ? toastAutoClose : containerAutoClose;
+}
+var canUseDom = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+function canBeRendered(content) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.isValidElement)(content) || isStr(content) || isFn(content) || isNum(content);
+}
+
+var POSITION = {
+  TOP_LEFT: 'top-left',
+  TOP_RIGHT: 'top-right',
+  TOP_CENTER: 'top-center',
+  BOTTOM_LEFT: 'bottom-left',
+  BOTTOM_RIGHT: 'bottom-right',
+  BOTTOM_CENTER: 'bottom-center'
+};
+var TYPE = {
+  INFO: 'info',
+  SUCCESS: 'success',
+  WARNING: 'warning',
+  ERROR: 'error',
+  DEFAULT: 'default'
+};
+
+/**
+ * Used to collapse toast after exit animation
+ */
+function collapseToast(node, done, duration
+/* COLLAPSE_DURATION */
+) {
+  if (duration === void 0) {
+    duration = 300;
+  }
+
+  var scrollHeight = node.scrollHeight,
+      style = node.style;
+  requestAnimationFrame(function () {
+    style.minHeight = 'initial';
+    style.height = scrollHeight + 'px';
+    style.transition = "all " + duration + "ms";
+    requestAnimationFrame(function () {
+      style.height = '0';
+      style.padding = '0';
+      style.margin = '0';
+      setTimeout(done, duration);
+    });
+  });
+}
+
+/**
+ * Css animation that just work.
+ * You could use animate.css for instance
+ *
+ *
+ * ```
+ * cssTransition({
+ *   enter: "animate__animated animate__bounceIn",
+ *   exit: "animate__animated animate__bounceOut"
+ * })
+ * ```
+ *
+ */
+
+function cssTransition(_ref) {
+  var enter = _ref.enter,
+      exit = _ref.exit,
+      _ref$appendPosition = _ref.appendPosition,
+      appendPosition = _ref$appendPosition === void 0 ? false : _ref$appendPosition,
+      _ref$collapse = _ref.collapse,
+      collapse = _ref$collapse === void 0 ? true : _ref$collapse,
+      _ref$collapseDuration = _ref.collapseDuration,
+      collapseDuration = _ref$collapseDuration === void 0 ? 300 : _ref$collapseDuration;
+  return function ToastTransition(_ref2) {
+    var children = _ref2.children,
+        position = _ref2.position,
+        preventExitTransition = _ref2.preventExitTransition,
+        done = _ref2.done,
+        nodeRef = _ref2.nodeRef,
+        isIn = _ref2.isIn;
+    var enterClassName = appendPosition ? enter + "--" + position : enter;
+    var exitClassName = appendPosition ? exit + "--" + position : exit;
+    var baseClassName = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+    var animationStep = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(0
+    /* Enter */
+    );
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect)(function () {
+      onEnter();
+    }, []);
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+      if (!isIn) preventExitTransition ? onExited() : onExit();
+    }, [isIn]);
+
+    function onEnter() {
+      var node = nodeRef.current;
+      baseClassName.current = node.className;
+      node.className += " " + enterClassName;
+      node.addEventListener('animationend', onEntered);
+    }
+
+    function onEntered(e) {
+      if (e.target !== nodeRef.current) return;
+      var node = nodeRef.current;
+      node.dispatchEvent(new Event("d"
+      /* ENTRANCE_ANIMATION_END */
+      ));
+      node.removeEventListener('animationend', onEntered);
+
+      if (animationStep.current === 0
+      /* Enter */
+      ) {
+          node.className = baseClassName.current;
+        }
+    }
+
+    function onExit() {
+      animationStep.current = 1
+      /* Exit */
+      ;
+      var node = nodeRef.current;
+      node.className += " " + exitClassName;
+      node.addEventListener('animationend', onExited);
+    }
+
+    function onExited() {
+      var node = nodeRef.current;
+      node.removeEventListener('animationend', onExited);
+      collapse ? collapseToast(node, done, collapseDuration) : done();
+    }
+
+    return react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, children);
+  };
+}
+
+var eventManager = {
+  list: /*#__PURE__*/new Map(),
+  emitQueue: /*#__PURE__*/new Map(),
+  on: function on(event, callback) {
+    this.list.has(event) || this.list.set(event, []);
+    this.list.get(event).push(callback);
+    return this;
+  },
+  off: function off(event, callback) {
+    if (callback) {
+      var cb = this.list.get(event).filter(function (cb) {
+        return cb !== callback;
+      });
+      this.list.set(event, cb);
+      return this;
+    }
+
+    this.list["delete"](event);
+    return this;
+  },
+  cancelEmit: function cancelEmit(event) {
+    var timers = this.emitQueue.get(event);
+
+    if (timers) {
+      timers.forEach(clearTimeout);
+      this.emitQueue["delete"](event);
+    }
+
+    return this;
+  },
+
+  /**
+   * Enqueue the event at the end of the call stack
+   * Doing so let the user call toast as follow:
+   * toast('1')
+   * toast('2')
+   * toast('3')
+   * Without setTimemout the code above will not work
+   */
+  emit: function emit(event) {
+    var _this = this;
+
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    this.list.has(event) && this.list.get(event).forEach(function (callback) {
+      var timer = setTimeout(function () {
+        // @ts-ignore
+        callback.apply(void 0, args);
+      }, 0);
+      _this.emitQueue.has(event) || _this.emitQueue.set(event, []);
+
+      _this.emitQueue.get(event).push(timer);
+    });
+  }
+};
+
+var _excluded = ["delay", "staleId"];
+function useToastContainer(props) {
+  var _useReducer = (0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)(function (x) {
+    return x + 1;
+  }, 0),
+      forceUpdate = _useReducer[1];
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      toastIds = _useState[0],
+      setToastIds = _useState[1];
+
+  var containerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var toastToRender = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(new Map()).current;
+
+  var isToastActive = function isToastActive(id) {
+    return toastIds.indexOf(id) !== -1;
+  };
+
+  var instance = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)({
+    toastKey: 1,
+    displayedToast: 0,
+    count: 0,
+    queue: [],
+    props: props,
+    containerId: null,
+    isToastActive: isToastActive,
+    getToast: function getToast(id) {
+      return toastToRender.get(id);
+    }
+  }).current;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    instance.containerId = props.containerId;
+    eventManager.cancelEmit(3
+    /* WillUnmount */
+    ).on(0
+    /* Show */
+    , buildToast).on(1
+    /* Clear */
+    , function (toastId) {
+      return containerRef.current && removeToast(toastId);
+    }).on(5
+    /* ClearWaitingQueue */
+    , clearWaitingQueue).emit(2
+    /* DidMount */
+    , instance);
+    return function () {
+      return eventManager.emit(3
+      /* WillUnmount */
+      , instance);
+    };
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    instance.isToastActive = isToastActive;
+    instance.displayedToast = toastIds.length;
+    eventManager.emit(4
+    /* Change */
+    , toastIds.length, props.containerId);
+  }, [toastIds]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    instance.props = props;
+  });
+
+  function clearWaitingQueue(_ref) {
+    var containerId = _ref.containerId;
+    var limit = instance.props.limit;
+
+    if (limit && (!containerId || instance.containerId === containerId)) {
+      instance.count -= instance.queue.length;
+      instance.queue = [];
+    }
+  }
+
+  function removeToast(toastId) {
+    setToastIds(function (state) {
+      return isToastIdValid(toastId) ? state.filter(function (id) {
+        return id !== toastId;
+      }) : [];
+    });
+  }
+
+  function dequeueToast() {
+    var _instance$queue$shift = instance.queue.shift(),
+        toastContent = _instance$queue$shift.toastContent,
+        toastProps = _instance$queue$shift.toastProps,
+        staleId = _instance$queue$shift.staleId;
+
+    appendToast(toastContent, toastProps, staleId);
+  }
+  /**
+   * check if a container is attached to the dom
+   * check for multi-container, build only if associated
+   * check for duplicate toastId if no update
+   */
+
+
+  function isNotValid(options) {
+    return !containerRef.current || instance.props.enableMultiContainer && options.containerId !== instance.props.containerId || toastToRender.has(options.toastId) && options.updateId == null;
+  } // this function and all the function called inside needs to rely on refs
+
+
+  function buildToast(content, _ref2) {
+    var delay = _ref2.delay,
+        staleId = _ref2.staleId,
+        options = _objectWithoutPropertiesLoose(_ref2, _excluded);
+
+    if (!canBeRendered(content) || isNotValid(options)) return;
+    var toastId = options.toastId,
+        updateId = options.updateId,
+        data = options.data;
+    var props = instance.props;
+
+    var closeToast = function closeToast() {
+      return removeToast(toastId);
+    };
+
+    var isNotAnUpdate = updateId == null;
+    if (isNotAnUpdate) instance.count++;
+    var toastProps = {
+      toastId: toastId,
+      updateId: updateId,
+      isLoading: options.isLoading,
+      theme: options.theme || props.theme,
+      icon: options.icon != null ? options.icon : props.icon,
+      isIn: false,
+      key: options.key || instance.toastKey++,
+      type: options.type,
+      closeToast: closeToast,
+      closeButton: options.closeButton,
+      rtl: props.rtl,
+      position: options.position || props.position,
+      transition: options.transition || props.transition,
+      className: parseClassName(options.className || props.toastClassName),
+      bodyClassName: parseClassName(options.bodyClassName || props.bodyClassName),
+      style: options.style || props.toastStyle,
+      bodyStyle: options.bodyStyle || props.bodyStyle,
+      onClick: options.onClick || props.onClick,
+      pauseOnHover: isBool(options.pauseOnHover) ? options.pauseOnHover : props.pauseOnHover,
+      pauseOnFocusLoss: isBool(options.pauseOnFocusLoss) ? options.pauseOnFocusLoss : props.pauseOnFocusLoss,
+      draggable: isBool(options.draggable) ? options.draggable : props.draggable,
+      draggablePercent: options.draggablePercent || props.draggablePercent,
+      draggableDirection: options.draggableDirection || props.draggableDirection,
+      closeOnClick: isBool(options.closeOnClick) ? options.closeOnClick : props.closeOnClick,
+      progressClassName: parseClassName(options.progressClassName || props.progressClassName),
+      progressStyle: options.progressStyle || props.progressStyle,
+      autoClose: options.isLoading ? false : getAutoCloseDelay(options.autoClose, props.autoClose),
+      hideProgressBar: isBool(options.hideProgressBar) ? options.hideProgressBar : props.hideProgressBar,
+      progress: options.progress,
+      role: options.role || props.role,
+      deleteToast: function deleteToast() {
+        toastToRender["delete"](toastId);
+        var queueLen = instance.queue.length;
+        instance.count = isToastIdValid(toastId) ? instance.count - 1 : instance.count - instance.displayedToast;
+        if (instance.count < 0) instance.count = 0;
+
+        if (queueLen > 0) {
+          var freeSlot = isToastIdValid(toastId) ? 1 : instance.props.limit;
+
+          if (queueLen === 1 || freeSlot === 1) {
+            instance.displayedToast++;
+            dequeueToast();
+          } else {
+            var toDequeue = freeSlot > queueLen ? queueLen : freeSlot;
+            instance.displayedToast = toDequeue;
+
+            for (var i = 0; i < toDequeue; i++) {
+              dequeueToast();
+            }
+          }
+        } else {
+          forceUpdate();
+        }
+      }
+    };
+    if (isFn(options.onOpen)) toastProps.onOpen = options.onOpen;
+    if (isFn(options.onClose)) toastProps.onClose = options.onClose;
+    toastProps.closeButton = props.closeButton;
+
+    if (options.closeButton === false || canBeRendered(options.closeButton)) {
+      toastProps.closeButton = options.closeButton;
+    } else if (options.closeButton === true) {
+      toastProps.closeButton = canBeRendered(props.closeButton) ? props.closeButton : true;
+    }
+
+    var toastContent = content;
+
+    if ((0,react__WEBPACK_IMPORTED_MODULE_0__.isValidElement)(content) && !isStr(content.type)) {
+      toastContent = (0,react__WEBPACK_IMPORTED_MODULE_0__.cloneElement)(content, {
+        closeToast: closeToast,
+        toastProps: toastProps,
+        data: data
+      });
+    } else if (isFn(content)) {
+      toastContent = content({
+        closeToast: closeToast,
+        toastProps: toastProps,
+        data: data
+      });
+    } // not handling limit + delay by design. Waiting for user feedback first
+
+
+    if (props.limit && props.limit > 0 && instance.count > props.limit && isNotAnUpdate) {
+      instance.queue.push({
+        toastContent: toastContent,
+        toastProps: toastProps,
+        staleId: staleId
+      });
+    } else if (isNum(delay) && delay > 0) {
+      setTimeout(function () {
+        appendToast(toastContent, toastProps, staleId);
+      }, delay);
+    } else {
+      appendToast(toastContent, toastProps, staleId);
+    }
+  }
+
+  function appendToast(content, toastProps, staleId) {
+    var toastId = toastProps.toastId;
+    if (staleId) toastToRender["delete"](staleId);
+    toastToRender.set(toastId, {
+      content: content,
+      props: toastProps
+    });
+    setToastIds(function (state) {
+      return [].concat(state, [toastId]).filter(function (id) {
+        return id !== staleId;
+      });
+    });
+  }
+
+  function getToastToRender(cb) {
+    var toRender = new Map();
+    var collection = Array.from(toastToRender.values());
+    if (props.newestOnTop) collection.reverse();
+    collection.forEach(function (toast) {
+      var position = toast.props.position;
+      toRender.has(position) || toRender.set(position, []);
+      toRender.get(position).push(toast);
+    });
+    return Array.from(toRender, function (p) {
+      return cb(p[0], p[1]);
+    });
+  }
+
+  return {
+    getToastToRender: getToastToRender,
+    containerRef: containerRef,
+    isToastActive: isToastActive
+  };
+}
+
+function getX(e) {
+  return e.targetTouches && e.targetTouches.length >= 1 ? e.targetTouches[0].clientX : e.clientX;
+}
+
+function getY(e) {
+  return e.targetTouches && e.targetTouches.length >= 1 ? e.targetTouches[0].clientY : e.clientY;
+}
+
+function useToast(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      isRunning = _useState[0],
+      setIsRunning = _useState[1];
+
+  var _useState2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      preventExitTransition = _useState2[0],
+      setPreventExitTransition = _useState2[1];
+
+  var toastRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var drag = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)({
+    start: 0,
+    x: 0,
+    y: 0,
+    delta: 0,
+    removalDistance: 0,
+    canCloseOnClick: true,
+    canDrag: false,
+    boundingRect: null,
+    didMove: false
+  }).current;
+  var syncProps = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(props);
+  var autoClose = props.autoClose,
+      pauseOnHover = props.pauseOnHover,
+      closeToast = props.closeToast,
+      onClick = props.onClick,
+      closeOnClick = props.closeOnClick;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    syncProps.current = props;
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (toastRef.current) toastRef.current.addEventListener("d"
+    /* ENTRANCE_ANIMATION_END */
+    , playToast, {
+      once: true
+    });
+    if (isFn(props.onOpen)) props.onOpen((0,react__WEBPACK_IMPORTED_MODULE_0__.isValidElement)(props.children) && props.children.props);
+    return function () {
+      var props = syncProps.current;
+      if (isFn(props.onClose)) props.onClose((0,react__WEBPACK_IMPORTED_MODULE_0__.isValidElement)(props.children) && props.children.props);
+    };
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    props.pauseOnFocusLoss && bindFocusEvents();
+    return function () {
+      props.pauseOnFocusLoss && unbindFocusEvents();
+    };
+  }, [props.pauseOnFocusLoss]);
+
+  function onDragStart(e) {
+    if (props.draggable) {
+      bindDragEvents();
+      var toast = toastRef.current;
+      drag.canCloseOnClick = true;
+      drag.canDrag = true;
+      drag.boundingRect = toast.getBoundingClientRect();
+      toast.style.transition = '';
+      drag.x = getX(e.nativeEvent);
+      drag.y = getY(e.nativeEvent);
+
+      if (props.draggableDirection === "x"
+      /* X */
+      ) {
+          drag.start = drag.x;
+          drag.removalDistance = toast.offsetWidth * (props.draggablePercent / 100);
+        } else {
+        drag.start = drag.y;
+        drag.removalDistance = toast.offsetHeight * (props.draggablePercent === 80
+        /* DRAGGABLE_PERCENT */
+        ? props.draggablePercent * 1.5 : props.draggablePercent / 100);
+      }
+    }
+  }
+
+  function onDragTransitionEnd() {
+    if (drag.boundingRect) {
+      var _drag$boundingRect = drag.boundingRect,
+          top = _drag$boundingRect.top,
+          bottom = _drag$boundingRect.bottom,
+          left = _drag$boundingRect.left,
+          right = _drag$boundingRect.right;
+
+      if (props.pauseOnHover && drag.x >= left && drag.x <= right && drag.y >= top && drag.y <= bottom) {
+        pauseToast();
+      } else {
+        playToast();
+      }
+    }
+  }
+
+  function playToast() {
+    setIsRunning(true);
+  }
+
+  function pauseToast() {
+    setIsRunning(false);
+  }
+
+  function bindFocusEvents() {
+    if (!document.hasFocus()) pauseToast();
+    window.addEventListener('focus', playToast);
+    window.addEventListener('blur', pauseToast);
+  }
+
+  function unbindFocusEvents() {
+    window.removeEventListener('focus', playToast);
+    window.removeEventListener('blur', pauseToast);
+  }
+
+  function bindDragEvents() {
+    drag.didMove = false;
+    document.addEventListener('mousemove', onDragMove);
+    document.addEventListener('mouseup', onDragEnd);
+    document.addEventListener('touchmove', onDragMove);
+    document.addEventListener('touchend', onDragEnd);
+  }
+
+  function unbindDragEvents() {
+    document.removeEventListener('mousemove', onDragMove);
+    document.removeEventListener('mouseup', onDragEnd);
+    document.removeEventListener('touchmove', onDragMove);
+    document.removeEventListener('touchend', onDragEnd);
+  }
+
+  function onDragMove(e) {
+    var toast = toastRef.current;
+
+    if (drag.canDrag && toast) {
+      drag.didMove = true;
+      if (isRunning) pauseToast();
+      drag.x = getX(e);
+      drag.y = getY(e);
+
+      if (props.draggableDirection === "x"
+      /* X */
+      ) {
+          drag.delta = drag.x - drag.start;
+        } else {
+        drag.delta = drag.y - drag.start;
+      } // prevent false positif during a toast click
+
+
+      if (drag.start !== drag.x) drag.canCloseOnClick = false;
+      toast.style.transform = "translate" + props.draggableDirection + "(" + drag.delta + "px)";
+      toast.style.opacity = "" + (1 - Math.abs(drag.delta / drag.removalDistance));
+    }
+  }
+
+  function onDragEnd() {
+    unbindDragEvents();
+    var toast = toastRef.current;
+
+    if (drag.canDrag && drag.didMove && toast) {
+      drag.canDrag = false;
+
+      if (Math.abs(drag.delta) > drag.removalDistance) {
+        setPreventExitTransition(true);
+        props.closeToast();
+        return;
+      }
+
+      toast.style.transition = 'transform 0.2s, opacity 0.2s';
+      toast.style.transform = "translate" + props.draggableDirection + "(0)";
+      toast.style.opacity = '1';
+    }
+  }
+
+  var eventHandlers = {
+    onMouseDown: onDragStart,
+    onTouchStart: onDragStart,
+    onMouseUp: onDragTransitionEnd,
+    onTouchEnd: onDragTransitionEnd
+  };
+
+  if (autoClose && pauseOnHover) {
+    eventHandlers.onMouseEnter = pauseToast;
+    eventHandlers.onMouseLeave = playToast;
+  } // prevent toast from closing when user drags the toast
+
+
+  if (closeOnClick) {
+    eventHandlers.onClick = function (e) {
+      onClick && onClick(e);
+      drag.canCloseOnClick && closeToast();
+    };
+  }
+
+  return {
+    playToast: playToast,
+    pauseToast: pauseToast,
+    isRunning: isRunning,
+    preventExitTransition: preventExitTransition,
+    toastRef: toastRef,
+    eventHandlers: eventHandlers
+  };
+}
+
+function CloseButton(_ref) {
+  var closeToast = _ref.closeToast,
+      theme = _ref.theme,
+      _ref$ariaLabel = _ref.ariaLabel,
+      ariaLabel = _ref$ariaLabel === void 0 ? 'close' : _ref$ariaLabel;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "Toastify"
+    /* CSS_NAMESPACE */
+    + "__close-button " + "Toastify"
+    /* CSS_NAMESPACE */
+    + "__close-button--" + theme,
+    type: "button",
+    onClick: function onClick(e) {
+      e.stopPropagation();
+      closeToast(e);
+    },
+    "aria-label": ariaLabel
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    "aria-hidden": "true",
+    viewBox: "0 0 14 16"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    fillRule: "evenodd",
+    d: "M7.71 8.23l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75L1 11.98l3.75-3.75L1 4.48 2.48 3l3.75 3.75L9.98 3l1.48 1.48-3.75 3.75z"
+  })));
+}
+
+function ProgressBar(_ref) {
+  var _cx, _animationEvent;
+
+  var delay = _ref.delay,
+      isRunning = _ref.isRunning,
+      closeToast = _ref.closeToast,
+      type = _ref.type,
+      hide = _ref.hide,
+      className = _ref.className,
+      userStyle = _ref.style,
+      controlledProgress = _ref.controlledProgress,
+      progress = _ref.progress,
+      rtl = _ref.rtl,
+      isIn = _ref.isIn,
+      theme = _ref.theme;
+
+  var style = _extends({}, userStyle, {
+    animationDuration: delay + "ms",
+    animationPlayState: isRunning ? 'running' : 'paused',
+    opacity: hide ? 0 : 1
+  });
+
+  if (controlledProgress) style.transform = "scaleX(" + progress + ")";
+  var defaultClassName = (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])("Toastify"
+  /* CSS_NAMESPACE */
+  + "__progress-bar", controlledProgress ? "Toastify"
+  /* CSS_NAMESPACE */
+  + "__progress-bar--controlled" : "Toastify"
+  /* CSS_NAMESPACE */
+  + "__progress-bar--animated", "Toastify"
+  /* CSS_NAMESPACE */
+  + "__progress-bar-theme--" + theme, "Toastify"
+  /* CSS_NAMESPACE */
+  + "__progress-bar--" + type, (_cx = {}, _cx["Toastify"
+  /* CSS_NAMESPACE */
+  + "__progress-bar--rtl"] = rtl, _cx));
+  var classNames = isFn(className) ? className({
+    rtl: rtl,
+    type: type,
+    defaultClassName: defaultClassName
+  }) : (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])(defaultClassName, className); // 🧐 controlledProgress is derived from progress
+  // so if controlledProgress is set
+  // it means that this is also the case for progress
+
+  var animationEvent = (_animationEvent = {}, _animationEvent[controlledProgress && progress >= 1 ? 'onTransitionEnd' : 'onAnimationEnd'] = controlledProgress && progress < 1 ? null : function () {
+    isIn && closeToast();
+  }, _animationEvent); // TODO: add aria-valuenow, aria-valuemax, aria-valuemin
+
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", Object.assign({
+    role: "progressbar",
+    "aria-hidden": hide ? 'true' : 'false',
+    "aria-label": "notification timer",
+    className: classNames,
+    style: style
+  }, animationEvent));
+}
+ProgressBar.defaultProps = {
+  type: TYPE.DEFAULT,
+  hide: false
+};
+
+var _excluded$1 = ["theme", "type"];
+
+var Svg = function Svg(_ref) {
+  var theme = _ref.theme,
+      type = _ref.type,
+      rest = _objectWithoutPropertiesLoose(_ref, _excluded$1);
+
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", Object.assign({
+    viewBox: "0 0 24 24",
+    width: "100%",
+    height: "100%",
+    fill: theme === 'colored' ? 'currentColor' : "var(--toastify-icon-color-" + type + ")"
+  }, rest));
+};
+
+function Warning(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Svg, Object.assign({}, props), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M23.32 17.191L15.438 2.184C14.728.833 13.416 0 11.996 0c-1.42 0-2.733.833-3.443 2.184L.533 17.448a4.744 4.744 0 000 4.368C1.243 23.167 2.555 24 3.975 24h16.05C22.22 24 24 22.044 24 19.632c0-.904-.251-1.746-.68-2.44zm-9.622 1.46c0 1.033-.724 1.823-1.698 1.823s-1.698-.79-1.698-1.822v-.043c0-1.028.724-1.822 1.698-1.822s1.698.79 1.698 1.822v.043zm.039-12.285l-.84 8.06c-.057.581-.408.943-.897.943-.49 0-.84-.367-.896-.942l-.84-8.065c-.057-.624.25-1.095.779-1.095h1.91c.528.005.84.476.784 1.1z"
+  }));
+}
+
+function Info(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Svg, Object.assign({}, props), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M12 0a12 12 0 1012 12A12.013 12.013 0 0012 0zm.25 5a1.5 1.5 0 11-1.5 1.5 1.5 1.5 0 011.5-1.5zm2.25 13.5h-4a1 1 0 010-2h.75a.25.25 0 00.25-.25v-4.5a.25.25 0 00-.25-.25h-.75a1 1 0 010-2h1a2 2 0 012 2v4.75a.25.25 0 00.25.25h.75a1 1 0 110 2z"
+  }));
+}
+
+function Success(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Svg, Object.assign({}, props), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M12 0a12 12 0 1012 12A12.014 12.014 0 0012 0zm6.927 8.2l-6.845 9.289a1.011 1.011 0 01-1.43.188l-4.888-3.908a1 1 0 111.25-1.562l4.076 3.261 6.227-8.451a1 1 0 111.61 1.183z"
+  }));
+}
+
+function Error(props) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Svg, Object.assign({}, props), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M11.983 0a12.206 12.206 0 00-8.51 3.653A11.8 11.8 0 000 12.207 11.779 11.779 0 0011.8 24h.214A12.111 12.111 0 0024 11.791 11.766 11.766 0 0011.983 0zM10.5 16.542a1.476 1.476 0 011.449-1.53h.027a1.527 1.527 0 011.523 1.47 1.475 1.475 0 01-1.449 1.53h-.027a1.529 1.529 0 01-1.523-1.47zM11 12.5v-6a1 1 0 012 0v6a1 1 0 11-2 0z"
+  }));
+}
+
+function Spinner() {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "Toastify"
+    /* CSS_NAMESPACE */
+    + "__spinner"
+  });
+}
+
+var Icons = {
+  info: Info,
+  warning: Warning,
+  success: Success,
+  error: Error,
+  spinner: Spinner
+};
+
+var Toast = function Toast(props) {
+  var _cx, _cx2;
+
+  var _useToast = useToast(props),
+      isRunning = _useToast.isRunning,
+      preventExitTransition = _useToast.preventExitTransition,
+      toastRef = _useToast.toastRef,
+      eventHandlers = _useToast.eventHandlers;
+
+  var closeButton = props.closeButton,
+      children = props.children,
+      autoClose = props.autoClose,
+      onClick = props.onClick,
+      type = props.type,
+      hideProgressBar = props.hideProgressBar,
+      closeToast = props.closeToast,
+      Transition = props.transition,
+      position = props.position,
+      className = props.className,
+      style = props.style,
+      bodyClassName = props.bodyClassName,
+      bodyStyle = props.bodyStyle,
+      progressClassName = props.progressClassName,
+      progressStyle = props.progressStyle,
+      updateId = props.updateId,
+      role = props.role,
+      progress = props.progress,
+      rtl = props.rtl,
+      toastId = props.toastId,
+      deleteToast = props.deleteToast,
+      isIn = props.isIn,
+      isLoading = props.isLoading,
+      icon = props.icon,
+      theme = props.theme;
+  var defaultClassName = (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])("Toastify"
+  /* CSS_NAMESPACE */
+  + "__toast", "Toastify"
+  /* CSS_NAMESPACE */
+  + "__toast-theme--" + theme, "Toastify"
+  /* CSS_NAMESPACE */
+  + "__toast--" + type, (_cx = {}, _cx["Toastify"
+  /* CSS_NAMESPACE */
+  + "__toast--rtl"] = rtl, _cx));
+  var cssClasses = isFn(className) ? className({
+    rtl: rtl,
+    position: position,
+    type: type,
+    defaultClassName: defaultClassName
+  }) : (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])(defaultClassName, className);
+  var isProgressControlled = !!progress;
+  var maybeIcon = Icons[type];
+  var iconProps = {
+    theme: theme,
+    type: type
+  };
+  var Icon = maybeIcon && maybeIcon(iconProps);
+
+  if (icon === false) {
+    Icon = void 0;
+  } else if (isFn(icon)) {
+    Icon = icon(iconProps);
+  } else if ((0,react__WEBPACK_IMPORTED_MODULE_0__.isValidElement)(icon)) {
+    Icon = (0,react__WEBPACK_IMPORTED_MODULE_0__.cloneElement)(icon, iconProps);
+  } else if (isStr(icon)) {
+    Icon = icon;
+  } else if (isLoading) {
+    Icon = Icons.spinner();
+  }
+
+  function renderCloseButton(closeButton) {
+    if (!closeButton) return;
+    var props = {
+      closeToast: closeToast,
+      type: type,
+      theme: theme
+    };
+    if (isFn(closeButton)) return closeButton(props);
+    if ((0,react__WEBPACK_IMPORTED_MODULE_0__.isValidElement)(closeButton)) return (0,react__WEBPACK_IMPORTED_MODULE_0__.cloneElement)(closeButton, props);
+  }
+
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Transition, {
+    isIn: isIn,
+    done: deleteToast,
+    position: position,
+    preventExitTransition: preventExitTransition,
+    nodeRef: toastRef
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", Object.assign({
+    id: toastId,
+    onClick: onClick,
+    className: cssClasses
+  }, eventHandlers, {
+    style: style,
+    ref: toastRef
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", Object.assign({}, isIn && {
+    role: role
+  }, {
+    className: isFn(bodyClassName) ? bodyClassName({
+      type: type
+    }) : (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])("Toastify"
+    /* CSS_NAMESPACE */
+    + "__toast-body", bodyClassName),
+    style: bodyStyle
+  }), Icon && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])("Toastify"
+    /* CSS_NAMESPACE */
+    + "__toast-icon", (_cx2 = {}, _cx2["Toastify"
+    /* CSS_NAMESPACE */
+    + "--animate-icon " + "Toastify"
+    /* CSS_NAMESPACE */
+    + "__zoom-enter"] = !isLoading, _cx2))
+  }, Icon), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, children)), renderCloseButton(closeButton), (autoClose || isProgressControlled) && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ProgressBar, Object.assign({}, updateId && !isProgressControlled ? {
+    key: "pb-" + updateId
+  } : {}, {
+    rtl: rtl,
+    theme: theme,
+    delay: autoClose,
+    isRunning: isRunning,
+    isIn: isIn,
+    closeToast: closeToast,
+    hide: hideProgressBar,
+    type: type,
+    style: progressStyle,
+    className: progressClassName,
+    controlledProgress: isProgressControlled,
+    progress: progress
+  }))));
+};
+
+var Bounce = /*#__PURE__*/cssTransition({
+  enter: "Toastify"
+  /* CSS_NAMESPACE */
+  + "--animate " + "Toastify"
+  /* CSS_NAMESPACE */
+  + "__bounce-enter",
+  exit: "Toastify"
+  /* CSS_NAMESPACE */
+  + "--animate " + "Toastify"
+  /* CSS_NAMESPACE */
+  + "__bounce-exit",
+  appendPosition: true
+});
+var Slide = /*#__PURE__*/cssTransition({
+  enter: "Toastify"
+  /* CSS_NAMESPACE */
+  + "--animate " + "Toastify"
+  /* CSS_NAMESPACE */
+  + "__slide-enter",
+  exit: "Toastify"
+  /* CSS_NAMESPACE */
+  + "--animate " + "Toastify"
+  /* CSS_NAMESPACE */
+  + "__slide-exit",
+  appendPosition: true
+});
+var Zoom = /*#__PURE__*/cssTransition({
+  enter: "Toastify"
+  /* CSS_NAMESPACE */
+  + "--animate " + "Toastify"
+  /* CSS_NAMESPACE */
+  + "__zoom-enter",
+  exit: "Toastify"
+  /* CSS_NAMESPACE */
+  + "--animate " + "Toastify"
+  /* CSS_NAMESPACE */
+  + "__zoom-exit"
+});
+var Flip = /*#__PURE__*/cssTransition({
+  enter: "Toastify"
+  /* CSS_NAMESPACE */
+  + "--animate " + "Toastify"
+  /* CSS_NAMESPACE */
+  + "__flip-enter",
+  exit: "Toastify"
+  /* CSS_NAMESPACE */
+  + "--animate " + "Toastify"
+  /* CSS_NAMESPACE */
+  + "__flip-exit"
+});
+
+var ToastContainer = function ToastContainer(props) {
+  var _useToastContainer = useToastContainer(props),
+      getToastToRender = _useToastContainer.getToastToRender,
+      containerRef = _useToastContainer.containerRef,
+      isToastActive = _useToastContainer.isToastActive;
+
+  var className = props.className,
+      style = props.style,
+      rtl = props.rtl,
+      containerId = props.containerId;
+
+  function getClassName(position) {
+    var _cx;
+
+    var defaultClassName = (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])("Toastify"
+    /* CSS_NAMESPACE */
+    + "__toast-container", "Toastify"
+    /* CSS_NAMESPACE */
+    + "__toast-container--" + position, (_cx = {}, _cx["Toastify"
+    /* CSS_NAMESPACE */
+    + "__toast-container--rtl"] = rtl, _cx));
+    return isFn(className) ? className({
+      position: position,
+      rtl: rtl,
+      defaultClassName: defaultClassName
+    }) : (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])(defaultClassName, parseClassName(className));
+  }
+
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ref: containerRef,
+    className: "Toastify"
+    /* CSS_NAMESPACE */
+    ,
+    id: containerId
+  }, getToastToRender(function (position, toastList) {
+    var containerStyle = !toastList.length ? _extends({}, style, {
+      pointerEvents: 'none'
+    }) : _extends({}, style);
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: getClassName(position),
+      style: containerStyle,
+      key: "container-" + position
+    }, toastList.map(function (_ref) {
+      var content = _ref.content,
+          toastProps = _ref.props;
+      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Toast, Object.assign({}, toastProps, {
+        isIn: isToastActive(toastProps.toastId),
+        key: "toast-" + toastProps.key,
+        closeButton: toastProps.closeButton === true ? CloseButton : toastProps.closeButton
+      }), content);
+    }));
+  }));
+};
+ToastContainer.defaultProps = {
+  position: POSITION.TOP_RIGHT,
+  transition: Bounce,
+  rtl: false,
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeButton: CloseButton,
+  pauseOnHover: true,
+  pauseOnFocusLoss: true,
+  closeOnClick: true,
+  newestOnTop: false,
+  draggable: true,
+  draggablePercent: 80
+  /* DRAGGABLE_PERCENT */
+  ,
+  draggableDirection: "x"
+  /* X */
+  ,
+  role: 'alert',
+  theme: 'light'
+};
+
+var containers = /*#__PURE__*/new Map();
+var latestInstance;
+var containerDomNode;
+var containerConfig;
+var queue = [];
+var lazy = false;
+/**
+ * Get the toast by id, given it's in the DOM, otherwise returns null
+ */
+
+function getToast(toastId, _ref) {
+  var containerId = _ref.containerId;
+  var container = containers.get(containerId || latestInstance);
+  if (!container) return null;
+  return container.getToast(toastId);
+}
+/**
+ * Generate a random toastId
+ */
+
+
+function generateToastId() {
+  return Math.random().toString(36).substring(2, 9);
+}
+/**
+ * Generate a toastId or use the one provided
+ */
+
+
+function getToastId(options) {
+  if (options && (isStr(options.toastId) || isNum(options.toastId))) {
+    return options.toastId;
+  }
+
+  return generateToastId();
+}
+/**
+ * If the container is not mounted, the toast is enqueued and
+ * the container lazy mounted
+ */
+
+
+function dispatchToast(content, options) {
+  if (containers.size > 0) {
+    eventManager.emit(0
+    /* Show */
+    , content, options);
+  } else {
+    queue.push({
+      content: content,
+      options: options
+    });
+
+    if (lazy && canUseDom) {
+      lazy = false;
+      containerDomNode = document.createElement('div');
+      document.body.appendChild(containerDomNode);
+      (0,react_dom__WEBPACK_IMPORTED_MODULE_2__.render)((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToastContainer, Object.assign({}, containerConfig)), containerDomNode);
+    }
+  }
+
+  return options.toastId;
+}
+/**
+ * Merge provided options with the defaults settings and generate the toastId
+ */
+
+
+function mergeOptions(type, options) {
+  return _extends({}, options, {
+    type: options && options.type || type,
+    toastId: getToastId(options)
+  });
+}
+
+function createToastByType(type) {
+  return function (content, options) {
+    return dispatchToast(content, mergeOptions(type, options));
+  };
+}
+
+function toast(content, options) {
+  return dispatchToast(content, mergeOptions(TYPE.DEFAULT, options));
+}
+
+toast.loading = function (content, options) {
+  return dispatchToast(content, mergeOptions(TYPE.DEFAULT, _extends({
+    isLoading: true,
+    autoClose: false,
+    closeOnClick: false,
+    closeButton: false,
+    draggable: false
+  }, options)));
+};
+
+function handlePromise(promise, _ref2, options) {
+  var pending = _ref2.pending,
+      error = _ref2.error,
+      success = _ref2.success;
+  var id;
+
+  if (pending) {
+    id = isStr(pending) ? toast.loading(pending, options) : toast.loading(pending.render, _extends({}, options, pending));
+  }
+
+  var resetParams = {
+    isLoading: null,
+    autoClose: null,
+    closeOnClick: null,
+    closeButton: null,
+    draggable: null
+  };
+
+  var resolver = function resolver(type, input, result) {
+    // Remove the toast if the input has not been provided. This prevents the toast from hanging
+    // in the pending state if a success/error toast has not been provided.
+    if (input == null) {
+      toast.dismiss(id);
+      return;
+    }
+
+    var baseParams = _extends({
+      type: type
+    }, resetParams, options, {
+      data: result
+    });
+
+    var params = isStr(input) ? {
+      render: input
+    } : input; // if the id is set we know that it's an update
+
+    if (id) {
+      toast.update(id, _extends({}, baseParams, params));
+    } else {
+      // using toast.promise without loading
+      toast(params.render, _extends({}, baseParams, params));
+    }
+
+    return result;
+  };
+
+  var p = isFn(promise) ? promise() : promise; //call the resolvers only when needed
+
+  p.then(function (result) {
+    return resolver('success', success, result);
+  })["catch"](function (err) {
+    return resolver('error', error, err);
+  });
+  return p;
+}
+
+toast.promise = handlePromise;
+toast.success = /*#__PURE__*/createToastByType(TYPE.SUCCESS);
+toast.info = /*#__PURE__*/createToastByType(TYPE.INFO);
+toast.error = /*#__PURE__*/createToastByType(TYPE.ERROR);
+toast.warning = /*#__PURE__*/createToastByType(TYPE.WARNING);
+toast.warn = toast.warning;
+
+toast.dark = function (content, options) {
+  return dispatchToast(content, mergeOptions(TYPE.DEFAULT, _extends({
+    theme: 'dark'
+  }, options)));
+};
+/**
+ * Remove toast programmaticaly
+ */
+
+
+toast.dismiss = function (id) {
+  return eventManager.emit(1
+  /* Clear */
+  , id);
+};
+/**
+ * Clear waiting queue when limit is used
+ */
+
+
+toast.clearWaitingQueue = function (params) {
+  if (params === void 0) {
+    params = {};
+  }
+
+  return eventManager.emit(5
+  /* ClearWaitingQueue */
+  , params);
+};
+/**
+ * return true if one container is displaying the toast
+ */
+
+
+toast.isActive = function (id) {
+  var isToastActive = false;
+  containers.forEach(function (container) {
+    if (container.isToastActive && container.isToastActive(id)) {
+      isToastActive = true;
+    }
+  });
+  return isToastActive;
+};
+
+toast.update = function (toastId, options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  // if you call toast and toast.update directly nothing will be displayed
+  // this is why I defered the update
+  setTimeout(function () {
+    var toast = getToast(toastId, options);
+
+    if (toast) {
+      var oldOptions = toast.props,
+          oldContent = toast.content;
+
+      var nextOptions = _extends({}, oldOptions, options, {
+        toastId: options.toastId || toastId,
+        updateId: generateToastId()
+      });
+
+      if (nextOptions.toastId !== toastId) nextOptions.staleId = toastId;
+      var content = nextOptions.render || oldContent;
+      delete nextOptions.render;
+      dispatchToast(content, nextOptions);
+    }
+  }, 0);
+};
+/**
+ * Used for controlled progress bar.
+ */
+
+
+toast.done = function (id) {
+  toast.update(id, {
+    progress: 1
+  });
+};
+/**
+ * Track changes. The callback get the number of toast displayed
+ *
+ */
+
+
+toast.onChange = function (callback) {
+  if (isFn(callback)) {
+    eventManager.on(4
+    /* Change */
+    , callback);
+  }
+
+  return function () {
+    isFn(callback) && eventManager.off(4
+    /* Change */
+    , callback);
+  };
+};
+/**
+ * Configure the ToastContainer when lazy mounted
+ * Prefer ToastContainer over this one
+ */
+
+
+toast.configure = function (config) {
+  if (config === void 0) {
+    config = {};
+  }
+
+  lazy = true;
+  containerConfig = config;
+};
+
+toast.POSITION = POSITION;
+toast.TYPE = TYPE;
+/**
+ * Wait until the ToastContainer is mounted to dispatch the toast
+ * and attach isActive method
+ */
+
+eventManager.on(2
+/* DidMount */
+, function (containerInstance) {
+  latestInstance = containerInstance.containerId || containerInstance;
+  containers.set(latestInstance, containerInstance);
+  queue.forEach(function (item) {
+    eventManager.emit(0
+    /* Show */
+    , item.content, item.options);
+  });
+  queue = [];
+}).on(3
+/* WillUnmount */
+, function (containerInstance) {
+  containers["delete"](containerInstance.containerId || containerInstance);
+
+  if (containers.size === 0) {
+    eventManager.off(0
+    /* Show */
+    ).off(1
+    /* Clear */
+    ).off(5
+    /* ClearWaitingQueue */
+    );
+  }
+
+  if (canUseDom && containerDomNode) {
+    document.body.removeChild(containerDomNode);
+  }
+});
+
+
+//# sourceMappingURL=react-toastify.esm.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react-jsx-runtime.development.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/react/cjs/react-jsx-runtime.development.js ***!
@@ -64764,3547 +66357,312 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js ***!
-  \**************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ "./node_modules/react-toastify/dist/ReactToastify.css":
+/*!************************************************************!*\
+  !*** ./node_modules/react-toastify/dist/ReactToastify.css ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-/** @preserve
-  * package: sweetalert2-react-content v4.2.0
-  * file: dist/sweetalert2-react-content.umd.js
-  * homepage: https://github.com/sweetalert2/sweetalert2-react-content#readme
-  * license: MIT
-  **/
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_ReactToastify_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./ReactToastify.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./node_modules/react-toastify/dist/ReactToastify.css");
 
-(function (global, factory) {
-   true ? module.exports = factory(__webpack_require__(/*! react */ "./node_modules/react/index.js"), __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js")) :
-  0;
-})(this, (function (React, ReactDOM) { 'use strict';
+            
 
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+var options = {};
 
-  var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
-  var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
+options.insert = "head";
+options.singleton = false;
 
-  const mounts = [{
-    key: 'title',
-    getter: swal => swal.getTitle()
-  }, {
-    key: 'html',
-    getter: swal => swal.getHtmlContainer()
-  }, {
-    key: 'confirmButtonText',
-    getter: swal => swal.getConfirmButton()
-  }, {
-    key: 'denyButtonText',
-    getter: swal => swal.getDenyButton()
-  }, {
-    key: 'cancelButtonText',
-    getter: swal => swal.getCancelButton()
-  }, {
-    key: 'footer',
-    getter: swal => swal.getFooter()
-  }, {
-    key: 'closeButtonHtml',
-    getter: swal => swal.getCloseButton()
-  }, {
-    key: 'iconHtml',
-    getter: swal => swal.getIcon().querySelector('.swal2-icon-content')
-  }, {
-    key: 'loaderHtml',
-    getter: swal => swal.getLoader()
-  }];
-
-  const noop = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
+var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_ReactToastify_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
-  function withReactContent(ParentSwal) {
-    /* Returns `params` separated into a tuple of `reactParams` (the React params that need to be rendered)
-    and`otherParams` (all the other parameters, with any React params replaced with a space ' ') */
-    function extractReactParams(params) {
-      const reactParams = {};
-      const otherParams = {};
-      const mountKeys = mounts.map(mount => mount.key);
-      Object.entries(params).forEach(([key, value]) => {
-        if (mountKeys.includes(key) && /*#__PURE__*/React__default["default"].isValidElement(value)) {
-          reactParams[key] = value;
-          otherParams[key] = ' ';
-        } else {
-          otherParams[key] = value;
-        }
-      });
-      return [reactParams, otherParams];
-    }
 
-    function render(swal, reactParams) {
-      Object.entries(reactParams).forEach(([key, value]) => {
-        const mount = mounts.find(mount => mount.key === key);
-        const domElement = mount.getter(ParentSwal);
-        ReactDOM__default["default"].render(value, domElement);
-
-        swal.__mountedDomElements.push(domElement);
-      });
-    }
-
-    function unrender(swal) {
-      swal.__mountedDomElements.forEach(domElement => {
-        ReactDOM__default["default"].unmountComponentAtNode(domElement);
-      });
-
-      swal.__mountedDomElements = [];
-    }
-
-    return class extends ParentSwal {
-      static argsToParams(args) {
-        if ( /*#__PURE__*/React__default["default"].isValidElement(args[0]) || /*#__PURE__*/React__default["default"].isValidElement(args[1])) {
-          const params = {};
-          ['title', 'html', 'icon'].forEach((name, index) => {
-            if (args[index] !== undefined) {
-              params[name] = args[index];
-            }
-          });
-          return params;
-        } else {
-          return ParentSwal.argsToParams(args);
-        }
-      }
-
-      _main(params, mixinParams) {
-        this.__mountedDomElements = [];
-        this.__params = Object.assign({}, mixinParams, params);
-        const [reactParams, otherParams] = extractReactParams(this.__params);
-        const superDidOpen = otherParams.didOpen || noop;
-        const superDidDestroy = otherParams.didDestroy || noop;
-        return super._main(Object.assign({}, otherParams, {
-          didOpen: popup => {
-            render(this, reactParams);
-            superDidOpen(popup);
-          },
-          didDestroy: popup => {
-            superDidDestroy(popup);
-            unrender(this);
-          }
-        }));
-      }
-
-      update(params) {
-        Object.assign(this.__params, params);
-        unrender(this);
-        const [reactParams, otherParams] = extractReactParams(this.__params);
-        super.update(otherParams);
-        render(this, reactParams);
-      }
-
-    };
-  }
-
-  return withReactContent;
-
-}));
-//# sourceMappingURL=sweetalert2-react-content.umd.js.map
-
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_ReactToastify_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
-/***/ "./node_modules/sweetalert2/dist/sweetalert2.all.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/sweetalert2/dist/sweetalert2.all.js ***!
-  \**********************************************************/
-/***/ (function(module) {
+/***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+  \****************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-/*!
-* sweetalert2 v11.4.0
-* Released under the MIT License.
-*/
-(function (global, factory) {
-   true ? module.exports = factory() :
-  0;
-}(this, function () { 'use strict';
+"use strict";
 
-  const consolePrefix = 'SweetAlert2:';
-  /**
-   * Filter the unique values into a new array
-   * @param arr
-   */
 
-  const uniqueArray = arr => {
-    const result = [];
-
-    for (let i = 0; i < arr.length; i++) {
-      if (result.indexOf(arr[i]) === -1) {
-        result.push(arr[i]);
-      }
+var isOldIE = function isOldIE() {
+  var memo;
+  return function memorize() {
+    if (typeof memo === 'undefined') {
+      // Test for IE <= 9 as proposed by Browserhacks
+      // @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+      // Tests for existence of standard globals is to allow style-loader
+      // to operate correctly into non-standard environments
+      // @see https://github.com/webpack-contrib/style-loader/issues/177
+      memo = Boolean(window && document && document.all && !window.atob);
     }
 
-    return result;
+    return memo;
   };
-  /**
-   * Capitalize the first letter of a string
-   * @param {string} str
-   * @returns {string}
-   */
+}();
 
-  const capitalizeFirstLetter = str => str.charAt(0).toUpperCase() + str.slice(1);
-  /**
-   * @param {NodeList | HTMLCollection | NamedNodeMap} nodeList
-   * @returns {array}
-   */
+var getTarget = function getTarget() {
+  var memo = {};
+  return function memorize(target) {
+    if (typeof memo[target] === 'undefined') {
+      var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
 
-  const toArray = nodeList => Array.prototype.slice.call(nodeList);
-  /**
-   * Standardize console warnings
-   * @param {string | array} message
-   */
-
-  const warn = message => {
-    console.warn("".concat(consolePrefix, " ").concat(typeof message === 'object' ? message.join(' ') : message));
-  };
-  /**
-   * Standardize console errors
-   * @param {string} message
-   */
-
-  const error = message => {
-    console.error("".concat(consolePrefix, " ").concat(message));
-  };
-  /**
-   * Private global state for `warnOnce`
-   * @type {Array}
-   * @private
-   */
-
-  const previousWarnOnceMessages = [];
-  /**
-   * Show a console warning, but only if it hasn't already been shown
-   * @param {string} message
-   */
-
-  const warnOnce = message => {
-    if (!previousWarnOnceMessages.includes(message)) {
-      previousWarnOnceMessages.push(message);
-      warn(message);
-    }
-  };
-  /**
-   * Show a one-time console warning about deprecated params/methods
-   */
-
-  const warnAboutDeprecation = (deprecatedParam, useInstead) => {
-    warnOnce("\"".concat(deprecatedParam, "\" is deprecated and will be removed in the next major release. Please use \"").concat(useInstead, "\" instead."));
-  };
-  /**
-   * If `arg` is a function, call it (with no arguments or context) and return the result.
-   * Otherwise, just pass the value through
-   * @param arg
-   */
-
-  const callIfFunction = arg => typeof arg === 'function' ? arg() : arg;
-  const hasToPromiseFn = arg => arg && typeof arg.toPromise === 'function';
-  const asPromise = arg => hasToPromiseFn(arg) ? arg.toPromise() : Promise.resolve(arg);
-  const isPromise = arg => arg && Promise.resolve(arg) === arg;
-
-  const defaultParams = {
-    title: '',
-    titleText: '',
-    text: '',
-    html: '',
-    footer: '',
-    icon: undefined,
-    iconColor: undefined,
-    iconHtml: undefined,
-    template: undefined,
-    toast: false,
-    showClass: {
-      popup: 'swal2-show',
-      backdrop: 'swal2-backdrop-show',
-      icon: 'swal2-icon-show'
-    },
-    hideClass: {
-      popup: 'swal2-hide',
-      backdrop: 'swal2-backdrop-hide',
-      icon: 'swal2-icon-hide'
-    },
-    customClass: {},
-    target: 'body',
-    color: undefined,
-    backdrop: true,
-    heightAuto: true,
-    allowOutsideClick: true,
-    allowEscapeKey: true,
-    allowEnterKey: true,
-    stopKeydownPropagation: true,
-    keydownListenerCapture: false,
-    showConfirmButton: true,
-    showDenyButton: false,
-    showCancelButton: false,
-    preConfirm: undefined,
-    preDeny: undefined,
-    confirmButtonText: 'OK',
-    confirmButtonAriaLabel: '',
-    confirmButtonColor: undefined,
-    denyButtonText: 'No',
-    denyButtonAriaLabel: '',
-    denyButtonColor: undefined,
-    cancelButtonText: 'Cancel',
-    cancelButtonAriaLabel: '',
-    cancelButtonColor: undefined,
-    buttonsStyling: true,
-    reverseButtons: false,
-    focusConfirm: true,
-    focusDeny: false,
-    focusCancel: false,
-    returnFocus: true,
-    showCloseButton: false,
-    closeButtonHtml: '&times;',
-    closeButtonAriaLabel: 'Close this dialog',
-    loaderHtml: '',
-    showLoaderOnConfirm: false,
-    showLoaderOnDeny: false,
-    imageUrl: undefined,
-    imageWidth: undefined,
-    imageHeight: undefined,
-    imageAlt: '',
-    timer: undefined,
-    timerProgressBar: false,
-    width: undefined,
-    padding: undefined,
-    background: undefined,
-    input: undefined,
-    inputPlaceholder: '',
-    inputLabel: '',
-    inputValue: '',
-    inputOptions: {},
-    inputAutoTrim: true,
-    inputAttributes: {},
-    inputValidator: undefined,
-    returnInputValueOnDeny: false,
-    validationMessage: undefined,
-    grow: false,
-    position: 'center',
-    progressSteps: [],
-    currentProgressStep: undefined,
-    progressStepsDistance: undefined,
-    willOpen: undefined,
-    didOpen: undefined,
-    didRender: undefined,
-    willClose: undefined,
-    didClose: undefined,
-    didDestroy: undefined,
-    scrollbarPadding: true
-  };
-  const updatableParams = ['allowEscapeKey', 'allowOutsideClick', 'background', 'buttonsStyling', 'cancelButtonAriaLabel', 'cancelButtonColor', 'cancelButtonText', 'closeButtonAriaLabel', 'closeButtonHtml', 'color', 'confirmButtonAriaLabel', 'confirmButtonColor', 'confirmButtonText', 'currentProgressStep', 'customClass', 'denyButtonAriaLabel', 'denyButtonColor', 'denyButtonText', 'didClose', 'didDestroy', 'footer', 'hideClass', 'html', 'icon', 'iconColor', 'iconHtml', 'imageAlt', 'imageHeight', 'imageUrl', 'imageWidth', 'preConfirm', 'preDeny', 'progressSteps', 'returnFocus', 'reverseButtons', 'showCancelButton', 'showCloseButton', 'showConfirmButton', 'showDenyButton', 'text', 'title', 'titleText', 'willClose'];
-  const deprecatedParams = {};
-  const toastIncompatibleParams = ['allowOutsideClick', 'allowEnterKey', 'backdrop', 'focusConfirm', 'focusDeny', 'focusCancel', 'returnFocus', 'heightAuto', 'keydownListenerCapture'];
-  /**
-   * Is valid parameter
-   * @param {string} paramName
-   */
-
-  const isValidParameter = paramName => {
-    return Object.prototype.hasOwnProperty.call(defaultParams, paramName);
-  };
-  /**
-   * Is valid parameter for Swal.update() method
-   * @param {string} paramName
-   */
-
-  const isUpdatableParameter = paramName => {
-    return updatableParams.indexOf(paramName) !== -1;
-  };
-  /**
-   * Is deprecated parameter
-   * @param {string} paramName
-   */
-
-  const isDeprecatedParameter = paramName => {
-    return deprecatedParams[paramName];
-  };
-
-  const checkIfParamIsValid = param => {
-    if (!isValidParameter(param)) {
-      warn("Unknown parameter \"".concat(param, "\""));
-    }
-  };
-
-  const checkIfToastParamIsValid = param => {
-    if (toastIncompatibleParams.includes(param)) {
-      warn("The parameter \"".concat(param, "\" is incompatible with toasts"));
-    }
-  };
-
-  const checkIfParamIsDeprecated = param => {
-    if (isDeprecatedParameter(param)) {
-      warnAboutDeprecation(param, isDeprecatedParameter(param));
-    }
-  };
-  /**
-   * Show relevant warnings for given params
-   *
-   * @param params
-   */
-
-
-  const showWarningsForParams = params => {
-    if (!params.backdrop && params.allowOutsideClick) {
-      warn('"allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`');
-    }
-
-    for (const param in params) {
-      checkIfParamIsValid(param);
-
-      if (params.toast) {
-        checkIfToastParamIsValid(param);
+      if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+        try {
+          // This will throw an exception if access to iframe is blocked
+          // due to cross-origin restrictions
+          styleTarget = styleTarget.contentDocument.head;
+        } catch (e) {
+          // istanbul ignore next
+          styleTarget = null;
+        }
       }
 
-      checkIfParamIsDeprecated(param);
-    }
-  };
-
-  const swalPrefix = 'swal2-';
-  const prefix = items => {
-    const result = {};
-
-    for (const i in items) {
-      result[items[i]] = swalPrefix + items[i];
+      memo[target] = styleTarget;
     }
 
-    return result;
+    return memo[target];
   };
-  const swalClasses = prefix(['container', 'shown', 'height-auto', 'iosfix', 'popup', 'modal', 'no-backdrop', 'no-transition', 'toast', 'toast-shown', 'show', 'hide', 'close', 'title', 'html-container', 'actions', 'confirm', 'deny', 'cancel', 'default-outline', 'footer', 'icon', 'icon-content', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'label', 'textarea', 'inputerror', 'input-label', 'validation-message', 'progress-steps', 'active-progress-step', 'progress-step', 'progress-step-line', 'loader', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen', 'rtl', 'timer-progress-bar', 'timer-progress-bar-container', 'scrollbar-measure', 'icon-success', 'icon-warning', 'icon-info', 'icon-question', 'icon-error']);
-  const iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
+}();
 
-  /**
-   * Gets the popup container which contains the backdrop and the popup itself.
-   *
-   * @returns {HTMLElement | null}
-   */
+var stylesInDom = [];
 
-  const getContainer = () => document.body.querySelector(".".concat(swalClasses.container));
-  const elementBySelector = selectorString => {
-    const container = getContainer();
-    return container ? container.querySelector(selectorString) : null;
-  };
+function getIndexByIdentifier(identifier) {
+  var result = -1;
 
-  const elementByClass = className => {
-    return elementBySelector(".".concat(className));
-  };
+  for (var i = 0; i < stylesInDom.length; i++) {
+    if (stylesInDom[i].identifier === identifier) {
+      result = i;
+      break;
+    }
+  }
 
-  const getPopup = () => elementByClass(swalClasses.popup);
-  const getIcon = () => elementByClass(swalClasses.icon);
-  const getTitle = () => elementByClass(swalClasses.title);
-  const getHtmlContainer = () => elementByClass(swalClasses['html-container']);
-  const getImage = () => elementByClass(swalClasses.image);
-  const getProgressSteps = () => elementByClass(swalClasses['progress-steps']);
-  const getValidationMessage = () => elementByClass(swalClasses['validation-message']);
-  const getConfirmButton = () => elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.confirm));
-  const getDenyButton = () => elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.deny));
-  const getInputLabel = () => elementByClass(swalClasses['input-label']);
-  const getLoader = () => elementBySelector(".".concat(swalClasses.loader));
-  const getCancelButton = () => elementBySelector(".".concat(swalClasses.actions, " .").concat(swalClasses.cancel));
-  const getActions = () => elementByClass(swalClasses.actions);
-  const getFooter = () => elementByClass(swalClasses.footer);
-  const getTimerProgressBar = () => elementByClass(swalClasses['timer-progress-bar']);
-  const getCloseButton = () => elementByClass(swalClasses.close); // https://github.com/jkup/focusable/blob/master/index.js
+  return result;
+}
 
-  const focusable = "\n  a[href],\n  area[href],\n  input:not([disabled]),\n  select:not([disabled]),\n  textarea:not([disabled]),\n  button:not([disabled]),\n  iframe,\n  object,\n  embed,\n  [tabindex=\"0\"],\n  [contenteditable],\n  audio[controls],\n  video[controls],\n  summary\n";
-  const getFocusableElements = () => {
-    const focusableElementsWithTabindex = toArray(getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')) // sort according to tabindex
-    .sort((a, b) => {
-      const tabindexA = parseInt(a.getAttribute('tabindex'));
-      const tabindexB = parseInt(b.getAttribute('tabindex'));
+function modulesToDom(list, options) {
+  var idCountMap = {};
+  var identifiers = [];
 
-      if (tabindexA > tabindexB) {
-        return 1;
-      } else if (tabindexA < tabindexB) {
-        return -1;
-      }
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i];
+    var id = options.base ? item[0] + options.base : item[0];
+    var count = idCountMap[id] || 0;
+    var identifier = "".concat(id, " ").concat(count);
+    idCountMap[id] = count + 1;
+    var index = getIndexByIdentifier(identifier);
+    var obj = {
+      css: item[1],
+      media: item[2],
+      sourceMap: item[3]
+    };
 
-      return 0;
-    });
-    const otherFocusableElements = toArray(getPopup().querySelectorAll(focusable)).filter(el => el.getAttribute('tabindex') !== '-1');
-    return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements)).filter(el => isVisible(el));
-  };
-  const isModal = () => {
-    return !hasClass(document.body, swalClasses['toast-shown']) && !hasClass(document.body, swalClasses['no-backdrop']);
-  };
-  const isToast = () => {
-    return getPopup() && hasClass(getPopup(), swalClasses.toast);
-  };
-  const isLoading = () => {
-    return getPopup().hasAttribute('data-loading');
-  };
-
-  const states = {
-    previousBodyPadding: null
-  };
-  /**
-   * Securely set innerHTML of an element
-   * https://github.com/sweetalert2/sweetalert2/issues/1926
-   *
-   * @param {HTMLElement} elem
-   * @param {string} html
-   */
-
-  const setInnerHtml = (elem, html) => {
-    elem.textContent = '';
-
-    if (html) {
-      const parser = new DOMParser();
-      const parsed = parser.parseFromString(html, "text/html");
-      toArray(parsed.querySelector('head').childNodes).forEach(child => {
-        elem.appendChild(child);
-      });
-      toArray(parsed.querySelector('body').childNodes).forEach(child => {
-        elem.appendChild(child);
+    if (index !== -1) {
+      stylesInDom[index].references++;
+      stylesInDom[index].updater(obj);
+    } else {
+      stylesInDom.push({
+        identifier: identifier,
+        updater: addStyle(obj, options),
+        references: 1
       });
     }
-  };
-  /**
-   * @param {HTMLElement} elem
-   * @param {string} className
-   * @returns {boolean}
-   */
 
-  const hasClass = (elem, className) => {
-    if (!className) {
-      return false;
+    identifiers.push(identifier);
+  }
+
+  return identifiers;
+}
+
+function insertStyleElement(options) {
+  var style = document.createElement('style');
+  var attributes = options.attributes || {};
+
+  if (typeof attributes.nonce === 'undefined') {
+    var nonce =  true ? __webpack_require__.nc : 0;
+
+    if (nonce) {
+      attributes.nonce = nonce;
+    }
+  }
+
+  Object.keys(attributes).forEach(function (key) {
+    style.setAttribute(key, attributes[key]);
+  });
+
+  if (typeof options.insert === 'function') {
+    options.insert(style);
+  } else {
+    var target = getTarget(options.insert || 'head');
+
+    if (!target) {
+      throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
     }
 
-    const classList = className.split(/\s+/);
-
-    for (let i = 0; i < classList.length; i++) {
-      if (!elem.classList.contains(classList[i])) {
-        return false;
-      }
-    }
-
-    return true;
-  };
-
-  const removeCustomClasses = (elem, params) => {
-    toArray(elem.classList).forEach(className => {
-      if (!Object.values(swalClasses).includes(className) && !Object.values(iconTypes).includes(className) && !Object.values(params.showClass).includes(className)) {
-        elem.classList.remove(className);
-      }
-    });
-  };
-
-  const applyCustomClass = (elem, params, className) => {
-    removeCustomClasses(elem, params);
-
-    if (params.customClass && params.customClass[className]) {
-      if (typeof params.customClass[className] !== 'string' && !params.customClass[className].forEach) {
-        return warn("Invalid type of customClass.".concat(className, "! Expected string or iterable object, got \"").concat(typeof params.customClass[className], "\""));
-      }
-
-      addClass(elem, params.customClass[className]);
-    }
-  };
-  /**
-   * @param {HTMLElement} popup
-   * @param {string} inputType
-   * @returns {HTMLInputElement | null}
-   */
-
-  const getInput = (popup, inputType) => {
-    if (!inputType) {
-      return null;
-    }
-
-    switch (inputType) {
-      case 'select':
-      case 'textarea':
-      case 'file':
-        return popup.querySelector(".".concat(swalClasses.popup, " > .").concat(swalClasses[inputType]));
-
-      case 'checkbox':
-        return popup.querySelector(".".concat(swalClasses.popup, " > .").concat(swalClasses.checkbox, " input"));
-
-      case 'radio':
-        return popup.querySelector(".".concat(swalClasses.popup, " > .").concat(swalClasses.radio, " input:checked")) || popup.querySelector(".".concat(swalClasses.popup, " > .").concat(swalClasses.radio, " input:first-child"));
-
-      case 'range':
-        return popup.querySelector(".".concat(swalClasses.popup, " > .").concat(swalClasses.range, " input"));
-
-      default:
-        return popup.querySelector(".".concat(swalClasses.popup, " > .").concat(swalClasses.input));
-    }
-  };
-  /**
-   * @param {HTMLInputElement} input
-   */
-
-  const focusInput = input => {
-    input.focus(); // place cursor at end of text in text input
-
-    if (input.type !== 'file') {
-      // http://stackoverflow.com/a/2345915
-      const val = input.value;
-      input.value = '';
-      input.value = val;
-    }
-  };
-  /**
-   * @param {HTMLElement | HTMLElement[] | null} target
-   * @param {string | string[]} classList
-   * @param {boolean} condition
-   */
-
-  const toggleClass = (target, classList, condition) => {
-    if (!target || !classList) {
-      return;
-    }
-
-    if (typeof classList === 'string') {
-      classList = classList.split(/\s+/).filter(Boolean);
-    }
-
-    classList.forEach(className => {
-      if (Array.isArray(target)) {
-        target.forEach(elem => {
-          condition ? elem.classList.add(className) : elem.classList.remove(className);
-        });
-      } else {
-        condition ? target.classList.add(className) : target.classList.remove(className);
-      }
-    });
-  };
-  /**
-   * @param {HTMLElement | HTMLElement[] | null} target
-   * @param {string | string[]} classList
-   */
-
-  const addClass = (target, classList) => {
-    toggleClass(target, classList, true);
-  };
-  /**
-   * @param {HTMLElement | HTMLElement[] | null} target
-   * @param {string | string[]} classList
-   */
-
-  const removeClass = (target, classList) => {
-    toggleClass(target, classList, false);
-  };
-  /**
-   * Get direct child of an element by class name
-   *
-   * @param {HTMLElement} elem
-   * @param {string} className
-   * @returns {HTMLElement | null}
-   */
-
-  const getDirectChildByClass = (elem, className) => {
-    const childNodes = toArray(elem.childNodes);
-
-    for (let i = 0; i < childNodes.length; i++) {
-      if (hasClass(childNodes[i], className)) {
-        return childNodes[i];
-      }
-    }
-  };
-  /**
-   * @param {HTMLElement} elem
-   * @param {string} property
-   * @param {*} value
-   */
-
-  const applyNumericalStyle = (elem, property, value) => {
-    if (value === "".concat(parseInt(value))) {
-      value = parseInt(value);
-    }
-
-    if (value || parseInt(value) === 0) {
-      elem.style[property] = typeof value === 'number' ? "".concat(value, "px") : value;
-    } else {
-      elem.style.removeProperty(property);
-    }
-  };
-  /**
-   * @param {HTMLElement} elem
-   * @param {string} display
-   */
-
-  const show = function (elem) {
-    let display = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'flex';
-    elem.style.display = display;
-  };
-  /**
-   * @param {HTMLElement} elem
-   */
-
-  const hide = elem => {
-    elem.style.display = 'none';
-  };
-  const setStyle = (parent, selector, property, value) => {
-    const el = parent.querySelector(selector);
-
-    if (el) {
-      el.style[property] = value;
-    }
-  };
-  const toggle = (elem, condition, display) => {
-    condition ? show(elem, display) : hide(elem);
-  }; // borrowed from jquery $(elem).is(':visible') implementation
-
-  const isVisible = elem => !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length));
-  const allButtonsAreHidden = () => !isVisible(getConfirmButton()) && !isVisible(getDenyButton()) && !isVisible(getCancelButton());
-  const isScrollable = elem => !!(elem.scrollHeight > elem.clientHeight); // borrowed from https://stackoverflow.com/a/46352119
-
-  const hasCssAnimation = elem => {
-    const style = window.getComputedStyle(elem);
-    const animDuration = parseFloat(style.getPropertyValue('animation-duration') || '0');
-    const transDuration = parseFloat(style.getPropertyValue('transition-duration') || '0');
-    return animDuration > 0 || transDuration > 0;
-  };
-  const animateTimerProgressBar = function (timer) {
-    let reset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-    const timerProgressBar = getTimerProgressBar();
-
-    if (isVisible(timerProgressBar)) {
-      if (reset) {
-        timerProgressBar.style.transition = 'none';
-        timerProgressBar.style.width = '100%';
-      }
-
-      setTimeout(() => {
-        timerProgressBar.style.transition = "width ".concat(timer / 1000, "s linear");
-        timerProgressBar.style.width = '0%';
-      }, 10);
-    }
-  };
-  const stopTimerProgressBar = () => {
-    const timerProgressBar = getTimerProgressBar();
-    const timerProgressBarWidth = parseInt(window.getComputedStyle(timerProgressBar).width);
-    timerProgressBar.style.removeProperty('transition');
-    timerProgressBar.style.width = '100%';
-    const timerProgressBarFullWidth = parseInt(window.getComputedStyle(timerProgressBar).width);
-    const timerProgressBarPercent = timerProgressBarWidth / timerProgressBarFullWidth * 100;
-    timerProgressBar.style.removeProperty('transition');
-    timerProgressBar.style.width = "".concat(timerProgressBarPercent, "%");
-  };
-
-  /**
-   * Detect Node env
-   *
-   * @returns {boolean}
-   */
-  const isNodeEnv = () => typeof window === 'undefined' || typeof document === 'undefined';
-
-  const RESTORE_FOCUS_TIMEOUT = 100;
-
-  const globalState = {};
-
-  const focusPreviousActiveElement = () => {
-    if (globalState.previousActiveElement && globalState.previousActiveElement.focus) {
-      globalState.previousActiveElement.focus();
-      globalState.previousActiveElement = null;
-    } else if (document.body) {
-      document.body.focus();
-    }
-  }; // Restore previous active (focused) element
-
-
-  const restoreActiveElement = returnFocus => {
-    return new Promise(resolve => {
-      if (!returnFocus) {
-        return resolve();
-      }
-
-      const x = window.scrollX;
-      const y = window.scrollY;
-      globalState.restoreFocusTimeout = setTimeout(() => {
-        focusPreviousActiveElement();
-        resolve();
-      }, RESTORE_FOCUS_TIMEOUT); // issues/900
-
-      window.scrollTo(x, y);
-    });
-  };
-
-  const sweetHTML = "\n <div aria-labelledby=\"".concat(swalClasses.title, "\" aria-describedby=\"").concat(swalClasses['html-container'], "\" class=\"").concat(swalClasses.popup, "\" tabindex=\"-1\">\n   <button type=\"button\" class=\"").concat(swalClasses.close, "\"></button>\n   <ul class=\"").concat(swalClasses['progress-steps'], "\"></ul>\n   <div class=\"").concat(swalClasses.icon, "\"></div>\n   <img class=\"").concat(swalClasses.image, "\" />\n   <h2 class=\"").concat(swalClasses.title, "\" id=\"").concat(swalClasses.title, "\"></h2>\n   <div class=\"").concat(swalClasses['html-container'], "\" id=\"").concat(swalClasses['html-container'], "\"></div>\n   <input class=\"").concat(swalClasses.input, "\" />\n   <input type=\"file\" class=\"").concat(swalClasses.file, "\" />\n   <div class=\"").concat(swalClasses.range, "\">\n     <input type=\"range\" />\n     <output></output>\n   </div>\n   <select class=\"").concat(swalClasses.select, "\"></select>\n   <div class=\"").concat(swalClasses.radio, "\"></div>\n   <label for=\"").concat(swalClasses.checkbox, "\" class=\"").concat(swalClasses.checkbox, "\">\n     <input type=\"checkbox\" />\n     <span class=\"").concat(swalClasses.label, "\"></span>\n   </label>\n   <textarea class=\"").concat(swalClasses.textarea, "\"></textarea>\n   <div class=\"").concat(swalClasses['validation-message'], "\" id=\"").concat(swalClasses['validation-message'], "\"></div>\n   <div class=\"").concat(swalClasses.actions, "\">\n     <div class=\"").concat(swalClasses.loader, "\"></div>\n     <button type=\"button\" class=\"").concat(swalClasses.confirm, "\"></button>\n     <button type=\"button\" class=\"").concat(swalClasses.deny, "\"></button>\n     <button type=\"button\" class=\"").concat(swalClasses.cancel, "\"></button>\n   </div>\n   <div class=\"").concat(swalClasses.footer, "\"></div>\n   <div class=\"").concat(swalClasses['timer-progress-bar-container'], "\">\n     <div class=\"").concat(swalClasses['timer-progress-bar'], "\"></div>\n   </div>\n </div>\n").replace(/(^|\n)\s*/g, '');
-
-  const resetOldContainer = () => {
-    const oldContainer = getContainer();
-
-    if (!oldContainer) {
-      return false;
-    }
-
-    oldContainer.remove();
-    removeClass([document.documentElement, document.body], [swalClasses['no-backdrop'], swalClasses['toast-shown'], swalClasses['has-column']]);
-    return true;
-  };
-
-  const resetValidationMessage = () => {
-    globalState.currentInstance.resetValidationMessage();
-  };
-
-  const addInputChangeListeners = () => {
-    const popup = getPopup();
-    const input = getDirectChildByClass(popup, swalClasses.input);
-    const file = getDirectChildByClass(popup, swalClasses.file);
-    const range = popup.querySelector(".".concat(swalClasses.range, " input"));
-    const rangeOutput = popup.querySelector(".".concat(swalClasses.range, " output"));
-    const select = getDirectChildByClass(popup, swalClasses.select);
-    const checkbox = popup.querySelector(".".concat(swalClasses.checkbox, " input"));
-    const textarea = getDirectChildByClass(popup, swalClasses.textarea);
-    input.oninput = resetValidationMessage;
-    file.onchange = resetValidationMessage;
-    select.onchange = resetValidationMessage;
-    checkbox.onchange = resetValidationMessage;
-    textarea.oninput = resetValidationMessage;
-
-    range.oninput = () => {
-      resetValidationMessage();
-      rangeOutput.value = range.value;
-    };
-
-    range.onchange = () => {
-      resetValidationMessage();
-      range.nextSibling.value = range.value;
-    };
-  };
-
-  const getTarget = target => typeof target === 'string' ? document.querySelector(target) : target;
-
-  const setupAccessibility = params => {
-    const popup = getPopup();
-    popup.setAttribute('role', params.toast ? 'alert' : 'dialog');
-    popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive');
-
-    if (!params.toast) {
-      popup.setAttribute('aria-modal', 'true');
-    }
-  };
-
-  const setupRTL = targetElement => {
-    if (window.getComputedStyle(targetElement).direction === 'rtl') {
-      addClass(getContainer(), swalClasses.rtl);
-    }
-  };
-  /*
-   * Add modal + backdrop to DOM
-   */
-
-
-  const init = params => {
-    // Clean up the old popup container if it exists
-    const oldContainerExisted = resetOldContainer();
-    /* istanbul ignore if */
-
-    if (isNodeEnv()) {
-      error('SweetAlert2 requires document to initialize');
-      return;
-    }
-
-    const container = document.createElement('div');
-    container.className = swalClasses.container;
-
-    if (oldContainerExisted) {
-      addClass(container, swalClasses['no-transition']);
-    }
-
-    setInnerHtml(container, sweetHTML);
-    const targetElement = getTarget(params.target);
-    targetElement.appendChild(container);
-    setupAccessibility(params);
-    setupRTL(targetElement);
-    addInputChangeListeners();
-  };
-
-  /**
-   * @param {HTMLElement | object | string} param
-   * @param {HTMLElement} target
-   */
-
-  const parseHtmlToContainer = (param, target) => {
-    // DOM element
-    if (param instanceof HTMLElement) {
-      target.appendChild(param);
-    } // Object
-    else if (typeof param === 'object') {
-      handleObject(param, target);
-    } // Plain string
-    else if (param) {
-      setInnerHtml(target, param);
-    }
-  };
-  /**
-   * @param {object} param
-   * @param {HTMLElement} target
-   */
-
-  const handleObject = (param, target) => {
-    // JQuery element(s)
-    if (param.jquery) {
-      handleJqueryElem(target, param);
-    } // For other objects use their string representation
-    else {
-      setInnerHtml(target, param.toString());
-    }
-  };
-
-  const handleJqueryElem = (target, elem) => {
-    target.textContent = '';
-
-    if (0 in elem) {
-      for (let i = 0; (i in elem); i++) {
-        target.appendChild(elem[i].cloneNode(true));
-      }
-    } else {
-      target.appendChild(elem.cloneNode(true));
-    }
-  };
-
-  const animationEndEvent = (() => {
-    // Prevent run in Node env
-
-    /* istanbul ignore if */
-    if (isNodeEnv()) {
-      return false;
-    }
-
-    const testEl = document.createElement('div');
-    const transEndEventNames = {
-      WebkitAnimation: 'webkitAnimationEnd',
-      // Chrome, Safari and Opera
-      animation: 'animationend' // Standard syntax
-
-    };
-
-    for (const i in transEndEventNames) {
-      if (Object.prototype.hasOwnProperty.call(transEndEventNames, i) && typeof testEl.style[i] !== 'undefined') {
-        return transEndEventNames[i];
-      }
-    }
-
+    target.appendChild(style);
+  }
+
+  return style;
+}
+
+function removeStyleElement(style) {
+  // istanbul ignore if
+  if (style.parentNode === null) {
     return false;
-  })();
+  }
 
-  // https://github.com/twbs/bootstrap/blob/master/js/src/modal.js
+  style.parentNode.removeChild(style);
+}
+/* istanbul ignore next  */
 
-  const measureScrollbar = () => {
-    const scrollDiv = document.createElement('div');
-    scrollDiv.className = swalClasses['scrollbar-measure'];
-    document.body.appendChild(scrollDiv);
-    const scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
-    document.body.removeChild(scrollDiv);
-    return scrollbarWidth;
+
+var replaceText = function replaceText() {
+  var textStore = [];
+  return function replace(index, replacement) {
+    textStore[index] = replacement;
+    return textStore.filter(Boolean).join('\n');
   };
+}();
 
-  const renderActions = (instance, params) => {
-    const actions = getActions();
-    const loader = getLoader(); // Actions (buttons) wrapper
+function applyToSingletonTag(style, index, remove, obj) {
+  var css = remove ? '' : obj.media ? "@media ".concat(obj.media, " {").concat(obj.css, "}") : obj.css; // For old IE
 
-    if (!params.showConfirmButton && !params.showDenyButton && !params.showCancelButton) {
-      hide(actions);
+  /* istanbul ignore if  */
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = replaceText(index, css);
+  } else {
+    var cssNode = document.createTextNode(css);
+    var childNodes = style.childNodes;
+
+    if (childNodes[index]) {
+      style.removeChild(childNodes[index]);
+    }
+
+    if (childNodes.length) {
+      style.insertBefore(cssNode, childNodes[index]);
     } else {
-      show(actions);
-    } // Custom class
-
-
-    applyCustomClass(actions, params, 'actions'); // Render all the buttons
-
-    renderButtons(actions, loader, params); // Loader
-
-    setInnerHtml(loader, params.loaderHtml);
-    applyCustomClass(loader, params, 'loader');
-  };
-
-  function renderButtons(actions, loader, params) {
-    const confirmButton = getConfirmButton();
-    const denyButton = getDenyButton();
-    const cancelButton = getCancelButton(); // Render buttons
-
-    renderButton(confirmButton, 'confirm', params);
-    renderButton(denyButton, 'deny', params);
-    renderButton(cancelButton, 'cancel', params);
-    handleButtonsStyling(confirmButton, denyButton, cancelButton, params);
-
-    if (params.reverseButtons) {
-      if (params.toast) {
-        actions.insertBefore(cancelButton, confirmButton);
-        actions.insertBefore(denyButton, confirmButton);
-      } else {
-        actions.insertBefore(cancelButton, loader);
-        actions.insertBefore(denyButton, loader);
-        actions.insertBefore(confirmButton, loader);
-      }
+      style.appendChild(cssNode);
     }
   }
+}
 
-  function handleButtonsStyling(confirmButton, denyButton, cancelButton, params) {
-    if (!params.buttonsStyling) {
-      return removeClass([confirmButton, denyButton, cancelButton], swalClasses.styled);
-    }
+function applyToTag(style, options, obj) {
+  var css = obj.css;
+  var media = obj.media;
+  var sourceMap = obj.sourceMap;
 
-    addClass([confirmButton, denyButton, cancelButton], swalClasses.styled); // Buttons background colors
-
-    if (params.confirmButtonColor) {
-      confirmButton.style.backgroundColor = params.confirmButtonColor;
-      addClass(confirmButton, swalClasses['default-outline']);
-    }
-
-    if (params.denyButtonColor) {
-      denyButton.style.backgroundColor = params.denyButtonColor;
-      addClass(denyButton, swalClasses['default-outline']);
-    }
-
-    if (params.cancelButtonColor) {
-      cancelButton.style.backgroundColor = params.cancelButtonColor;
-      addClass(cancelButton, swalClasses['default-outline']);
-    }
+  if (media) {
+    style.setAttribute('media', media);
+  } else {
+    style.removeAttribute('media');
   }
 
-  function renderButton(button, buttonType, params) {
-    toggle(button, params["show".concat(capitalizeFirstLetter(buttonType), "Button")], 'inline-block');
-    setInnerHtml(button, params["".concat(buttonType, "ButtonText")]); // Set caption text
+  if (sourceMap && typeof btoa !== 'undefined') {
+    css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
+  } // For old IE
 
-    button.setAttribute('aria-label', params["".concat(buttonType, "ButtonAriaLabel")]); // ARIA label
-    // Add buttons custom classes
+  /* istanbul ignore if  */
 
-    button.className = swalClasses[buttonType];
-    applyCustomClass(button, params, "".concat(buttonType, "Button"));
-    addClass(button, params["".concat(buttonType, "ButtonClass")]);
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    while (style.firstChild) {
+      style.removeChild(style.firstChild);
+    }
+
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var singleton = null;
+var singletonCounter = 0;
+
+function addStyle(obj, options) {
+  var style;
+  var update;
+  var remove;
+
+  if (options.singleton) {
+    var styleIndex = singletonCounter++;
+    style = singleton || (singleton = insertStyleElement(options));
+    update = applyToSingletonTag.bind(null, style, styleIndex, false);
+    remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+  } else {
+    style = insertStyleElement(options);
+    update = applyToTag.bind(null, style, options);
+
+    remove = function remove() {
+      removeStyleElement(style);
+    };
   }
 
-  function handleBackdropParam(container, backdrop) {
-    if (typeof backdrop === 'string') {
-      container.style.background = backdrop;
-    } else if (!backdrop) {
-      addClass([document.documentElement, document.body], swalClasses['no-backdrop']);
-    }
-  }
-
-  function handlePositionParam(container, position) {
-    if (position in swalClasses) {
-      addClass(container, swalClasses[position]);
-    } else {
-      warn('The "position" parameter is not valid, defaulting to "center"');
-      addClass(container, swalClasses.center);
-    }
-  }
-
-  function handleGrowParam(container, grow) {
-    if (grow && typeof grow === 'string') {
-      const growClass = "grow-".concat(grow);
-
-      if (growClass in swalClasses) {
-        addClass(container, swalClasses[growClass]);
-      }
-    }
-  }
-
-  const renderContainer = (instance, params) => {
-    const container = getContainer();
-
-    if (!container) {
-      return;
-    }
-
-    handleBackdropParam(container, params.backdrop);
-    handlePositionParam(container, params.position);
-    handleGrowParam(container, params.grow); // Custom class
-
-    applyCustomClass(container, params, 'container');
-  };
-
-  /**
-   * This module contains `WeakMap`s for each effectively-"private  property" that a `Swal` has.
-   * For example, to set the private property "foo" of `this` to "bar", you can `privateProps.foo.set(this, 'bar')`
-   * This is the approach that Babel will probably take to implement private methods/fields
-   *   https://github.com/tc39/proposal-private-methods
-   *   https://github.com/babel/babel/pull/7555
-   * Once we have the changes from that PR in Babel, and our core class fits reasonable in *one module*
-   *   then we can use that language feature.
-   */
-  var privateProps = {
-    awaitingPromise: new WeakMap(),
-    promise: new WeakMap(),
-    innerParams: new WeakMap(),
-    domCache: new WeakMap()
-  };
-
-  const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea'];
-  const renderInput = (instance, params) => {
-    const popup = getPopup();
-    const innerParams = privateProps.innerParams.get(instance);
-    const rerender = !innerParams || params.input !== innerParams.input;
-    inputTypes.forEach(inputType => {
-      const inputClass = swalClasses[inputType];
-      const inputContainer = getDirectChildByClass(popup, inputClass); // set attributes
-
-      setAttributes(inputType, params.inputAttributes); // set class
-
-      inputContainer.className = inputClass;
-
-      if (rerender) {
-        hide(inputContainer);
-      }
-    });
-
-    if (params.input) {
-      if (rerender) {
-        showInput(params);
-      } // set custom class
-
-
-      setCustomClass(params);
-    }
-  };
-
-  const showInput = params => {
-    if (!renderInputType[params.input]) {
-      return error("Unexpected type of input! Expected \"text\", \"email\", \"password\", \"number\", \"tel\", \"select\", \"radio\", \"checkbox\", \"textarea\", \"file\" or \"url\", got \"".concat(params.input, "\""));
-    }
-
-    const inputContainer = getInputContainer(params.input);
-    const input = renderInputType[params.input](inputContainer, params);
-    show(input); // input autofocus
-
-    setTimeout(() => {
-      focusInput(input);
-    });
-  };
-
-  const removeAttributes = input => {
-    for (let i = 0; i < input.attributes.length; i++) {
-      const attrName = input.attributes[i].name;
-
-      if (!['type', 'value', 'style'].includes(attrName)) {
-        input.removeAttribute(attrName);
-      }
-    }
-  };
-
-  const setAttributes = (inputType, inputAttributes) => {
-    const input = getInput(getPopup(), inputType);
-
-    if (!input) {
-      return;
-    }
-
-    removeAttributes(input);
-
-    for (const attr in inputAttributes) {
-      input.setAttribute(attr, inputAttributes[attr]);
-    }
-  };
-
-  const setCustomClass = params => {
-    const inputContainer = getInputContainer(params.input);
-
-    if (params.customClass) {
-      addClass(inputContainer, params.customClass.input);
-    }
-  };
-
-  const setInputPlaceholder = (input, params) => {
-    if (!input.placeholder || params.inputPlaceholder) {
-      input.placeholder = params.inputPlaceholder;
-    }
-  };
-
-  const setInputLabel = (input, prependTo, params) => {
-    if (params.inputLabel) {
-      input.id = swalClasses.input;
-      const label = document.createElement('label');
-      const labelClass = swalClasses['input-label'];
-      label.setAttribute('for', input.id);
-      label.className = labelClass;
-      addClass(label, params.customClass.inputLabel);
-      label.innerText = params.inputLabel;
-      prependTo.insertAdjacentElement('beforebegin', label);
-    }
-  };
-
-  const getInputContainer = inputType => {
-    const inputClass = swalClasses[inputType] ? swalClasses[inputType] : swalClasses.input;
-    return getDirectChildByClass(getPopup(), inputClass);
-  };
-
-  const renderInputType = {};
-
-  renderInputType.text = renderInputType.email = renderInputType.password = renderInputType.number = renderInputType.tel = renderInputType.url = (input, params) => {
-    if (typeof params.inputValue === 'string' || typeof params.inputValue === 'number') {
-      input.value = params.inputValue;
-    } else if (!isPromise(params.inputValue)) {
-      warn("Unexpected type of inputValue! Expected \"string\", \"number\" or \"Promise\", got \"".concat(typeof params.inputValue, "\""));
-    }
-
-    setInputLabel(input, input, params);
-    setInputPlaceholder(input, params);
-    input.type = params.input;
-    return input;
-  };
-
-  renderInputType.file = (input, params) => {
-    setInputLabel(input, input, params);
-    setInputPlaceholder(input, params);
-    return input;
-  };
-
-  renderInputType.range = (range, params) => {
-    const rangeInput = range.querySelector('input');
-    const rangeOutput = range.querySelector('output');
-    rangeInput.value = params.inputValue;
-    rangeInput.type = params.input;
-    rangeOutput.value = params.inputValue;
-    setInputLabel(rangeInput, range, params);
-    return range;
-  };
-
-  renderInputType.select = (select, params) => {
-    select.textContent = '';
-
-    if (params.inputPlaceholder) {
-      const placeholder = document.createElement('option');
-      setInnerHtml(placeholder, params.inputPlaceholder);
-      placeholder.value = '';
-      placeholder.disabled = true;
-      placeholder.selected = true;
-      select.appendChild(placeholder);
-    }
-
-    setInputLabel(select, select, params);
-    return select;
-  };
-
-  renderInputType.radio = radio => {
-    radio.textContent = '';
-    return radio;
-  };
-
-  renderInputType.checkbox = (checkboxContainer, params) => {
-    /** @type {HTMLInputElement} */
-    const checkbox = getInput(getPopup(), 'checkbox');
-    checkbox.value = '1';
-    checkbox.id = swalClasses.checkbox;
-    checkbox.checked = Boolean(params.inputValue);
-    const label = checkboxContainer.querySelector('span');
-    setInnerHtml(label, params.inputPlaceholder);
-    return checkboxContainer;
-  };
-
-  renderInputType.textarea = (textarea, params) => {
-    textarea.value = params.inputValue;
-    setInputPlaceholder(textarea, params);
-    setInputLabel(textarea, textarea, params);
-
-    const getMargin = el => parseInt(window.getComputedStyle(el).marginLeft) + parseInt(window.getComputedStyle(el).marginRight); // https://github.com/sweetalert2/sweetalert2/issues/2291
-
-
-    setTimeout(() => {
-      // https://github.com/sweetalert2/sweetalert2/issues/1699
-      if ('MutationObserver' in window) {
-        const initialPopupWidth = parseInt(window.getComputedStyle(getPopup()).width);
-
-        const textareaResizeHandler = () => {
-          const textareaWidth = textarea.offsetWidth + getMargin(textarea);
-
-          if (textareaWidth > initialPopupWidth) {
-            getPopup().style.width = "".concat(textareaWidth, "px");
-          } else {
-            getPopup().style.width = null;
-          }
-        };
-
-        new MutationObserver(textareaResizeHandler).observe(textarea, {
-          attributes: true,
-          attributeFilter: ['style']
-        });
-      }
-    });
-    return textarea;
-  };
-
-  const renderContent = (instance, params) => {
-    const htmlContainer = getHtmlContainer();
-    applyCustomClass(htmlContainer, params, 'htmlContainer'); // Content as HTML
-
-    if (params.html) {
-      parseHtmlToContainer(params.html, htmlContainer);
-      show(htmlContainer, 'block');
-    } // Content as plain text
-    else if (params.text) {
-      htmlContainer.textContent = params.text;
-      show(htmlContainer, 'block');
-    } // No content
-    else {
-      hide(htmlContainer);
-    }
-
-    renderInput(instance, params);
-  };
-
-  const renderFooter = (instance, params) => {
-    const footer = getFooter();
-    toggle(footer, params.footer);
-
-    if (params.footer) {
-      parseHtmlToContainer(params.footer, footer);
-    } // Custom class
-
-
-    applyCustomClass(footer, params, 'footer');
-  };
-
-  const renderCloseButton = (instance, params) => {
-    const closeButton = getCloseButton();
-    setInnerHtml(closeButton, params.closeButtonHtml); // Custom class
-
-    applyCustomClass(closeButton, params, 'closeButton');
-    toggle(closeButton, params.showCloseButton);
-    closeButton.setAttribute('aria-label', params.closeButtonAriaLabel);
-  };
-
-  const renderIcon = (instance, params) => {
-    const innerParams = privateProps.innerParams.get(instance);
-    const icon = getIcon(); // if the given icon already rendered, apply the styling without re-rendering the icon
-
-    if (innerParams && params.icon === innerParams.icon) {
-      // Custom or default content
-      setContent(icon, params);
-      applyStyles(icon, params);
-      return;
-    }
-
-    if (!params.icon && !params.iconHtml) {
-      return hide(icon);
-    }
-
-    if (params.icon && Object.keys(iconTypes).indexOf(params.icon) === -1) {
-      error("Unknown icon! Expected \"success\", \"error\", \"warning\", \"info\" or \"question\", got \"".concat(params.icon, "\""));
-      return hide(icon);
-    }
-
-    show(icon); // Custom or default content
-
-    setContent(icon, params);
-    applyStyles(icon, params); // Animate icon
-
-    addClass(icon, params.showClass.icon);
-  };
-
-  const applyStyles = (icon, params) => {
-    for (const iconType in iconTypes) {
-      if (params.icon !== iconType) {
-        removeClass(icon, iconTypes[iconType]);
-      }
-    }
-
-    addClass(icon, iconTypes[params.icon]); // Icon color
-
-    setColor(icon, params); // Success icon background color
-
-    adjustSuccessIconBackgroundColor(); // Custom class
-
-    applyCustomClass(icon, params, 'icon');
-  }; // Adjust success icon background color to match the popup background color
-
-
-  const adjustSuccessIconBackgroundColor = () => {
-    const popup = getPopup();
-    const popupBackgroundColor = window.getComputedStyle(popup).getPropertyValue('background-color');
-    const successIconParts = popup.querySelectorAll('[class^=swal2-success-circular-line], .swal2-success-fix');
-
-    for (let i = 0; i < successIconParts.length; i++) {
-      successIconParts[i].style.backgroundColor = popupBackgroundColor;
-    }
-  };
-
-  const successIconHtml = "\n  <div class=\"swal2-success-circular-line-left\"></div>\n  <span class=\"swal2-success-line-tip\"></span> <span class=\"swal2-success-line-long\"></span>\n  <div class=\"swal2-success-ring\"></div> <div class=\"swal2-success-fix\"></div>\n  <div class=\"swal2-success-circular-line-right\"></div>\n";
-  const errorIconHtml = "\n  <span class=\"swal2-x-mark\">\n    <span class=\"swal2-x-mark-line-left\"></span>\n    <span class=\"swal2-x-mark-line-right\"></span>\n  </span>\n";
-
-  const setContent = (icon, params) => {
-    icon.textContent = '';
-
-    if (params.iconHtml) {
-      setInnerHtml(icon, iconContent(params.iconHtml));
-    } else if (params.icon === 'success') {
-      setInnerHtml(icon, successIconHtml);
-    } else if (params.icon === 'error') {
-      setInnerHtml(icon, errorIconHtml);
-    } else {
-      const defaultIconHtml = {
-        question: '?',
-        warning: '!',
-        info: 'i'
-      };
-      setInnerHtml(icon, iconContent(defaultIconHtml[params.icon]));
-    }
-  };
-
-  const setColor = (icon, params) => {
-    if (!params.iconColor) {
-      return;
-    }
-
-    icon.style.color = params.iconColor;
-    icon.style.borderColor = params.iconColor;
-
-    for (const sel of ['.swal2-success-line-tip', '.swal2-success-line-long', '.swal2-x-mark-line-left', '.swal2-x-mark-line-right']) {
-      setStyle(icon, sel, 'backgroundColor', params.iconColor);
-    }
-
-    setStyle(icon, '.swal2-success-ring', 'borderColor', params.iconColor);
-  };
-
-  const iconContent = content => "<div class=\"".concat(swalClasses['icon-content'], "\">").concat(content, "</div>");
-
-  const renderImage = (instance, params) => {
-    const image = getImage();
-
-    if (!params.imageUrl) {
-      return hide(image);
-    }
-
-    show(image, ''); // Src, alt
-
-    image.setAttribute('src', params.imageUrl);
-    image.setAttribute('alt', params.imageAlt); // Width, height
-
-    applyNumericalStyle(image, 'width', params.imageWidth);
-    applyNumericalStyle(image, 'height', params.imageHeight); // Class
-
-    image.className = swalClasses.image;
-    applyCustomClass(image, params, 'image');
-  };
-
-  const createStepElement = step => {
-    const stepEl = document.createElement('li');
-    addClass(stepEl, swalClasses['progress-step']);
-    setInnerHtml(stepEl, step);
-    return stepEl;
-  };
-
-  const createLineElement = params => {
-    const lineEl = document.createElement('li');
-    addClass(lineEl, swalClasses['progress-step-line']);
-
-    if (params.progressStepsDistance) {
-      lineEl.style.width = params.progressStepsDistance;
-    }
-
-    return lineEl;
-  };
-
-  const renderProgressSteps = (instance, params) => {
-    const progressStepsContainer = getProgressSteps();
-
-    if (!params.progressSteps || params.progressSteps.length === 0) {
-      return hide(progressStepsContainer);
-    }
-
-    show(progressStepsContainer);
-    progressStepsContainer.textContent = '';
-
-    if (params.currentProgressStep >= params.progressSteps.length) {
-      warn('Invalid currentProgressStep parameter, it should be less than progressSteps.length ' + '(currentProgressStep like JS arrays starts from 0)');
-    }
-
-    params.progressSteps.forEach((step, index) => {
-      const stepEl = createStepElement(step);
-      progressStepsContainer.appendChild(stepEl);
-
-      if (index === params.currentProgressStep) {
-        addClass(stepEl, swalClasses['active-progress-step']);
-      }
-
-      if (index !== params.progressSteps.length - 1) {
-        const lineEl = createLineElement(params);
-        progressStepsContainer.appendChild(lineEl);
-      }
-    });
-  };
-
-  const renderTitle = (instance, params) => {
-    const title = getTitle();
-    toggle(title, params.title || params.titleText, 'block');
-
-    if (params.title) {
-      parseHtmlToContainer(params.title, title);
-    }
-
-    if (params.titleText) {
-      title.innerText = params.titleText;
-    } // Custom class
-
-
-    applyCustomClass(title, params, 'title');
-  };
-
-  const renderPopup = (instance, params) => {
-    const container = getContainer();
-    const popup = getPopup(); // Width
-    // https://github.com/sweetalert2/sweetalert2/issues/2170
-
-    if (params.toast) {
-      applyNumericalStyle(container, 'width', params.width);
-      popup.style.width = '100%';
-      popup.insertBefore(getLoader(), getIcon());
-    } else {
-      applyNumericalStyle(popup, 'width', params.width);
-    } // Padding
-
-
-    applyNumericalStyle(popup, 'padding', params.padding); // Color
-
-    if (params.color) {
-      popup.style.color = params.color;
-    } // Background
-
-
-    if (params.background) {
-      popup.style.background = params.background;
-    }
-
-    hide(getValidationMessage()); // Classes
-
-    addClasses(popup, params);
-  };
-
-  const addClasses = (popup, params) => {
-    // Default Class + showClass when updating Swal.update({})
-    popup.className = "".concat(swalClasses.popup, " ").concat(isVisible(popup) ? params.showClass.popup : '');
-
-    if (params.toast) {
-      addClass([document.documentElement, document.body], swalClasses['toast-shown']);
-      addClass(popup, swalClasses.toast);
-    } else {
-      addClass(popup, swalClasses.modal);
-    } // Custom class
-
-
-    applyCustomClass(popup, params, 'popup');
-
-    if (typeof params.customClass === 'string') {
-      addClass(popup, params.customClass);
-    } // Icon class (#1842)
-
-
-    if (params.icon) {
-      addClass(popup, swalClasses["icon-".concat(params.icon)]);
-    }
-  };
-
-  const render = (instance, params) => {
-    renderPopup(instance, params);
-    renderContainer(instance, params);
-    renderProgressSteps(instance, params);
-    renderIcon(instance, params);
-    renderImage(instance, params);
-    renderTitle(instance, params);
-    renderCloseButton(instance, params);
-    renderContent(instance, params);
-    renderActions(instance, params);
-    renderFooter(instance, params);
-
-    if (typeof params.didRender === 'function') {
-      params.didRender(getPopup());
-    }
-  };
-
-  const DismissReason = Object.freeze({
-    cancel: 'cancel',
-    backdrop: 'backdrop',
-    close: 'close',
-    esc: 'esc',
-    timer: 'timer'
-  });
-
-  // Adding aria-hidden="true" to elements outside of the active modal dialog ensures that
-  // elements not within the active modal dialog will not be surfaced if a user opens a screen
-  // reader’s list of elements (headings, form controls, landmarks, etc.) in the document.
-
-  const setAriaHidden = () => {
-    const bodyChildren = toArray(document.body.children);
-    bodyChildren.forEach(el => {
-      if (el === getContainer() || el.contains(getContainer())) {
+  update(obj);
+  return function updateStyle(newObj) {
+    if (newObj) {
+      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap) {
         return;
       }
 
-      if (el.hasAttribute('aria-hidden')) {
-        el.setAttribute('data-previous-aria-hidden', el.getAttribute('aria-hidden'));
-      }
-
-      el.setAttribute('aria-hidden', 'true');
-    });
-  };
-  const unsetAriaHidden = () => {
-    const bodyChildren = toArray(document.body.children);
-    bodyChildren.forEach(el => {
-      if (el.hasAttribute('data-previous-aria-hidden')) {
-        el.setAttribute('aria-hidden', el.getAttribute('data-previous-aria-hidden'));
-        el.removeAttribute('data-previous-aria-hidden');
-      } else {
-        el.removeAttribute('aria-hidden');
-      }
-    });
-  };
-
-  const swalStringParams = ['swal-title', 'swal-html', 'swal-footer'];
-  const getTemplateParams = params => {
-    const template = typeof params.template === 'string' ? document.querySelector(params.template) : params.template;
-
-    if (!template) {
-      return {};
-    }
-    /** @type {DocumentFragment} */
-
-
-    const templateContent = template.content;
-    showWarningsForElements(templateContent);
-    const result = Object.assign(getSwalParams(templateContent), getSwalButtons(templateContent), getSwalImage(templateContent), getSwalIcon(templateContent), getSwalInput(templateContent), getSwalStringParams(templateContent, swalStringParams));
-    return result;
-  };
-  /**
-   * @param {DocumentFragment} templateContent
-   */
-
-  const getSwalParams = templateContent => {
-    const result = {};
-    toArray(templateContent.querySelectorAll('swal-param')).forEach(param => {
-      showWarningsForAttributes(param, ['name', 'value']);
-      const paramName = param.getAttribute('name');
-      const value = param.getAttribute('value');
-
-      if (typeof defaultParams[paramName] === 'boolean' && value === 'false') {
-        result[paramName] = false;
-      }
-
-      if (typeof defaultParams[paramName] === 'object') {
-        result[paramName] = JSON.parse(value);
-      }
-    });
-    return result;
-  };
-  /**
-   * @param {DocumentFragment} templateContent
-   */
-
-
-  const getSwalButtons = templateContent => {
-    const result = {};
-    toArray(templateContent.querySelectorAll('swal-button')).forEach(button => {
-      showWarningsForAttributes(button, ['type', 'color', 'aria-label']);
-      const type = button.getAttribute('type');
-      result["".concat(type, "ButtonText")] = button.innerHTML;
-      result["show".concat(capitalizeFirstLetter(type), "Button")] = true;
-
-      if (button.hasAttribute('color')) {
-        result["".concat(type, "ButtonColor")] = button.getAttribute('color');
-      }
-
-      if (button.hasAttribute('aria-label')) {
-        result["".concat(type, "ButtonAriaLabel")] = button.getAttribute('aria-label');
-      }
-    });
-    return result;
-  };
-  /**
-   * @param {DocumentFragment} templateContent
-   */
-
-
-  const getSwalImage = templateContent => {
-    const result = {};
-    /** @type {HTMLElement} */
-
-    const image = templateContent.querySelector('swal-image');
-
-    if (image) {
-      showWarningsForAttributes(image, ['src', 'width', 'height', 'alt']);
-
-      if (image.hasAttribute('src')) {
-        result.imageUrl = image.getAttribute('src');
-      }
-
-      if (image.hasAttribute('width')) {
-        result.imageWidth = image.getAttribute('width');
-      }
-
-      if (image.hasAttribute('height')) {
-        result.imageHeight = image.getAttribute('height');
-      }
-
-      if (image.hasAttribute('alt')) {
-        result.imageAlt = image.getAttribute('alt');
-      }
-    }
-
-    return result;
-  };
-  /**
-   * @param {DocumentFragment} templateContent
-   */
-
-
-  const getSwalIcon = templateContent => {
-    const result = {};
-    /** @type {HTMLElement} */
-
-    const icon = templateContent.querySelector('swal-icon');
-
-    if (icon) {
-      showWarningsForAttributes(icon, ['type', 'color']);
-
-      if (icon.hasAttribute('type')) {
-        result.icon = icon.getAttribute('type');
-      }
-
-      if (icon.hasAttribute('color')) {
-        result.iconColor = icon.getAttribute('color');
-      }
-
-      result.iconHtml = icon.innerHTML;
-    }
-
-    return result;
-  };
-  /**
-   * @param {DocumentFragment} templateContent
-   */
-
-
-  const getSwalInput = templateContent => {
-    const result = {};
-    /** @type {HTMLElement} */
-
-    const input = templateContent.querySelector('swal-input');
-
-    if (input) {
-      showWarningsForAttributes(input, ['type', 'label', 'placeholder', 'value']);
-      result.input = input.getAttribute('type') || 'text';
-
-      if (input.hasAttribute('label')) {
-        result.inputLabel = input.getAttribute('label');
-      }
-
-      if (input.hasAttribute('placeholder')) {
-        result.inputPlaceholder = input.getAttribute('placeholder');
-      }
-
-      if (input.hasAttribute('value')) {
-        result.inputValue = input.getAttribute('value');
-      }
-    }
-
-    const inputOptions = templateContent.querySelectorAll('swal-input-option');
-
-    if (inputOptions.length) {
-      result.inputOptions = {};
-      toArray(inputOptions).forEach(option => {
-        showWarningsForAttributes(option, ['value']);
-        const optionValue = option.getAttribute('value');
-        const optionName = option.innerHTML;
-        result.inputOptions[optionValue] = optionName;
-      });
-    }
-
-    return result;
-  };
-  /**
-   * @param {DocumentFragment} templateContent
-   * @param {string[]} paramNames
-   */
-
-
-  const getSwalStringParams = (templateContent, paramNames) => {
-    const result = {};
-
-    for (const i in paramNames) {
-      const paramName = paramNames[i];
-      /** @type {HTMLElement} */
-
-      const tag = templateContent.querySelector(paramName);
-
-      if (tag) {
-        showWarningsForAttributes(tag, []);
-        result[paramName.replace(/^swal-/, '')] = tag.innerHTML.trim();
-      }
-    }
-
-    return result;
-  };
-  /**
-   * @param {DocumentFragment} templateContent
-   */
-
-
-  const showWarningsForElements = templateContent => {
-    const allowedElements = swalStringParams.concat(['swal-param', 'swal-button', 'swal-image', 'swal-icon', 'swal-input', 'swal-input-option']);
-    toArray(templateContent.children).forEach(el => {
-      const tagName = el.tagName.toLowerCase();
-
-      if (allowedElements.indexOf(tagName) === -1) {
-        warn("Unrecognized element <".concat(tagName, ">"));
-      }
-    });
-  };
-  /**
-   * @param {HTMLElement} el
-   * @param {string[]} allowedAttributes
-   */
-
-
-  const showWarningsForAttributes = (el, allowedAttributes) => {
-    toArray(el.attributes).forEach(attribute => {
-      if (allowedAttributes.indexOf(attribute.name) === -1) {
-        warn(["Unrecognized attribute \"".concat(attribute.name, "\" on <").concat(el.tagName.toLowerCase(), ">."), "".concat(allowedAttributes.length ? "Allowed attributes are: ".concat(allowedAttributes.join(', ')) : 'To set the value, use HTML within the element.')]);
-      }
-    });
-  };
-
-  var defaultInputValidators = {
-    email: (string, validationMessage) => {
-      return /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(string) ? Promise.resolve() : Promise.resolve(validationMessage || 'Invalid email address');
-    },
-    url: (string, validationMessage) => {
-      // taken from https://stackoverflow.com/a/3809435 with a small change from #1306 and #2013
-      return /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-z]{2,63}\b([-a-zA-Z0-9@:%_+.~#?&/=]*)$/.test(string) ? Promise.resolve() : Promise.resolve(validationMessage || 'Invalid URL');
+      update(obj = newObj);
+    } else {
+      remove();
     }
   };
+}
 
-  function setDefaultInputValidators(params) {
-    // Use default `inputValidator` for supported input types if not provided
-    if (!params.inputValidator) {
-      Object.keys(defaultInputValidators).forEach(key => {
-        if (params.input === key) {
-          params.inputValidator = defaultInputValidators[key];
-        }
-      });
-    }
+module.exports = function (list, options) {
+  options = options || {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+  // tags it will allow on a page
+
+  if (!options.singleton && typeof options.singleton !== 'boolean') {
+    options.singleton = isOldIE();
   }
 
-  function validateCustomTargetElement(params) {
-    // Determine if the custom target element is valid
-    if (!params.target || typeof params.target === 'string' && !document.querySelector(params.target) || typeof params.target !== 'string' && !params.target.appendChild) {
-      warn('Target parameter is not valid, defaulting to "body"');
-      params.target = 'body';
-    }
-  }
-  /**
-   * Set type, text and actions on popup
-   *
-   * @param params
-   */
+  list = list || [];
+  var lastIdentifiers = modulesToDom(list, options);
+  return function update(newList) {
+    newList = newList || [];
 
-
-  function setParameters(params) {
-    setDefaultInputValidators(params); // showLoaderOnConfirm && preConfirm
-
-    if (params.showLoaderOnConfirm && !params.preConfirm) {
-      warn('showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' + 'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' + 'https://sweetalert2.github.io/#ajax-request');
-    }
-
-    validateCustomTargetElement(params); // Replace newlines with <br> in title
-
-    if (typeof params.title === 'string') {
-      params.title = params.title.split('\n').join('<br />');
-    }
-
-    init(params);
-  }
-
-  class Timer {
-    constructor(callback, delay) {
-      this.callback = callback;
-      this.remaining = delay;
-      this.running = false;
-      this.start();
-    }
-
-    start() {
-      if (!this.running) {
-        this.running = true;
-        this.started = new Date();
-        this.id = setTimeout(this.callback, this.remaining);
-      }
-
-      return this.remaining;
-    }
-
-    stop() {
-      if (this.running) {
-        this.running = false;
-        clearTimeout(this.id);
-        this.remaining -= new Date().getTime() - this.started.getTime();
-      }
-
-      return this.remaining;
-    }
-
-    increase(n) {
-      const running = this.running;
-
-      if (running) {
-        this.stop();
-      }
-
-      this.remaining += n;
-
-      if (running) {
-        this.start();
-      }
-
-      return this.remaining;
-    }
-
-    getTimerLeft() {
-      if (this.running) {
-        this.stop();
-        this.start();
-      }
-
-      return this.remaining;
-    }
-
-    isRunning() {
-      return this.running;
-    }
-
-  }
-
-  const fixScrollbar = () => {
-    // for queues, do not do this more than once
-    if (states.previousBodyPadding !== null) {
-      return;
-    } // if the body has overflow
-
-
-    if (document.body.scrollHeight > window.innerHeight) {
-      // add padding so the content doesn't shift after removal of scrollbar
-      states.previousBodyPadding = parseInt(window.getComputedStyle(document.body).getPropertyValue('padding-right'));
-      document.body.style.paddingRight = "".concat(states.previousBodyPadding + measureScrollbar(), "px");
-    }
-  };
-  const undoScrollbar = () => {
-    if (states.previousBodyPadding !== null) {
-      document.body.style.paddingRight = "".concat(states.previousBodyPadding, "px");
-      states.previousBodyPadding = null;
-    }
-  };
-
-  /* istanbul ignore file */
-
-  const iOSfix = () => {
-    const iOS = // @ts-ignore
-    /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream || navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
-
-    if (iOS && !hasClass(document.body, swalClasses.iosfix)) {
-      const offset = document.body.scrollTop;
-      document.body.style.top = "".concat(offset * -1, "px");
-      addClass(document.body, swalClasses.iosfix);
-      lockBodyScroll();
-      addBottomPaddingForTallPopups();
-    }
-  };
-  /**
-   * https://github.com/sweetalert2/sweetalert2/issues/1948
-   */
-
-  const addBottomPaddingForTallPopups = () => {
-    const ua = navigator.userAgent;
-    const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
-    const webkit = !!ua.match(/WebKit/i);
-    const iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
-
-    if (iOSSafari) {
-      const bottomPanelHeight = 44;
-
-      if (getPopup().scrollHeight > window.innerHeight - bottomPanelHeight) {
-        getContainer().style.paddingBottom = "".concat(bottomPanelHeight, "px");
-      }
-    }
-  };
-  /**
-   * https://github.com/sweetalert2/sweetalert2/issues/1246
-   */
-
-
-  const lockBodyScroll = () => {
-    const container = getContainer();
-    let preventTouchMove;
-
-    container.ontouchstart = e => {
-      preventTouchMove = shouldPreventTouchMove(e);
-    };
-
-    container.ontouchmove = e => {
-      if (preventTouchMove) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    };
-  };
-
-  const shouldPreventTouchMove = event => {
-    const target = event.target;
-    const container = getContainer();
-
-    if (isStylus(event) || isZoom(event)) {
-      return false;
-    }
-
-    if (target === container) {
-      return true;
-    }
-
-    if (!isScrollable(container) && target.tagName !== 'INPUT' && // #1603
-    target.tagName !== 'TEXTAREA' && // #2266
-    !(isScrollable(getHtmlContainer()) && // #1944
-    getHtmlContainer().contains(target))) {
-      return true;
-    }
-
-    return false;
-  };
-  /**
-   * https://github.com/sweetalert2/sweetalert2/issues/1786
-   *
-   * @param {*} event
-   * @returns {boolean}
-   */
-
-
-  const isStylus = event => {
-    return event.touches && event.touches.length && event.touches[0].touchType === 'stylus';
-  };
-  /**
-   * https://github.com/sweetalert2/sweetalert2/issues/1891
-   *
-   * @param {TouchEvent} event
-   * @returns {boolean}
-   */
-
-
-  const isZoom = event => {
-    return event.touches && event.touches.length > 1;
-  };
-
-  const undoIOSfix = () => {
-    if (hasClass(document.body, swalClasses.iosfix)) {
-      const offset = parseInt(document.body.style.top, 10);
-      removeClass(document.body, swalClasses.iosfix);
-      document.body.style.top = '';
-      document.body.scrollTop = offset * -1;
-    }
-  };
-
-  const SHOW_CLASS_TIMEOUT = 10;
-  /**
-   * Open popup, add necessary classes and styles, fix scrollbar
-   *
-   * @param params
-   */
-
-  const openPopup = params => {
-    const container = getContainer();
-    const popup = getPopup();
-
-    if (typeof params.willOpen === 'function') {
-      params.willOpen(popup);
-    }
-
-    const bodyStyles = window.getComputedStyle(document.body);
-    const initialBodyOverflow = bodyStyles.overflowY;
-    addClasses$1(container, popup, params); // scrolling is 'hidden' until animation is done, after that 'auto'
-
-    setTimeout(() => {
-      setScrollingVisibility(container, popup);
-    }, SHOW_CLASS_TIMEOUT);
-
-    if (isModal()) {
-      fixScrollContainer(container, params.scrollbarPadding, initialBodyOverflow);
-      setAriaHidden();
-    }
-
-    if (!isToast() && !globalState.previousActiveElement) {
-      globalState.previousActiveElement = document.activeElement;
-    }
-
-    if (typeof params.didOpen === 'function') {
-      setTimeout(() => params.didOpen(popup));
-    }
-
-    removeClass(container, swalClasses['no-transition']);
-  };
-
-  const swalOpenAnimationFinished = event => {
-    const popup = getPopup();
-
-    if (event.target !== popup) {
+    if (Object.prototype.toString.call(newList) !== '[object Array]') {
       return;
     }
 
-    const container = getContainer();
-    popup.removeEventListener(animationEndEvent, swalOpenAnimationFinished);
-    container.style.overflowY = 'auto';
-  };
-
-  const setScrollingVisibility = (container, popup) => {
-    if (animationEndEvent && hasCssAnimation(popup)) {
-      container.style.overflowY = 'hidden';
-      popup.addEventListener(animationEndEvent, swalOpenAnimationFinished);
-    } else {
-      container.style.overflowY = 'auto';
-    }
-  };
-
-  const fixScrollContainer = (container, scrollbarPadding, initialBodyOverflow) => {
-    iOSfix();
-
-    if (scrollbarPadding && initialBodyOverflow !== 'hidden') {
-      fixScrollbar();
-    } // sweetalert2/issues/1247
-
-
-    setTimeout(() => {
-      container.scrollTop = 0;
-    });
-  };
-
-  const addClasses$1 = (container, popup, params) => {
-    addClass(container, params.showClass.backdrop); // this workaround with opacity is needed for https://github.com/sweetalert2/sweetalert2/issues/2059
-
-    popup.style.setProperty('opacity', '0', 'important');
-    show(popup, 'grid');
-    setTimeout(() => {
-      // Animate popup right after showing it
-      addClass(popup, params.showClass.popup); // and remove the opacity workaround
-
-      popup.style.removeProperty('opacity');
-    }, SHOW_CLASS_TIMEOUT); // 10ms in order to fix #2062
-
-    addClass([document.documentElement, document.body], swalClasses.shown);
-
-    if (params.heightAuto && params.backdrop && !params.toast) {
-      addClass([document.documentElement, document.body], swalClasses['height-auto']);
-    }
-  };
-
-  /**
-   * Shows loader (spinner), this is useful with AJAX requests.
-   * By default the loader be shown instead of the "Confirm" button.
-   */
-
-  const showLoading = buttonToReplace => {
-    let popup = getPopup();
-
-    if (!popup) {
-      new Swal(); // eslint-disable-line no-new
+    for (var i = 0; i < lastIdentifiers.length; i++) {
+      var identifier = lastIdentifiers[i];
+      var index = getIndexByIdentifier(identifier);
+      stylesInDom[index].references--;
     }
 
-    popup = getPopup();
-    const loader = getLoader();
+    var newLastIdentifiers = modulesToDom(newList, options);
 
-    if (isToast()) {
-      hide(getIcon());
-    } else {
-      replaceButton(popup, buttonToReplace);
-    }
+    for (var _i = 0; _i < lastIdentifiers.length; _i++) {
+      var _identifier = lastIdentifiers[_i];
 
-    show(loader);
-    popup.setAttribute('data-loading', true);
-    popup.setAttribute('aria-busy', true);
-    popup.focus();
-  };
+      var _index = getIndexByIdentifier(_identifier);
 
-  const replaceButton = (popup, buttonToReplace) => {
-    const actions = getActions();
-    const loader = getLoader();
+      if (stylesInDom[_index].references === 0) {
+        stylesInDom[_index].updater();
 
-    if (!buttonToReplace && isVisible(getConfirmButton())) {
-      buttonToReplace = getConfirmButton();
-    }
-
-    show(actions);
-
-    if (buttonToReplace) {
-      hide(buttonToReplace);
-      loader.setAttribute('data-button-to-replace', buttonToReplace.className);
-    }
-
-    loader.parentNode.insertBefore(loader, buttonToReplace);
-    addClass([popup, actions], swalClasses.loading);
-  };
-
-  const handleInputOptionsAndValue = (instance, params) => {
-    if (params.input === 'select' || params.input === 'radio') {
-      handleInputOptions(instance, params);
-    } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) && (hasToPromiseFn(params.inputValue) || isPromise(params.inputValue))) {
-      showLoading(getConfirmButton());
-      handleInputValue(instance, params);
-    }
-  };
-  const getInputValue = (instance, innerParams) => {
-    const input = instance.getInput();
-
-    if (!input) {
-      return null;
-    }
-
-    switch (innerParams.input) {
-      case 'checkbox':
-        return getCheckboxValue(input);
-
-      case 'radio':
-        return getRadioValue(input);
-
-      case 'file':
-        return getFileValue(input);
-
-      default:
-        return innerParams.inputAutoTrim ? input.value.trim() : input.value;
-    }
-  };
-
-  const getCheckboxValue = input => input.checked ? 1 : 0;
-
-  const getRadioValue = input => input.checked ? input.value : null;
-
-  const getFileValue = input => input.files.length ? input.getAttribute('multiple') !== null ? input.files : input.files[0] : null;
-
-  const handleInputOptions = (instance, params) => {
-    const popup = getPopup();
-
-    const processInputOptions = inputOptions => populateInputOptions[params.input](popup, formatInputOptions(inputOptions), params);
-
-    if (hasToPromiseFn(params.inputOptions) || isPromise(params.inputOptions)) {
-      showLoading(getConfirmButton());
-      asPromise(params.inputOptions).then(inputOptions => {
-        instance.hideLoading();
-        processInputOptions(inputOptions);
-      });
-    } else if (typeof params.inputOptions === 'object') {
-      processInputOptions(params.inputOptions);
-    } else {
-      error("Unexpected type of inputOptions! Expected object, Map or Promise, got ".concat(typeof params.inputOptions));
-    }
-  };
-
-  const handleInputValue = (instance, params) => {
-    const input = instance.getInput();
-    hide(input);
-    asPromise(params.inputValue).then(inputValue => {
-      input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : "".concat(inputValue);
-      show(input);
-      input.focus();
-      instance.hideLoading();
-    }).catch(err => {
-      error("Error in inputValue promise: ".concat(err));
-      input.value = '';
-      show(input);
-      input.focus();
-      instance.hideLoading();
-    });
-  };
-
-  const populateInputOptions = {
-    select: (popup, inputOptions, params) => {
-      const select = getDirectChildByClass(popup, swalClasses.select);
-
-      const renderOption = (parent, optionLabel, optionValue) => {
-        const option = document.createElement('option');
-        option.value = optionValue;
-        setInnerHtml(option, optionLabel);
-        option.selected = isSelected(optionValue, params.inputValue);
-        parent.appendChild(option);
-      };
-
-      inputOptions.forEach(inputOption => {
-        const optionValue = inputOption[0];
-        const optionLabel = inputOption[1]; // <optgroup> spec:
-        // https://www.w3.org/TR/html401/interact/forms.html#h-17.6
-        // "...all OPTGROUP elements must be specified directly within a SELECT element (i.e., groups may not be nested)..."
-        // check whether this is a <optgroup>
-
-        if (Array.isArray(optionLabel)) {
-          // if it is an array, then it is an <optgroup>
-          const optgroup = document.createElement('optgroup');
-          optgroup.label = optionValue;
-          optgroup.disabled = false; // not configurable for now
-
-          select.appendChild(optgroup);
-          optionLabel.forEach(o => renderOption(optgroup, o[1], o[0]));
-        } else {
-          // case of <option>
-          renderOption(select, optionLabel, optionValue);
-        }
-      });
-      select.focus();
-    },
-    radio: (popup, inputOptions, params) => {
-      const radio = getDirectChildByClass(popup, swalClasses.radio);
-      inputOptions.forEach(inputOption => {
-        const radioValue = inputOption[0];
-        const radioLabel = inputOption[1];
-        const radioInput = document.createElement('input');
-        const radioLabelElement = document.createElement('label');
-        radioInput.type = 'radio';
-        radioInput.name = swalClasses.radio;
-        radioInput.value = radioValue;
-
-        if (isSelected(radioValue, params.inputValue)) {
-          radioInput.checked = true;
-        }
-
-        const label = document.createElement('span');
-        setInnerHtml(label, radioLabel);
-        label.className = swalClasses.label;
-        radioLabelElement.appendChild(radioInput);
-        radioLabelElement.appendChild(label);
-        radio.appendChild(radioLabelElement);
-      });
-      const radios = radio.querySelectorAll('input');
-
-      if (radios.length) {
-        radios[0].focus();
+        stylesInDom.splice(_index, 1);
       }
     }
+
+    lastIdentifiers = newLastIdentifiers;
   };
-  /**
-   * Converts `inputOptions` into an array of `[value, label]`s
-   * @param inputOptions
-   */
-
-  const formatInputOptions = inputOptions => {
-    const result = [];
-
-    if (typeof Map !== 'undefined' && inputOptions instanceof Map) {
-      inputOptions.forEach((value, key) => {
-        let valueFormatted = value;
-
-        if (typeof valueFormatted === 'object') {
-          // case of <optgroup>
-          valueFormatted = formatInputOptions(valueFormatted);
-        }
-
-        result.push([key, valueFormatted]);
-      });
-    } else {
-      Object.keys(inputOptions).forEach(key => {
-        let valueFormatted = inputOptions[key];
-
-        if (typeof valueFormatted === 'object') {
-          // case of <optgroup>
-          valueFormatted = formatInputOptions(valueFormatted);
-        }
-
-        result.push([key, valueFormatted]);
-      });
-    }
-
-    return result;
-  };
-
-  const isSelected = (optionValue, inputValue) => {
-    return inputValue && inputValue.toString() === optionValue.toString();
-  };
-
-  const handleConfirmButtonClick = instance => {
-    const innerParams = privateProps.innerParams.get(instance);
-    instance.disableButtons();
-
-    if (innerParams.input) {
-      handleConfirmOrDenyWithInput(instance, 'confirm');
-    } else {
-      confirm(instance, true);
-    }
-  };
-  const handleDenyButtonClick = instance => {
-    const innerParams = privateProps.innerParams.get(instance);
-    instance.disableButtons();
-
-    if (innerParams.returnInputValueOnDeny) {
-      handleConfirmOrDenyWithInput(instance, 'deny');
-    } else {
-      deny(instance, false);
-    }
-  };
-  const handleCancelButtonClick = (instance, dismissWith) => {
-    instance.disableButtons();
-    dismissWith(DismissReason.cancel);
-  };
-
-  const handleConfirmOrDenyWithInput = (instance, type
-  /* 'confirm' | 'deny' */
-  ) => {
-    const innerParams = privateProps.innerParams.get(instance);
-
-    if (!innerParams.input) {
-      return error("The \"input\" parameter is needed to be set when using returnInputValueOn".concat(capitalizeFirstLetter(type)));
-    }
-
-    const inputValue = getInputValue(instance, innerParams);
-
-    if (innerParams.inputValidator) {
-      handleInputValidator(instance, inputValue, type);
-    } else if (!instance.getInput().checkValidity()) {
-      instance.enableButtons();
-      instance.showValidationMessage(innerParams.validationMessage);
-    } else if (type === 'deny') {
-      deny(instance, inputValue);
-    } else {
-      confirm(instance, inputValue);
-    }
-  };
-
-  const handleInputValidator = (instance, inputValue, type
-  /* 'confirm' | 'deny' */
-  ) => {
-    const innerParams = privateProps.innerParams.get(instance);
-    instance.disableInput();
-    const validationPromise = Promise.resolve().then(() => asPromise(innerParams.inputValidator(inputValue, innerParams.validationMessage)));
-    validationPromise.then(validationMessage => {
-      instance.enableButtons();
-      instance.enableInput();
-
-      if (validationMessage) {
-        instance.showValidationMessage(validationMessage);
-      } else if (type === 'deny') {
-        deny(instance, inputValue);
-      } else {
-        confirm(instance, inputValue);
-      }
-    });
-  };
-
-  const deny = (instance, value) => {
-    const innerParams = privateProps.innerParams.get(instance || undefined);
-
-    if (innerParams.showLoaderOnDeny) {
-      showLoading(getDenyButton());
-    }
-
-    if (innerParams.preDeny) {
-      privateProps.awaitingPromise.set(instance || undefined, true); // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preDeny's promise is received
-
-      const preDenyPromise = Promise.resolve().then(() => asPromise(innerParams.preDeny(value, innerParams.validationMessage)));
-      preDenyPromise.then(preDenyValue => {
-        if (preDenyValue === false) {
-          instance.hideLoading();
-        } else {
-          instance.closePopup({
-            isDenied: true,
-            value: typeof preDenyValue === 'undefined' ? value : preDenyValue
-          });
-        }
-      }).catch(error$$1 => rejectWith(instance || undefined, error$$1));
-    } else {
-      instance.closePopup({
-        isDenied: true,
-        value
-      });
-    }
-  };
-
-  const succeedWith = (instance, value) => {
-    instance.closePopup({
-      isConfirmed: true,
-      value
-    });
-  };
-
-  const rejectWith = (instance, error$$1) => {
-    instance.rejectPromise(error$$1);
-  };
-
-  const confirm = (instance, value) => {
-    const innerParams = privateProps.innerParams.get(instance || undefined);
-
-    if (innerParams.showLoaderOnConfirm) {
-      showLoading();
-    }
-
-    if (innerParams.preConfirm) {
-      instance.resetValidationMessage();
-      privateProps.awaitingPromise.set(instance || undefined, true); // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preConfirm's promise is received
-
-      const preConfirmPromise = Promise.resolve().then(() => asPromise(innerParams.preConfirm(value, innerParams.validationMessage)));
-      preConfirmPromise.then(preConfirmValue => {
-        if (isVisible(getValidationMessage()) || preConfirmValue === false) {
-          instance.hideLoading();
-        } else {
-          succeedWith(instance, typeof preConfirmValue === 'undefined' ? value : preConfirmValue);
-        }
-      }).catch(error$$1 => rejectWith(instance || undefined, error$$1));
-    } else {
-      succeedWith(instance, value);
-    }
-  };
-
-  const handlePopupClick = (instance, domCache, dismissWith) => {
-    const innerParams = privateProps.innerParams.get(instance);
-
-    if (innerParams.toast) {
-      handleToastClick(instance, domCache, dismissWith);
-    } else {
-      // Ignore click events that had mousedown on the popup but mouseup on the container
-      // This can happen when the user drags a slider
-      handleModalMousedown(domCache); // Ignore click events that had mousedown on the container but mouseup on the popup
-
-      handleContainerMousedown(domCache);
-      handleModalClick(instance, domCache, dismissWith);
-    }
-  };
-
-  const handleToastClick = (instance, domCache, dismissWith) => {
-    // Closing toast by internal click
-    domCache.popup.onclick = () => {
-      const innerParams = privateProps.innerParams.get(instance);
-
-      if (innerParams && (isAnyButtonShown(innerParams) || innerParams.timer || innerParams.input)) {
-        return;
-      }
-
-      dismissWith(DismissReason.close);
-    };
-  };
-  /**
-   * @param {*} innerParams
-   * @returns {boolean}
-   */
-
-
-  const isAnyButtonShown = innerParams => {
-    return innerParams.showConfirmButton || innerParams.showDenyButton || innerParams.showCancelButton || innerParams.showCloseButton;
-  };
-
-  let ignoreOutsideClick = false;
-
-  const handleModalMousedown = domCache => {
-    domCache.popup.onmousedown = () => {
-      domCache.container.onmouseup = function (e) {
-        domCache.container.onmouseup = undefined; // We only check if the mouseup target is the container because usually it doesn't
-        // have any other direct children aside of the popup
-
-        if (e.target === domCache.container) {
-          ignoreOutsideClick = true;
-        }
-      };
-    };
-  };
-
-  const handleContainerMousedown = domCache => {
-    domCache.container.onmousedown = () => {
-      domCache.popup.onmouseup = function (e) {
-        domCache.popup.onmouseup = undefined; // We also need to check if the mouseup target is a child of the popup
-
-        if (e.target === domCache.popup || domCache.popup.contains(e.target)) {
-          ignoreOutsideClick = true;
-        }
-      };
-    };
-  };
-
-  const handleModalClick = (instance, domCache, dismissWith) => {
-    domCache.container.onclick = e => {
-      const innerParams = privateProps.innerParams.get(instance);
-
-      if (ignoreOutsideClick) {
-        ignoreOutsideClick = false;
-        return;
-      }
-
-      if (e.target === domCache.container && callIfFunction(innerParams.allowOutsideClick)) {
-        dismissWith(DismissReason.backdrop);
-      }
-    };
-  };
-
-  /*
-   * Global function to determine if SweetAlert2 popup is shown
-   */
-
-  const isVisible$1 = () => {
-    return isVisible(getPopup());
-  };
-  /*
-   * Global function to click 'Confirm' button
-   */
-
-  const clickConfirm = () => getConfirmButton() && getConfirmButton().click();
-  /*
-   * Global function to click 'Deny' button
-   */
-
-  const clickDeny = () => getDenyButton() && getDenyButton().click();
-  /*
-   * Global function to click 'Cancel' button
-   */
-
-  const clickCancel = () => getCancelButton() && getCancelButton().click();
-
-  const addKeydownHandler = (instance, globalState, innerParams, dismissWith) => {
-    if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
-      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
-        capture: globalState.keydownListenerCapture
-      });
-      globalState.keydownHandlerAdded = false;
-    }
-
-    if (!innerParams.toast) {
-      globalState.keydownHandler = e => keydownHandler(instance, e, dismissWith);
-
-      globalState.keydownTarget = innerParams.keydownListenerCapture ? window : getPopup();
-      globalState.keydownListenerCapture = innerParams.keydownListenerCapture;
-      globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, {
-        capture: globalState.keydownListenerCapture
-      });
-      globalState.keydownHandlerAdded = true;
-    }
-  }; // Focus handling
-
-  const setFocus = (innerParams, index, increment) => {
-    const focusableElements = getFocusableElements(); // search for visible elements and select the next possible match
-
-    if (focusableElements.length) {
-      index = index + increment; // rollover to first item
-
-      if (index === focusableElements.length) {
-        index = 0; // go to last item
-      } else if (index === -1) {
-        index = focusableElements.length - 1;
-      }
-
-      return focusableElements[index].focus();
-    } // no visible focusable elements, focus the popup
-
-
-    getPopup().focus();
-  };
-  const arrowKeysNextButton = ['ArrowRight', 'ArrowDown'];
-  const arrowKeysPreviousButton = ['ArrowLeft', 'ArrowUp'];
-
-  const keydownHandler = (instance, e, dismissWith) => {
-    const innerParams = privateProps.innerParams.get(instance);
-
-    if (!innerParams) {
-      return; // This instance has already been destroyed
-    }
-
-    if (innerParams.stopKeydownPropagation) {
-      e.stopPropagation();
-    } // ENTER
-
-
-    if (e.key === 'Enter') {
-      handleEnter(instance, e, innerParams);
-    } // TAB
-    else if (e.key === 'Tab') {
-      handleTab(e, innerParams);
-    } // ARROWS - switch focus between buttons
-    else if ([...arrowKeysNextButton, ...arrowKeysPreviousButton].includes(e.key)) {
-      handleArrows(e.key);
-    } // ESC
-    else if (e.key === 'Escape') {
-      handleEsc(e, innerParams, dismissWith);
-    }
-  };
-
-  const handleEnter = (instance, e, innerParams) => {
-    // #2386 #720 #721
-    if (!callIfFunction(innerParams.allowEnterKey) || e.isComposing) {
-      return;
-    }
-
-    if (e.target && instance.getInput() && e.target.outerHTML === instance.getInput().outerHTML) {
-      if (['textarea', 'file'].includes(innerParams.input)) {
-        return; // do not submit
-      }
-
-      clickConfirm();
-      e.preventDefault();
-    }
-  };
-
-  const handleTab = (e, innerParams) => {
-    const targetElement = e.target;
-    const focusableElements = getFocusableElements();
-    let btnIndex = -1;
-
-    for (let i = 0; i < focusableElements.length; i++) {
-      if (targetElement === focusableElements[i]) {
-        btnIndex = i;
-        break;
-      }
-    } // Cycle to the next button
-
-
-    if (!e.shiftKey) {
-      setFocus(innerParams, btnIndex, 1);
-    } // Cycle to the prev button
-    else {
-      setFocus(innerParams, btnIndex, -1);
-    }
-
-    e.stopPropagation();
-    e.preventDefault();
-  };
-
-  const handleArrows = key => {
-    const confirmButton = getConfirmButton();
-    const denyButton = getDenyButton();
-    const cancelButton = getCancelButton();
-
-    if (![confirmButton, denyButton, cancelButton].includes(document.activeElement)) {
-      return;
-    }
-
-    const sibling = arrowKeysNextButton.includes(key) ? 'nextElementSibling' : 'previousElementSibling';
-    const buttonToFocus = document.activeElement[sibling];
-
-    if (buttonToFocus instanceof HTMLElement) {
-      buttonToFocus.focus();
-    }
-  };
-
-  const handleEsc = (e, innerParams, dismissWith) => {
-    if (callIfFunction(innerParams.allowEscapeKey)) {
-      e.preventDefault();
-      dismissWith(DismissReason.esc);
-    }
-  };
-
-  const isJqueryElement = elem => typeof elem === 'object' && elem.jquery;
-
-  const isElement = elem => elem instanceof Element || isJqueryElement(elem);
-
-  const argsToParams = args => {
-    const params = {};
-
-    if (typeof args[0] === 'object' && !isElement(args[0])) {
-      Object.assign(params, args[0]);
-    } else {
-      ['title', 'html', 'icon'].forEach((name, index) => {
-        const arg = args[index];
-
-        if (typeof arg === 'string' || isElement(arg)) {
-          params[name] = arg;
-        } else if (arg !== undefined) {
-          error("Unexpected type of ".concat(name, "! Expected \"string\" or \"Element\", got ").concat(typeof arg));
-        }
-      });
-    }
-
-    return params;
-  };
-
-  function fire() {
-    const Swal = this; // eslint-disable-line @typescript-eslint/no-this-alias
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return new Swal(...args);
-  }
-
-  /**
-   * Returns an extended version of `Swal` containing `params` as defaults.
-   * Useful for reusing Swal configuration.
-   *
-   * For example:
-   *
-   * Before:
-   * const textPromptOptions = { input: 'text', showCancelButton: true }
-   * const {value: firstName} = await Swal.fire({ ...textPromptOptions, title: 'What is your first name?' })
-   * const {value: lastName} = await Swal.fire({ ...textPromptOptions, title: 'What is your last name?' })
-   *
-   * After:
-   * const TextPrompt = Swal.mixin({ input: 'text', showCancelButton: true })
-   * const {value: firstName} = await TextPrompt('What is your first name?')
-   * const {value: lastName} = await TextPrompt('What is your last name?')
-   *
-   * @param mixinParams
-   */
-  function mixin(mixinParams) {
-    class MixinSwal extends this {
-      _main(params, priorityMixinParams) {
-        return super._main(params, Object.assign({}, mixinParams, priorityMixinParams));
-      }
-
-    }
-
-    return MixinSwal;
-  }
-
-  /**
-   * If `timer` parameter is set, returns number of milliseconds of timer remained.
-   * Otherwise, returns undefined.
-   */
-
-  const getTimerLeft = () => {
-    return globalState.timeout && globalState.timeout.getTimerLeft();
-  };
-  /**
-   * Stop timer. Returns number of milliseconds of timer remained.
-   * If `timer` parameter isn't set, returns undefined.
-   */
-
-  const stopTimer = () => {
-    if (globalState.timeout) {
-      stopTimerProgressBar();
-      return globalState.timeout.stop();
-    }
-  };
-  /**
-   * Resume timer. Returns number of milliseconds of timer remained.
-   * If `timer` parameter isn't set, returns undefined.
-   */
-
-  const resumeTimer = () => {
-    if (globalState.timeout) {
-      const remaining = globalState.timeout.start();
-      animateTimerProgressBar(remaining);
-      return remaining;
-    }
-  };
-  /**
-   * Resume timer. Returns number of milliseconds of timer remained.
-   * If `timer` parameter isn't set, returns undefined.
-   */
-
-  const toggleTimer = () => {
-    const timer = globalState.timeout;
-    return timer && (timer.running ? stopTimer() : resumeTimer());
-  };
-  /**
-   * Increase timer. Returns number of milliseconds of an updated timer.
-   * If `timer` parameter isn't set, returns undefined.
-   */
-
-  const increaseTimer = n => {
-    if (globalState.timeout) {
-      const remaining = globalState.timeout.increase(n);
-      animateTimerProgressBar(remaining, true);
-      return remaining;
-    }
-  };
-  /**
-   * Check if timer is running. Returns true if timer is running
-   * or false if timer is paused or stopped.
-   * If `timer` parameter isn't set, returns undefined
-   */
-
-  const isTimerRunning = () => {
-    return globalState.timeout && globalState.timeout.isRunning();
-  };
-
-  let bodyClickListenerAdded = false;
-  const clickHandlers = {};
-  function bindClickHandler() {
-    let attr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'data-swal-template';
-    clickHandlers[attr] = this;
-
-    if (!bodyClickListenerAdded) {
-      document.body.addEventListener('click', bodyClickListener);
-      bodyClickListenerAdded = true;
-    }
-  }
-
-  const bodyClickListener = event => {
-    for (let el = event.target; el && el !== document; el = el.parentNode) {
-      for (const attr in clickHandlers) {
-        const template = el.getAttribute(attr);
-
-        if (template) {
-          clickHandlers[attr].fire({
-            template
-          });
-          return;
-        }
-      }
-    }
-  };
-
-
-
-  var staticMethods = /*#__PURE__*/Object.freeze({
-    isValidParameter: isValidParameter,
-    isUpdatableParameter: isUpdatableParameter,
-    isDeprecatedParameter: isDeprecatedParameter,
-    argsToParams: argsToParams,
-    isVisible: isVisible$1,
-    clickConfirm: clickConfirm,
-    clickDeny: clickDeny,
-    clickCancel: clickCancel,
-    getContainer: getContainer,
-    getPopup: getPopup,
-    getTitle: getTitle,
-    getHtmlContainer: getHtmlContainer,
-    getImage: getImage,
-    getIcon: getIcon,
-    getInputLabel: getInputLabel,
-    getCloseButton: getCloseButton,
-    getActions: getActions,
-    getConfirmButton: getConfirmButton,
-    getDenyButton: getDenyButton,
-    getCancelButton: getCancelButton,
-    getLoader: getLoader,
-    getFooter: getFooter,
-    getTimerProgressBar: getTimerProgressBar,
-    getFocusableElements: getFocusableElements,
-    getValidationMessage: getValidationMessage,
-    isLoading: isLoading,
-    fire: fire,
-    mixin: mixin,
-    showLoading: showLoading,
-    enableLoading: showLoading,
-    getTimerLeft: getTimerLeft,
-    stopTimer: stopTimer,
-    resumeTimer: resumeTimer,
-    toggleTimer: toggleTimer,
-    increaseTimer: increaseTimer,
-    isTimerRunning: isTimerRunning,
-    bindClickHandler: bindClickHandler
-  });
-
-  /**
-   * Hides loader and shows back the button which was hidden by .showLoading()
-   */
-
-  function hideLoading() {
-    // do nothing if popup is closed
-    const innerParams = privateProps.innerParams.get(this);
-
-    if (!innerParams) {
-      return;
-    }
-
-    const domCache = privateProps.domCache.get(this);
-    hide(domCache.loader);
-
-    if (isToast()) {
-      if (innerParams.icon) {
-        show(getIcon());
-      }
-    } else {
-      showRelatedButton(domCache);
-    }
-
-    removeClass([domCache.popup, domCache.actions], swalClasses.loading);
-    domCache.popup.removeAttribute('aria-busy');
-    domCache.popup.removeAttribute('data-loading');
-    domCache.confirmButton.disabled = false;
-    domCache.denyButton.disabled = false;
-    domCache.cancelButton.disabled = false;
-  }
-
-  const showRelatedButton = domCache => {
-    const buttonToReplace = domCache.popup.getElementsByClassName(domCache.loader.getAttribute('data-button-to-replace'));
-
-    if (buttonToReplace.length) {
-      show(buttonToReplace[0], 'inline-block');
-    } else if (allButtonsAreHidden()) {
-      hide(domCache.actions);
-    }
-  };
-
-  /**
-   * Gets the input DOM node, this method works with input parameter.
-   * @returns {HTMLElement | null}
-   */
-
-  function getInput$1(instance) {
-    const innerParams = privateProps.innerParams.get(instance || this);
-    const domCache = privateProps.domCache.get(instance || this);
-
-    if (!domCache) {
-      return null;
-    }
-
-    return getInput(domCache.popup, innerParams.input);
-  }
-
-  /**
-   * This module contains `WeakMap`s for each effectively-"private  property" that a `Swal` has.
-   * For example, to set the private property "foo" of `this` to "bar", you can `privateProps.foo.set(this, 'bar')`
-   * This is the approach that Babel will probably take to implement private methods/fields
-   *   https://github.com/tc39/proposal-private-methods
-   *   https://github.com/babel/babel/pull/7555
-   * Once we have the changes from that PR in Babel, and our core class fits reasonable in *one module*
-   *   then we can use that language feature.
-   */
-  var privateMethods = {
-    swalPromiseResolve: new WeakMap(),
-    swalPromiseReject: new WeakMap()
-  };
-
-  /*
-   * Instance method to close sweetAlert
-   */
-
-  function removePopupAndResetState(instance, container, returnFocus, didClose) {
-    if (isToast()) {
-      triggerDidCloseAndDispose(instance, didClose);
-    } else {
-      restoreActiveElement(returnFocus).then(() => triggerDidCloseAndDispose(instance, didClose));
-      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
-        capture: globalState.keydownListenerCapture
-      });
-      globalState.keydownHandlerAdded = false;
-    }
-
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent); // workaround for #2088
-    // for some reason removing the container in Safari will scroll the document to bottom
-
-    if (isSafari) {
-      container.setAttribute('style', 'display:none !important');
-      container.removeAttribute('class');
-      container.innerHTML = '';
-    } else {
-      container.remove();
-    }
-
-    if (isModal()) {
-      undoScrollbar();
-      undoIOSfix();
-      unsetAriaHidden();
-    }
-
-    removeBodyClasses();
-  }
-
-  function removeBodyClasses() {
-    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['height-auto'], swalClasses['no-backdrop'], swalClasses['toast-shown']]);
-  }
-
-  function close(resolveValue) {
-    resolveValue = prepareResolveValue(resolveValue);
-    const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this);
-    const didClose = triggerClosePopup(this);
-
-    if (this.isAwaitingPromise()) {
-      // A swal awaiting for a promise (after a click on Confirm or Deny) cannot be dismissed anymore #2335
-      if (!resolveValue.isDismissed) {
-        handleAwaitingPromise(this);
-        swalPromiseResolve(resolveValue);
-      }
-    } else if (didClose) {
-      // Resolve Swal promise
-      swalPromiseResolve(resolveValue);
-    }
-  }
-  function isAwaitingPromise() {
-    return !!privateProps.awaitingPromise.get(this);
-  }
-
-  const triggerClosePopup = instance => {
-    const popup = getPopup();
-
-    if (!popup) {
-      return false;
-    }
-
-    const innerParams = privateProps.innerParams.get(instance);
-
-    if (!innerParams || hasClass(popup, innerParams.hideClass.popup)) {
-      return false;
-    }
-
-    removeClass(popup, innerParams.showClass.popup);
-    addClass(popup, innerParams.hideClass.popup);
-    const backdrop = getContainer();
-    removeClass(backdrop, innerParams.showClass.backdrop);
-    addClass(backdrop, innerParams.hideClass.backdrop);
-    handlePopupAnimation(instance, popup, innerParams);
-    return true;
-  };
-
-  function rejectPromise(error) {
-    const rejectPromise = privateMethods.swalPromiseReject.get(this);
-    handleAwaitingPromise(this);
-
-    if (rejectPromise) {
-      // Reject Swal promise
-      rejectPromise(error);
-    }
-  }
-
-  const handleAwaitingPromise = instance => {
-    if (instance.isAwaitingPromise()) {
-      privateProps.awaitingPromise.delete(instance); // The instance might have been previously partly destroyed, we must resume the destroy process in this case #2335
-
-      if (!privateProps.innerParams.get(instance)) {
-        instance._destroy();
-      }
-    }
-  };
-
-  const prepareResolveValue = resolveValue => {
-    // When user calls Swal.close()
-    if (typeof resolveValue === 'undefined') {
-      return {
-        isConfirmed: false,
-        isDenied: false,
-        isDismissed: true
-      };
-    }
-
-    return Object.assign({
-      isConfirmed: false,
-      isDenied: false,
-      isDismissed: false
-    }, resolveValue);
-  };
-
-  const handlePopupAnimation = (instance, popup, innerParams) => {
-    const container = getContainer(); // If animation is supported, animate
-
-    const animationIsSupported = animationEndEvent && hasCssAnimation(popup);
-
-    if (typeof innerParams.willClose === 'function') {
-      innerParams.willClose(popup);
-    }
-
-    if (animationIsSupported) {
-      animatePopup(instance, popup, container, innerParams.returnFocus, innerParams.didClose);
-    } else {
-      // Otherwise, remove immediately
-      removePopupAndResetState(instance, container, innerParams.returnFocus, innerParams.didClose);
-    }
-  };
-
-  const animatePopup = (instance, popup, container, returnFocus, didClose) => {
-    globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(null, instance, container, returnFocus, didClose);
-    popup.addEventListener(animationEndEvent, function (e) {
-      if (e.target === popup) {
-        globalState.swalCloseEventFinishedCallback();
-        delete globalState.swalCloseEventFinishedCallback;
-      }
-    });
-  };
-
-  const triggerDidCloseAndDispose = (instance, didClose) => {
-    setTimeout(() => {
-      if (typeof didClose === 'function') {
-        didClose.bind(instance.params)();
-      }
-
-      instance._destroy();
-    });
-  };
-
-  function setButtonsDisabled(instance, buttons, disabled) {
-    const domCache = privateProps.domCache.get(instance);
-    buttons.forEach(button => {
-      domCache[button].disabled = disabled;
-    });
-  }
-
-  function setInputDisabled(input, disabled) {
-    if (!input) {
-      return false;
-    }
-
-    if (input.type === 'radio') {
-      const radiosContainer = input.parentNode.parentNode;
-      const radios = radiosContainer.querySelectorAll('input');
-
-      for (let i = 0; i < radios.length; i++) {
-        radios[i].disabled = disabled;
-      }
-    } else {
-      input.disabled = disabled;
-    }
-  }
-
-  function enableButtons() {
-    setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], false);
-  }
-  function disableButtons() {
-    setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], true);
-  }
-  function enableInput() {
-    return setInputDisabled(this.getInput(), false);
-  }
-  function disableInput() {
-    return setInputDisabled(this.getInput(), true);
-  }
-
-  function showValidationMessage(error) {
-    const domCache = privateProps.domCache.get(this);
-    const params = privateProps.innerParams.get(this);
-    setInnerHtml(domCache.validationMessage, error);
-    domCache.validationMessage.className = swalClasses['validation-message'];
-
-    if (params.customClass && params.customClass.validationMessage) {
-      addClass(domCache.validationMessage, params.customClass.validationMessage);
-    }
-
-    show(domCache.validationMessage);
-    const input = this.getInput();
-
-    if (input) {
-      input.setAttribute('aria-invalid', true);
-      input.setAttribute('aria-describedby', swalClasses['validation-message']);
-      focusInput(input);
-      addClass(input, swalClasses.inputerror);
-    }
-  } // Hide block with validation message
-
-  function resetValidationMessage$1() {
-    const domCache = privateProps.domCache.get(this);
-
-    if (domCache.validationMessage) {
-      hide(domCache.validationMessage);
-    }
-
-    const input = this.getInput();
-
-    if (input) {
-      input.removeAttribute('aria-invalid');
-      input.removeAttribute('aria-describedby');
-      removeClass(input, swalClasses.inputerror);
-    }
-  }
-
-  function getProgressSteps$1() {
-    const domCache = privateProps.domCache.get(this);
-    return domCache.progressSteps;
-  }
-
-  /**
-   * Updates popup parameters.
-   */
-
-  function update(params) {
-    const popup = getPopup();
-    const innerParams = privateProps.innerParams.get(this);
-
-    if (!popup || hasClass(popup, innerParams.hideClass.popup)) {
-      return warn("You're trying to update the closed or closing popup, that won't work. Use the update() method in preConfirm parameter or show a new popup.");
-    }
-
-    const validUpdatableParams = filterValidParams(params);
-    const updatedParams = Object.assign({}, innerParams, validUpdatableParams);
-    render(this, updatedParams);
-    privateProps.innerParams.set(this, updatedParams);
-    Object.defineProperties(this, {
-      params: {
-        value: Object.assign({}, this.params, params),
-        writable: false,
-        enumerable: true
-      }
-    });
-  }
-
-  const filterValidParams = params => {
-    const validUpdatableParams = {};
-    Object.keys(params).forEach(param => {
-      if (isUpdatableParameter(param)) {
-        validUpdatableParams[param] = params[param];
-      } else {
-        warn("Invalid parameter to update: \"".concat(param, "\". Updatable params are listed here: https://github.com/sweetalert2/sweetalert2/blob/master/src/utils/params.js\n\nIf you think this parameter should be updatable, request it here: https://github.com/sweetalert2/sweetalert2/issues/new?template=02_feature_request.md"));
-      }
-    });
-    return validUpdatableParams;
-  };
-
-  function _destroy() {
-    const domCache = privateProps.domCache.get(this);
-    const innerParams = privateProps.innerParams.get(this);
-
-    if (!innerParams) {
-      disposeWeakMaps(this); // The WeakMaps might have been partly destroyed, we must recall it to dispose any remaining WeakMaps #2335
-
-      return; // This instance has already been destroyed
-    } // Check if there is another Swal closing
-
-
-    if (domCache.popup && globalState.swalCloseEventFinishedCallback) {
-      globalState.swalCloseEventFinishedCallback();
-      delete globalState.swalCloseEventFinishedCallback;
-    } // Check if there is a swal disposal defer timer
-
-
-    if (globalState.deferDisposalTimer) {
-      clearTimeout(globalState.deferDisposalTimer);
-      delete globalState.deferDisposalTimer;
-    }
-
-    if (typeof innerParams.didDestroy === 'function') {
-      innerParams.didDestroy();
-    }
-
-    disposeSwal(this);
-  }
-
-  const disposeSwal = instance => {
-    disposeWeakMaps(instance); // Unset this.params so GC will dispose it (#1569)
-
-    delete instance.params; // Unset globalState props so GC will dispose globalState (#1569)
-
-    delete globalState.keydownHandler;
-    delete globalState.keydownTarget; // Unset currentInstance
-
-    delete globalState.currentInstance;
-  };
-
-  const disposeWeakMaps = instance => {
-    // If the current instance is awaiting a promise result, we keep the privateMethods to call them once the promise result is retrieved #2335
-    if (instance.isAwaitingPromise()) {
-      unsetWeakMaps(privateProps, instance);
-      privateProps.awaitingPromise.set(instance, true);
-    } else {
-      unsetWeakMaps(privateMethods, instance);
-      unsetWeakMaps(privateProps, instance);
-    }
-  };
-
-  const unsetWeakMaps = (obj, instance) => {
-    for (const i in obj) {
-      obj[i].delete(instance);
-    }
-  };
-
-
-
-  var instanceMethods = /*#__PURE__*/Object.freeze({
-    hideLoading: hideLoading,
-    disableLoading: hideLoading,
-    getInput: getInput$1,
-    close: close,
-    isAwaitingPromise: isAwaitingPromise,
-    rejectPromise: rejectPromise,
-    closePopup: close,
-    closeModal: close,
-    closeToast: close,
-    enableButtons: enableButtons,
-    disableButtons: disableButtons,
-    enableInput: enableInput,
-    disableInput: disableInput,
-    showValidationMessage: showValidationMessage,
-    resetValidationMessage: resetValidationMessage$1,
-    getProgressSteps: getProgressSteps$1,
-    update: update,
-    _destroy: _destroy
-  });
-
-  let currentInstance;
-
-  class SweetAlert {
-    constructor() {
-      // Prevent run in Node env
-      if (typeof window === 'undefined') {
-        return;
-      }
-
-      currentInstance = this; // @ts-ignore
-
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      const outerParams = Object.freeze(this.constructor.argsToParams(args));
-      Object.defineProperties(this, {
-        params: {
-          value: outerParams,
-          writable: false,
-          enumerable: true,
-          configurable: true
-        }
-      }); // @ts-ignore
-
-      const promise = this._main(this.params);
-
-      privateProps.promise.set(this, promise);
-    }
-
-    _main(userParams) {
-      let mixinParams = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      showWarningsForParams(Object.assign({}, mixinParams, userParams));
-
-      if (globalState.currentInstance) {
-        globalState.currentInstance._destroy();
-
-        if (isModal()) {
-          unsetAriaHidden();
-        }
-      }
-
-      globalState.currentInstance = this;
-      const innerParams = prepareParams(userParams, mixinParams);
-      setParameters(innerParams);
-      Object.freeze(innerParams); // clear the previous timer
-
-      if (globalState.timeout) {
-        globalState.timeout.stop();
-        delete globalState.timeout;
-      } // clear the restore focus timeout
-
-
-      clearTimeout(globalState.restoreFocusTimeout);
-      const domCache = populateDomCache(this);
-      render(this, innerParams);
-      privateProps.innerParams.set(this, innerParams);
-      return swalPromise(this, domCache, innerParams);
-    } // `catch` cannot be the name of a module export, so we define our thenable methods here instead
-
-
-    then(onFulfilled) {
-      const promise = privateProps.promise.get(this);
-      return promise.then(onFulfilled);
-    }
-
-    finally(onFinally) {
-      const promise = privateProps.promise.get(this);
-      return promise.finally(onFinally);
-    }
-
-  }
-
-  const swalPromise = (instance, domCache, innerParams) => {
-    return new Promise((resolve, reject) => {
-      // functions to handle all closings/dismissals
-      const dismissWith = dismiss => {
-        instance.closePopup({
-          isDismissed: true,
-          dismiss
-        });
-      };
-
-      privateMethods.swalPromiseResolve.set(instance, resolve);
-      privateMethods.swalPromiseReject.set(instance, reject);
-
-      domCache.confirmButton.onclick = () => handleConfirmButtonClick(instance);
-
-      domCache.denyButton.onclick = () => handleDenyButtonClick(instance);
-
-      domCache.cancelButton.onclick = () => handleCancelButtonClick(instance, dismissWith);
-
-      domCache.closeButton.onclick = () => dismissWith(DismissReason.close);
-
-      handlePopupClick(instance, domCache, dismissWith);
-      addKeydownHandler(instance, globalState, innerParams, dismissWith);
-      handleInputOptionsAndValue(instance, innerParams);
-      openPopup(innerParams);
-      setupTimer(globalState, innerParams, dismissWith);
-      initFocus(domCache, innerParams); // Scroll container to top on open (#1247, #1946)
-
-      setTimeout(() => {
-        domCache.container.scrollTop = 0;
-      });
-    });
-  };
-
-  const prepareParams = (userParams, mixinParams) => {
-    const templateParams = getTemplateParams(userParams);
-    const params = Object.assign({}, defaultParams, mixinParams, templateParams, userParams); // precedence is described in #2131
-
-    params.showClass = Object.assign({}, defaultParams.showClass, params.showClass);
-    params.hideClass = Object.assign({}, defaultParams.hideClass, params.hideClass);
-    return params;
-  };
-
-  const populateDomCache = instance => {
-    const domCache = {
-      popup: getPopup(),
-      container: getContainer(),
-      actions: getActions(),
-      confirmButton: getConfirmButton(),
-      denyButton: getDenyButton(),
-      cancelButton: getCancelButton(),
-      loader: getLoader(),
-      closeButton: getCloseButton(),
-      validationMessage: getValidationMessage(),
-      progressSteps: getProgressSteps()
-    };
-    privateProps.domCache.set(instance, domCache);
-    return domCache;
-  };
-
-  const setupTimer = (globalState$$1, innerParams, dismissWith) => {
-    const timerProgressBar = getTimerProgressBar();
-    hide(timerProgressBar);
-
-    if (innerParams.timer) {
-      globalState$$1.timeout = new Timer(() => {
-        dismissWith('timer');
-        delete globalState$$1.timeout;
-      }, innerParams.timer);
-
-      if (innerParams.timerProgressBar) {
-        show(timerProgressBar);
-        applyCustomClass(timerProgressBar, innerParams, 'timerProgressBar');
-        setTimeout(() => {
-          if (globalState$$1.timeout && globalState$$1.timeout.running) {
-            // timer can be already stopped or unset at this point
-            animateTimerProgressBar(innerParams.timer);
-          }
-        });
-      }
-    }
-  };
-
-  const initFocus = (domCache, innerParams) => {
-    if (innerParams.toast) {
-      return;
-    }
-
-    if (!callIfFunction(innerParams.allowEnterKey)) {
-      return blurActiveElement();
-    }
-
-    if (!focusButton(domCache, innerParams)) {
-      setFocus(innerParams, -1, 1);
-    }
-  };
-
-  const focusButton = (domCache, innerParams) => {
-    if (innerParams.focusDeny && isVisible(domCache.denyButton)) {
-      domCache.denyButton.focus();
-      return true;
-    }
-
-    if (innerParams.focusCancel && isVisible(domCache.cancelButton)) {
-      domCache.cancelButton.focus();
-      return true;
-    }
-
-    if (innerParams.focusConfirm && isVisible(domCache.confirmButton)) {
-      domCache.confirmButton.focus();
-      return true;
-    }
-
-    return false;
-  };
-
-  const blurActiveElement = () => {
-    if (document.activeElement instanceof HTMLElement && typeof document.activeElement.blur === 'function') {
-      document.activeElement.blur();
-    }
-  }; // Assign instance methods from src/instanceMethods/*.js to prototype
-
-
-  Object.assign(SweetAlert.prototype, instanceMethods); // Assign static methods from src/staticMethods/*.js to constructor
-
-  Object.assign(SweetAlert, staticMethods); // Proxy to instance methods to constructor, for now, for backwards compatibility
-
-  Object.keys(instanceMethods).forEach(key => {
-    SweetAlert[key] = function () {
-      if (currentInstance) {
-        return currentInstance[key](...arguments);
-      }
-    };
-  });
-  SweetAlert.DismissReason = DismissReason;
-  SweetAlert.version = '11.4.0';
-
-  const Swal = SweetAlert; // @ts-ignore
-
-  Swal.default = Swal;
-
-  return Swal;
-
-}));
-if (typeof this !== 'undefined' && this.Sweetalert2){  this.swal = this.sweetAlert = this.Swal = this.SweetAlert = this.Sweetalert2}
-
-"undefined"!=typeof document&&function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,".swal2-popup.swal2-toast{box-sizing:border-box;grid-column:1/4!important;grid-row:1/4!important;grid-template-columns:1fr 99fr 1fr;padding:1em;overflow-y:hidden;background:#fff;box-shadow:0 0 1px rgba(0,0,0,.075),0 1px 2px rgba(0,0,0,.075),1px 2px 4px rgba(0,0,0,.075),1px 3px 8px rgba(0,0,0,.075),2px 4px 16px rgba(0,0,0,.075);pointer-events:all}.swal2-popup.swal2-toast>*{grid-column:2}.swal2-popup.swal2-toast .swal2-title{margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-popup.swal2-toast .swal2-loading{justify-content:center}.swal2-popup.swal2-toast .swal2-input{height:2em;margin:.5em;font-size:1em}.swal2-popup.swal2-toast .swal2-validation-message{font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{grid-column:3/3;grid-row:1/99;align-self:center;width:.8em;height:.8em;margin:0;font-size:2em}.swal2-popup.swal2-toast .swal2-html-container{margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-popup.swal2-toast .swal2-html-container:empty{padding:0}.swal2-popup.swal2-toast .swal2-loader{grid-column:1;grid-row:1/99;align-self:center;width:2em;height:2em;margin:.25em}.swal2-popup.swal2-toast .swal2-icon{grid-column:1;grid-row:1/99;align-self:center;width:2em;min-width:2em;height:2em;margin:0 .5em 0 0}.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:700}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{justify-content:flex-start;height:auto;margin:0;margin-top:.5em;padding:0 .5em}.swal2-popup.swal2-toast .swal2-styled{margin:.25em .5em;padding:.4em .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.8em;left:-.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-toast-animate-success-line-tip .75s;animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-toast-animate-success-line-long .75s;animation:swal2-toast-animate-success-line-long .75s}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:swal2-toast-show .5s;animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:swal2-toast-hide .1s forwards;animation:swal2-toast-hide .1s forwards}.swal2-container{display:grid;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;box-sizing:border-box;grid-template-areas:\"top-start     top            top-end\" \"center-start  center         center-end\" \"bottom-start  bottom-center  bottom-end\";grid-template-rows:minmax(-webkit-min-content,auto) minmax(-webkit-min-content,auto) minmax(-webkit-min-content,auto);grid-template-rows:minmax(min-content,auto) minmax(min-content,auto) minmax(min-content,auto);height:100%;padding:.625em;overflow-x:hidden;transition:background-color .1s;-webkit-overflow-scrolling:touch}.swal2-container.swal2-backdrop-show,.swal2-container.swal2-noanimation{background:rgba(0,0,0,.4)}.swal2-container.swal2-backdrop-hide{background:0 0!important}.swal2-container.swal2-bottom-start,.swal2-container.swal2-center-start,.swal2-container.swal2-top-start{grid-template-columns:minmax(0,1fr) auto auto}.swal2-container.swal2-bottom,.swal2-container.swal2-center,.swal2-container.swal2-top{grid-template-columns:auto minmax(0,1fr) auto}.swal2-container.swal2-bottom-end,.swal2-container.swal2-center-end,.swal2-container.swal2-top-end{grid-template-columns:auto auto minmax(0,1fr)}.swal2-container.swal2-top-start>.swal2-popup{align-self:start}.swal2-container.swal2-top>.swal2-popup{grid-column:2;align-self:start;justify-self:center}.swal2-container.swal2-top-end>.swal2-popup,.swal2-container.swal2-top-right>.swal2-popup{grid-column:3;align-self:start;justify-self:end}.swal2-container.swal2-center-left>.swal2-popup,.swal2-container.swal2-center-start>.swal2-popup{grid-row:2;align-self:center}.swal2-container.swal2-center>.swal2-popup{grid-column:2;grid-row:2;align-self:center;justify-self:center}.swal2-container.swal2-center-end>.swal2-popup,.swal2-container.swal2-center-right>.swal2-popup{grid-column:3;grid-row:2;align-self:center;justify-self:end}.swal2-container.swal2-bottom-left>.swal2-popup,.swal2-container.swal2-bottom-start>.swal2-popup{grid-column:1;grid-row:3;align-self:end}.swal2-container.swal2-bottom>.swal2-popup{grid-column:2;grid-row:3;justify-self:center;align-self:end}.swal2-container.swal2-bottom-end>.swal2-popup,.swal2-container.swal2-bottom-right>.swal2-popup{grid-column:3;grid-row:3;align-self:end;justify-self:end}.swal2-container.swal2-grow-fullscreen>.swal2-popup,.swal2-container.swal2-grow-row>.swal2-popup{grid-column:1/4;width:100%}.swal2-container.swal2-grow-column>.swal2-popup,.swal2-container.swal2-grow-fullscreen>.swal2-popup{grid-row:1/4;align-self:stretch}.swal2-container.swal2-no-transition{transition:none!important}.swal2-popup{display:none;position:relative;box-sizing:border-box;grid-template-columns:minmax(0,100%);width:32em;max-width:100%;padding:0 0 1.25em;border:none;border-radius:5px;background:#fff;color:#545454;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-title{position:relative;max-width:100%;margin:0;padding:.8em 1em 0;color:inherit;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{display:flex;z-index:1;box-sizing:border-box;flex-wrap:wrap;align-items:center;justify-content:center;width:auto;margin:1.25em auto 0;padding:0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-loader{display:none;align-items:center;justify-content:center;width:2.2em;height:2.2em;margin:0 1.875em;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border-width:.25em;border-style:solid;border-radius:100%;border-color:#2778c4 transparent #2778c4 transparent}.swal2-styled{margin:.3125em;padding:.625em 1.1em;transition:box-shadow .1s;box-shadow:0 0 0 3px transparent;font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#7066e0;color:#fff;font-size:1em}.swal2-styled.swal2-confirm:focus{box-shadow:0 0 0 3px rgba(112,102,224,.5)}.swal2-styled.swal2-deny{border:0;border-radius:.25em;background:initial;background-color:#dc3741;color:#fff;font-size:1em}.swal2-styled.swal2-deny:focus{box-shadow:0 0 0 3px rgba(220,55,65,.5)}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#6e7881;color:#fff;font-size:1em}.swal2-styled.swal2-cancel:focus{box-shadow:0 0 0 3px rgba(110,120,129,.5)}.swal2-styled.swal2-default-outline:focus{box-shadow:0 0 0 3px rgba(100,150,200,.5)}.swal2-styled:focus{outline:0}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{justify-content:center;margin:1em 0 0;padding:1em 1em 0;border-top:1px solid #eee;color:inherit;font-size:1em}.swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;grid-column:auto!important;overflow:hidden;border-bottom-right-radius:5px;border-bottom-left-radius:5px}.swal2-timer-progress-bar{width:100%;height:.25em;background:rgba(0,0,0,.2)}.swal2-image{max-width:100%;margin:2em auto 1em}.swal2-close{z-index:2;align-items:center;justify-content:center;width:1.2em;height:1.2em;margin-top:0;margin-right:0;margin-bottom:-1.2em;padding:0;overflow:hidden;transition:color .1s,box-shadow .1s;border:none;border-radius:5px;background:0 0;color:#ccc;font-family:serif;font-family:monospace;font-size:2.5em;cursor:pointer;justify-self:end}.swal2-close:hover{transform:none;background:0 0;color:#f27474}.swal2-close:focus{outline:0;box-shadow:inset 0 0 0 3px rgba(100,150,200,.5)}.swal2-close::-moz-focus-inner{border:0}.swal2-html-container{z-index:1;justify-content:center;margin:1em 1.6em .3em;padding:0;overflow:auto;color:inherit;font-size:1.125em;font-weight:400;line-height:normal;text-align:center;word-wrap:break-word;word-break:break-word}.swal2-checkbox,.swal2-file,.swal2-input,.swal2-radio,.swal2-select,.swal2-textarea{margin:1em 2em 3px}.swal2-file,.swal2-input,.swal2-textarea{box-sizing:border-box;width:auto;transition:border-color .1s,box-shadow .1s;border:1px solid #d9d9d9;border-radius:.1875em;background:inherit;box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px transparent;color:inherit;font-size:1.125em}.swal2-file.swal2-inputerror,.swal2-input.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-file:focus,.swal2-input:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px rgba(100,150,200,.5)}.swal2-file::-moz-placeholder,.swal2-input::-moz-placeholder,.swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file:-ms-input-placeholder,.swal2-input:-ms-input-placeholder,.swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-file::placeholder,.swal2-input::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em 2em 3px;background:#fff}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-file{width:75%;margin-right:auto;margin-left:auto;background:inherit;font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:inherit;color:inherit;font-size:1.125em}.swal2-checkbox,.swal2-radio{align-items:center;justify-content:center;background:#fff;color:inherit}.swal2-checkbox label,.swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-checkbox input,.swal2-radio input{flex-shrink:0;margin:0 .4em}.swal2-input-label{display:flex;justify-content:center;margin:1em auto 0}.swal2-validation-message{align-items:center;justify-content:center;margin:1em 0 0;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:\"!\";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}.swal2-icon{position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:2.5em auto .6em;border:.25em solid transparent;border-radius:50%;border-color:#000;font-family:inherit;line-height:5em;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474;color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}.swal2-icon.swal2-error.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-error.swal2-icon-show .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-warning.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-warning.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-i-mark .5s;animation:swal2-animate-i-mark .5s}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-info.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-info.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-i-mark .8s;animation:swal2-animate-i-mark .8s}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-question.swal2-icon-show{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-question.swal2-icon-show .swal2-icon-content{-webkit-animation:swal2-animate-question-mark .8s;animation:swal2-animate-question-mark .8s}.swal2-icon.swal2-success{border-color:#a5dc86;color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-.25em;left:-.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-progress-steps{flex-wrap:wrap;align-items:center;max-width:100%;margin:1.25em auto;padding:0;background:inherit;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;flex-shrink:0;width:2em;height:2em;border-radius:2em;background:#2778c4;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#2778c4}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;flex-shrink:0;width:2.5em;height:.4em;margin:0 -1px;background:#2778c4}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{margin-right:initial;margin-left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}@-webkit-keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@keyframes swal2-toast-show{0%{transform:translateY(-.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0)}}@-webkit-keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@-webkit-keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@keyframes swal2-show{0%{transform:scale(.7)}45%{transform:scale(1.05)}80%{transform:scale(.95)}100%{transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(.4);opacity:0}50%{margin-top:1.625em;transform:scale(.4);opacity:0}80%{margin-top:-.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0);opacity:1}}@-webkit-keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@-webkit-keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@-webkit-keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}@keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-container{background-color:transparent!important;pointer-events:none}body.swal2-no-backdrop .swal2-container .swal2-popup{pointer-events:all}body.swal2-no-backdrop .swal2-container .swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static!important}}body.swal2-toast-shown .swal2-container{box-sizing:border-box;width:360px;max-width:100%;background-color:transparent;pointer-events:none}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}");
+};
 
 /***/ }),
 

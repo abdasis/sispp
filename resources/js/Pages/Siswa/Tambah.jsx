@@ -2,13 +2,14 @@ import React, {useState} from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Semua = (props) => {
     const { errors } = usePage().props
-    const MySwal = withReactContent(Swal)
+    const { flash } = usePage().props
+
+
 
     const [values, setValues] = useState({
         nama_siswa: "",
@@ -33,23 +34,8 @@ const Semua = (props) => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        Inertia.post(route('siswa.simpan'), values)
-            .then(() => {
-                MySwal.fire({
-                    title: 'Berhasil!',
-                    text: 'Data berhasil ditambahkan',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                })
-            })
-            .catch(error => {
-                MySwal.fire({
-                    title: 'Gagal!',
-                    text: 'Data gagal ditambahkan',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                })
-            })
+        Inertia.post(route('siswa.simpan'), values);
+
     }
     return (
         <Authenticated

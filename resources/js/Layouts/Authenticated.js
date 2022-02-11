@@ -2,9 +2,26 @@ import React, { useState } from 'react';
 import Navbar from "@/Organisms/Navbar";
 import Sidebar from "@/Organisms/Sidebar";
 import Footer from "@/Organisms/Footer";
-import {Link} from "@inertiajs/inertia-react";
+import {Link, usePage} from "@inertiajs/inertia-react";
+import {toast, ToastContainer} from "react-toastify";
 
 export default function Authenticated({ auth, header, children, breadcrumbs }) {
+    const { flash } = usePage().props
+
+
+    if (flash.message){
+        if (flash.message.type == 'berhasil') {
+            console.log(flash.message.text)
+            toast.success(flash.message.text, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        } else if (flash.message.type == 'gagal') {
+            toast.error(flash.message.text, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+    }
+
     return (
         <div id="wrapper">
             {/* Topbar Start */}
@@ -48,6 +65,8 @@ export default function Authenticated({ auth, header, children, breadcrumbs }) {
                 {/* Footer Start */}
                 <Footer />
                 {/* end Footer */}
+                <ToastContainer />
+
             </div>
             {/* ============================================================== */}
             {/* End Page content */}
