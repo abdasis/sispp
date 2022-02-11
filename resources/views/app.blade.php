@@ -11,7 +11,7 @@
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico" />
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}" />
 
     <!-- App css -->
     <link
@@ -50,7 +50,7 @@
 <body class="loading" data-sidebar-icon="twotones" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "light"}, "showRightSidebarOnPageLoad": false}'>
 @inertia
 <!-- Right Sidebar -->
-<div class="right-bar">
+{{--<div class="right-bar">
     <div data-simplebar class="h-100">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs nav-bordered nav-justified" role="tablist">
@@ -771,7 +771,7 @@
         </div>
     </div>
     <!-- end slimscroll-menu-->
-</div>
+</div>--}}
 <!-- /Right-bar -->
 
 <!-- Right bar overlay-->

@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin'], function (){
     Route::group(['prefix' => 'siswa'], function(){
         Route::get('/', [SiswaController::class, 'index'])->name('siswa.semua');
         Route::get('tambah', [SiswaController::class, 'create'])->name('siswa.tambah');
+        Route::post('simpan', [SiswaController::class, 'store'])->name('siswa.simpan');
     });
 });
 

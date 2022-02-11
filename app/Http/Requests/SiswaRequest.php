@@ -13,7 +13,7 @@ class SiswaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class SiswaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nama_siswa' => 'required',
+            'nisn' => 'required|numeric',
+            'nis' => 'required|numeric',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'required',
+            'telepon' => 'required',
+            'email' => 'required|email',
         ];
     }
 }

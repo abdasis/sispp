@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\SiswaRepository;
+use App\Repositories\SiswaRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -23,6 +25,6 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->bind(SiswaRepositoryInterface::class, SiswaRepository::class);
     }
 }

@@ -148,10 +148,10 @@ export default function Navbar(auth) {
                     </Link>
                     <Link href={route('dashboard')} className="logo logo-light text-center">
           <span className="logo-sm">
-            <img src="../assets/images/logo-sm.png" alt="" height={22}/>
+              <ApplicationLogo/>
           </span>
                         <span className="logo-lg">
-            <img src="../assets/images/logo-light.png" alt="" height={20}/>
+              <ApplicationLogo/>
           </span>
                     </Link>
                 </div>

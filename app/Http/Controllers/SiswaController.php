@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SiswaRequest;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -36,9 +37,15 @@ class SiswaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SiswaRequest $request)
     {
-        //
+        try {
+            $siswa = Siswa::create($request->all());
+            return redirect()->route('siswa.semua')->with('success', 'Data siswa berhasil ditambahkan');
+        } catch (\Exception $e) {
+            dd($e);
+            return redirect()->back()->with('error', 'Data siswa gagal ditambahkan');
+        }
     }
 
     /**
