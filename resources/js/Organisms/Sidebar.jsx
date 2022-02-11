@@ -47,19 +47,19 @@ export default function Sidebar(){
                         </li>
 
                         <li className="menu-title mt-2">Apps</li>
-                        <li>
+                        <li className={route().current('siswa.*') ? 'menuitem-active' : 'menuitem-nonactive'}>
                             <a href="#siswa" data-bs-toggle="collapse">
                                 <i className="mdi mdi-24px mdi-account" />
                                 <span> Data Siswa </span>
                                 <span className="menu-arrow"></span>
 
                             </a>
-                            <div className="collapse" id="siswa">
+                            <div className={route().current('siswa.*') ? 'collapse show' : 'collapse'} id="siswa">
                                 <ul className="nav-second-level">
-                                    <li>
+                                    <li className={route().current('siswa.tambah') ? 'menuitem-active' : 'menuitem-nonactive'}>
                                         <Link href={route('siswa.tambah')}>Tambah Siswa</Link>
                                     </li>
-                                    <li>
+                                    <li className={route().current('siswa.semua') ? 'menuitem-active' : 'menuitem-nonactive'}>
                                         <Link href={route('siswa.semua')}>Semua Siswa</Link>
                                     </li>
                                 </ul>

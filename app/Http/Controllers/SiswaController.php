@@ -27,7 +27,7 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Siswa/Tambah');
     }
 
     /**

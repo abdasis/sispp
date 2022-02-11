@@ -5011,6 +5011,7 @@ function Sidebar() {
             className: "menu-title mt-2",
             children: "Apps"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+            className: route().current('siswa.*') ? 'menuitem-active' : 'menuitem-nonactive',
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("a", {
               href: "#siswa",
               "data-bs-toggle": "collapse",
@@ -5022,16 +5023,18 @@ function Sidebar() {
                 className: "menu-arrow"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-              className: "collapse",
+              className: route().current('siswa.*') ? 'collapse show' : 'collapse',
               id: "siswa",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
                 className: "nav-second-level",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+                  className: route().current('siswa.tambah') ? 'menuitem-active' : 'menuitem-nonactive',
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
                     href: route('siswa.tambah'),
                     children: "Tambah Siswa"
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+                  className: route().current('siswa.semua') ? 'menuitem-active' : 'menuitem-nonactive',
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
                     href: route('siswa.semua'),
                     children: "Semua Siswa"
@@ -5832,7 +5835,7 @@ var Semua = function Semua(props) {
     }],
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
-        children: "Semua Siswa"
+        children: "Halaman Semua Siswa"
       })
     })
   });
@@ -5846,9 +5849,43 @@ var Semua = function Semua(props) {
 /*!*********************************************!*\
   !*** ./resources/js/Pages/Siswa/Tambah.jsx ***!
   \*********************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+
+
+var Semua = function Semua(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    auth: props.auth,
+    errors: props.errors,
+    header: "Tambah Siswa",
+    breadcrumbs: [{
+      label: "Dashboard",
+      url: route('dashboard')
+    }, {
+      label: "Siswa",
+      url: route('siswa.semua')
+    }, {
+      label: "Tambah Siswa"
+    }],
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+        children: "Halaman Tambah Siswa"
+      })
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Semua);
 
 /***/ }),
 

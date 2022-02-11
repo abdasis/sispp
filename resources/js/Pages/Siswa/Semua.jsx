@@ -14,7 +14,7 @@ const Semua = (props) => {
         ]}
     >
         <div>
-            <h1>Semua Siswa</h1>
+            <h1>Halaman Semua Siswa</h1>
         </div>
     </Authenticated>
   );
