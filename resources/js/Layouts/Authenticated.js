@@ -5,7 +5,6 @@ import Footer from "@/Organisms/Footer";
 import {Link} from "@inertiajs/inertia-react";
 
 export default function Authenticated({ auth, header, children, breadcrumbs }) {
-    console.log(breadcrumbs)
     return (
         <div id="wrapper">
             {/* Topbar Start */}

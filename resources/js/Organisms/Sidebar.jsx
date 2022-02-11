@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "@inertiajs/inertia-react";
+import Menu from "@/Components/Atoms/Menu";
 
 export default function Sidebar(){
     return(
@@ -39,62 +40,80 @@ export default function Sidebar(){
                 <div id="sidebar-menu">
                     <ul id="side-menu">
                         <li className="menu-title">Navigation</li>
-                        <li>
-                            <Link href="/">
-                                <i className="mdi mdi-24px mdi-calendar" />
-                                <span> Dashboard </span>
-                            </Link>
-                        </li>
+                        <Menu
+                            menu={
+                                {
+                                    name: 'Dashboard',
+                                    icon: 'mdi-view-dashboard',
+                                    link: route('dashboard'),
+                                }
+                            }
+                        />
 
                         <li className="menu-title mt-2">Apps</li>
-                        <li className={route().current('siswa.*') ? 'menuitem-active' : 'menuitem-nonactive'}>
-                            <a href="#siswa" data-bs-toggle="collapse">
-                                <i className="mdi mdi-24px mdi-account" />
-                                <span> Data Siswa </span>
-                                <span className="menu-arrow"></span>
 
-                            </a>
-                            <div className={route().current('siswa.*') ? 'collapse show' : 'collapse'} id="siswa">
-                                <ul className="nav-second-level">
-                                    <li className={route().current('siswa.tambah') ? 'menuitem-active' : 'menuitem-nonactive'}>
-                                        <Link href={route('siswa.tambah')}>Tambah Siswa</Link>
-                                    </li>
-                                    <li className={route().current('siswa.semua') ? 'menuitem-active' : 'menuitem-nonactive'}>
-                                        <Link href={route('siswa.semua')}>Semua Siswa</Link>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <Link href="/">
-                                <i className="mdi mdi-24px mdi-cash-plus" />
-                                <span> Riwayat Pembayaran </span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/">
-                                <i className="mdi mdi-24px mdi-cash-lock" />
-                                <span> Pengaturan Tarif </span>
-                            </Link>
-                        </li>
-                        <li>
-                            <a href="#staff" data-bs-toggle="collapse">
-                                <i className="mdi mdi-24px mdi-account-group" />
-                                <span> Staff </span>
-                                <span className="menu-arrow"></span>
+                        <Menu
+                            menu={
+                                {
+                                    name: 'Data Siswa',
+                                    icon: 'mdi mdi-account-multiple',
+                                    link: '/users'
+                                }
+                            }
+                            id={'users'}
+                            submenu={[
+                                {
+                                    name: 'Tambah Siswa',
+                                    link: route('siswa.tambah'),
+                                },
+                                {
+                                    name: 'Data Siswa',
+                                    link: route('siswa.semua'),
+                                }
+                            ]}
+                            group={'siswa'}
+                        />
 
-                            </a>
-                            <div className="collapse" id="staff">
-                                <ul className="nav-second-level">
-                                    <li>
-                                        <a href="index.html">Staff Baru</a>
-                                    </li>
-                                    <li>
-                                        <a href="dashboard-2.html">Semua Staff</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                        <Menu
+                            menu={
+                                {
+                                    name: 'Riwayat Pembayaran',
+                                    icon: 'mdi mdi-cash-multiple',
+                                    link: '/pembayaran'
+                                }
+                            }
+                        />
+
+                        <Menu
+                            menu={
+                                {
+                                    name: 'Pengaturan Tarif',
+                                    icon: 'mdi mdi-cash-lock',
+                                    link: '/pembayaran'
+                                }
+                            }
+                        />
+                        <Menu
+                            menu={
+                                {
+                                    name: 'Staff',
+                                    icon: 'mdi mdi-account-group',
+                                    link: '/staff'
+                                }
+                            }
+                            id={'staff'}
+                            submenu={[
+                                {
+                                    name: 'Tambah Staff',
+                                    link: route('siswa.tambah'),
+                                },
+                                {
+                                    name: 'Data Staff',
+                                    link: route('siswa.semua'),
+                                }
+                            ]}
+                            group={'staff'}
+                        />
                         <li>
                             <a href="#pengaturan" data-bs-toggle="collapse">
                                 <i className="mdi mdi-24px mdi-cogs" />
