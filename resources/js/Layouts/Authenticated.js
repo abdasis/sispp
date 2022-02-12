@@ -8,7 +8,8 @@ import {toast, ToastContainer} from "react-toastify";
 export default function Authenticated({ auth, header, children, breadcrumbs }) {
     const { flash } = usePage().props
 
-    if (flash.message){
+   /* if (flash.message){
+
         if (flash.message.type == 'berhasil') {
             toast.success(flash.message.text, {
                 position: toast.POSITION.TOP_RIGHT
@@ -18,7 +19,7 @@ export default function Authenticated({ auth, header, children, breadcrumbs }) {
                 position: toast.POSITION.TOP_RIGHT
             });
         }
-    }
+    }*/
 
     return (
         <div id="wrapper">

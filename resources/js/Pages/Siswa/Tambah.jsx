@@ -3,9 +3,11 @@ import Authenticated from "@/Layouts/Authenticated";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
 import 'react-toastify/dist/ReactToastify.css';
+import {toast} from "react-toastify";
 
 const Semua = (props) => {
     const { errors } = usePage().props
+
 
     const [values, setValues] = useState({
         nama_siswa: "",
@@ -30,7 +32,14 @@ const Semua = (props) => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        Inertia.post(route('siswa.simpan'), values);
+        Inertia.post(route('siswa.simpan'), values, {
+            onSuccess: () => {
+                toast.success("Data berhasil disimpan");
+            },
+            onError: (error) => {
+                toast.error(error);
+            }
+        });
 
     }
     return (
